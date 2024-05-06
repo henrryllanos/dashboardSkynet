@@ -1,0 +1,215 @@
+@extends('layouts.app')
+
+@section('title1')
+
+    <div class="d-flex justify-content-center">
+        <h2>
+            AMBIENTES
+        </h2>
+    </div>
+@endsection
+@section('content')
+    <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal"
+            data-target="#modalCrear">
+        Crear ambiente
+    </button>
+            <!--Tabla de AULAS-->
+        <div class="form-group">
+
+            <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
+                <img src="{{asset('images/search.svg')}}" alt="" style="border-radius: 10px; position: relative; width:100%; max-width:30px; right:8px;">
+                <input id="searchTerm" type="text" onkeyup="doSearch()" class="form-control pull-right"  placeholder="Escribe para buscar en la tabla..." />
+            </span>
+        </div>
+        <div style="margin-top: 1%" class="table-responsive" >
+                <table class="table" id="aulas" >
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre Ambiente</th>
+                            <th scope="col">Capacidad</th>
+                            <th scope="col">Ubicacion</th>
+                            <th scope="col">Facultad</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($ambientes as $ambiente)
+                            <tr scope="row">
+                                <td>{{ $loop->index + 1}}</td>
+                                <td>{{@$ambiente->num_ambiente}}</td>
+                                <td>{{@$ambiente->capacidad}}</td>
+                                <td>{{@$ambiente->nombre}}</td>
+                                <td>{{@$ambiente->facultad}}</td>
+                                <td>
+                                    <!-- esto es la logica del estado de aulas que aparece en la tabla -->
+                                        @if(@$ambiente->estado == 'Habilitado' )
+                                            <span class="badge badge-success">{{ @$ambiente->estado }}</span>
+
+                                        @elseif(@$ambiente->estado == 'Deshabilitado' )
+                                            <span class="badge badge-danger">{{ @$ambiente->estado }}</span>
+
+                                        @elseif(@$ambiente->estado == 'Mantenimiento' )
+                                            <span class="badge badge-warning">{{ @$ambiente->estado }}</span>
+                                        @endif
+                                </td>
+
+                                    <!-- la logica de boton de editar Eliminar -->
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar-{{$ambiente->id}}">
+                                        Editar
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar-{{$ambiente->id}}">
+                                        Eliminar
+                                    </button>
+
+                                </td>
+                            </tr>
+                            <!-- Estos son los madales que aparecen en los botones de editar eliminar de la tabla -->
+                                @include('admin.ambientes.modalEdit')
+                                @include('admin.ambientes.modalEliminar')
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+    <div class="modal fade bs-example-modal-lg" id="modalCrear">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 text-center">Nuevo Ambiente</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <form action=" " method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="codigo">Codigo</label>
+                            <input type="text" name="codigo" class="form-control" id="codigo" value="{{old('codigo')}}" required minlength="5" maxlength="15"
+                            onkeypress="return blockNoNumber(event)">
+                            @if ($errors->has('codigo'))
+                            <span class="error text-danger" for="input-codigo" style="font-size: 15px">{{ $errors->first('codigo') }}</span>
+                            @endif
+
+                            <label for="num_ambiente">Nombre Ambiente</label>
+                            <input type="text" name="num_ambiente" class="form-control" id="num_ambiente" value="{{old('num_ambiente')}}" required minlength="1" maxlength="6"
+                            onkeypress="return blockSpecialChar(event)">
+                            @if ($errors->has('num_ambiente'))
+                            <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
+                            @endif
+
+                            <label for="capacidad">Capacidad</label>
+                            <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
+                                onkeypress="return blockNoNumber(event)">
+
+                            <label for="ubicaciones">Ubicacion</label>
+                            <select name="ubicacion" id="ubicacion" class="form-control" value="" required>
+                                <option value="">-- Selecciona la ubicacion--</option>
+
+
+                                <option value="" > </option>
+
+                            </select>
+
+                            <label for="ubicaciones">Facultad</label>
+                            <select name="ubicacion" id="ubicacion" class="form-control" value="" required>
+                                <option value="">-- Selecciona la Facultad--</option>
+
+
+                                <option value="" > </option>
+
+                            </select>
+
+                            <label for="estado">Estado</label>
+                            <select name="estado" id="estado" class="form-control" value="" required>
+                                    <option value="">-- Selecciona el estado--</option>
+
+                                    <option value="Habilitado" @if(old('estado') == 'Habilitado') selected @endif>Habilitado</option>
+                                    <option value="Deshabilitado" @if(old('estado') == 'Deshabilitado') selected @endif>Deshabilitado</option>
+                                    <option value="Mantenimiento" @if(old('estado') == 'Mantenimiento') selected @endif>Mantenimiento</option>
+                            </select>
+                        </div>
+                    </div>
+                            <!-- son clases que acomodan los botones en el modal -->
+                            <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Evento del modal para registrar -->
+            <script type="text/javascript">
+                function blockSpecialChar(e){
+                    var k;
+                    document.all ? k = e.keyCode : k = e.which;
+                    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+                    }
+                function blockNoNumber(e){
+                    var k;
+                    document.all ? k = e.keyCode : k = e.which;
+                    return ( (k >= 48 && k <= 57));
+                    }
+                let refresh = document.getElementById('refresh');
+                refresh.addEventListener('click', _ => {
+                        location.reload();
+                })
+            </script>
+
+
+<!-- Evento para el buscador -->
+<script language="javascript">
+            function doSearch() {
+                var tableReg = document.getElementById('aulas');
+                var searchText = document.getElementById('searchTerm').value.toLowerCase();
+                for (var i = 1; i < tableReg.rows.length; i++) {
+                    var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                    var found = false;
+                    for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                        var compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                        if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                            found = true;
+                        }
+                    }
+                    if (found) {
+                        tableReg.rows[i].style.display = '';
+                    } else {
+                        tableReg.rows[i].style.display = 'none';
+                    }
+                }
+            }
+</script>
+
+
+<!-- Este script es para el buscador de la tabla -->
+<script language="javascript">
+            function doSearch2() {
+                var tableReg = document.getElementById('aulasR2');
+                var searchText = document.getElementById('searchTerm').value.toLowerCase();
+                for (var i = 1; i < tableReg.rows.length; i++) {
+                    var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                    var found = false;
+                    for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                        var compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                        if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                            found = true;
+                        }
+                    }
+                    if (found) {
+                        tableReg.rows[i].style.display = '';
+                    } else {
+                        tableReg.rows[i].style.display = 'none';
+                    }
+                }
+            }
+</script>
+
+@endsection
+
+@section('footer')
+
+@endsection
