@@ -64,3 +64,5 @@ Route::get('/auth', function () {
   return view('index');
 })->middleware('auth.user')
 ->name('auth.user');
+
+
