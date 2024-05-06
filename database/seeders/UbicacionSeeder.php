@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class SectorSeeder extends Seeder
+class UbicacionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,22 +15,22 @@ class SectorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sectors')->insert([
+        DB::table('ubicaciones')->insert([
             'nombre' => 'Edificio nuevo',
             'facultad' => 'Fcyt',
 
         ]);
-        DB::table('sectors')->insert([
+        DB::table('ubicaciones')->insert([
             'nombre' => 'bloque antiguo',
             'facultad' => 'Economia',
 
         ]);
-        DB::table('sectors')->insert([
+        DB::table('ubicaciones')->insert([
             'nombre' => 'laboratorios',
             'facultad' => 'Derecho',
 
         ]);
-        DB::table('sectors')->insert([
+        DB::table('ubicaciones')->insert([
             'nombre' => 'edificio memi',
             'facultad' => 'Fcyt',
 

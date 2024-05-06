@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAulasTable extends Migration
+class CreateAmbientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateAulasTable extends Migration
      */
     public function up()
     {
-        Schema::create('aulas', function (Blueprint $table) {
+        Schema::create('ambientes', function (Blueprint $table) {
             $table->id();
             $table->integer("codigo");
-            $table->string("num_aula");
+            $table->string("num_ambiente");
             $table->integer("capacidad");
 
             $table->string("estado");
 
-            $table->unsignedBigInteger('sector');
-            $table->foreign('sector')->references('id')->on('sectors')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('ubicacion');
+            $table->foreign('ubicacion')->references('id')->on('ubicaciones')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateAulasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aulas');
+        Schema::dropIfExists('ambientes');
     }
 }

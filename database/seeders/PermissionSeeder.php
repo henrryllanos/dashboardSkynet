@@ -44,9 +44,9 @@ class PermissionSeeder extends Seeder
             'solicitud_sugerir',
             'solicitud_buscar',
 
-            'aulaR_index',
-            'aulaR_destroy',
-            'aulaR_buscar',
+            'ambienteR_index',
+            'ambienteR_destroy',
+            'ambienteR_buscar',
 
             'notificacion_index',
             'notificacion_ver',
@@ -54,11 +54,11 @@ class PermissionSeeder extends Seeder
 
             'crear_reserva',
 
-            'aula_index',
-            'aula_create',
-            'aula_edit',
-            'aula_destroy',
-            'aula_buscar',
+            'ambiente_index',
+            'ambiente_create',
+            'ambiente_edit',
+            'ambiente_destroy',
+            'ambiente_buscar',
 
             'materia_index',
             'materia_create',

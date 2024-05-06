@@ -16,7 +16,7 @@ class Solicitud extends Model
                             'periodo',
                             'dia',
                             'estado',
-                            'aula',
+                            'ambiente',
                             'docmateria_id',
 
 
@@ -37,8 +37,8 @@ class Solicitud extends Model
         return $this->belongsTo(Docmateria::class);
     }
 
-    public function aula()
+    public function ambiente()
     {
-        return $this->belongsTo(Aula::class);
+        return $this->belongsTo(Ambiente::class);
     }
 }

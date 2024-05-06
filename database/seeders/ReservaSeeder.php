@@ -15,10 +15,10 @@ class ReservaSeeder extends Seeder
      */
     public function run()
     {
-        $aulas = ["692A", "692B", "692C", "692D"];
+        $ambientes = ["692A", "692B", "692C", "692D"];
         for ($i=0; $i < 10; $i++) {
             DB::table('reservas')->insert([
-                'aula' => $aulas[rand(0, 3)],
+                'ambiente' => $ambientes[rand(0, 3)],
                 'hora_ini' => date("H:i", strtotime("10:52PM")),
                 'hora_fin' => date("H:i", strtotime("10:53PM")),
                 'dia' => "2022-04-16",

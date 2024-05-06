@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Aula;
+use App\Models\Ambiente;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SolicitudCreateRequest extends FormRequest
@@ -24,13 +24,13 @@ class SolicitudCreateRequest extends FormRequest
      */
     public function rules()
     {
-        
+
         return [
-            
+
             // Logic for findOrFail
             // 'username' => 'unique:users,username,'.$this->user.'|required',
-            'aula' => 'required',
-           
+            'ambiente' => 'required',
+
             //'email' => Rule::unique('users')->where(function ($query) {
               //      return $query->where('account_id', 1);
                 //    })

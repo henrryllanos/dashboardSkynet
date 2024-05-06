@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AulaCreateRequest extends FormRequest
+class AmbienteEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,17 @@ class AulaCreateRequest extends FormRequest
      */
     public function rules()
     {
+        $permission = $this->route('ambiente');
         return [
-            'codigo' => 'required|unique:aulas',
-            'num_aula' => 'required|unique:aulas',
-        ];
-    }
 
-    public function messages()
-    {
-        return [
-            'codigo.required' => 'El codigo es requerido '
+
+            'codigo' => [
+                'required', 'unique:ambientes,codigo,' . request()->route('ambiente')->id
+            ],
+            'num_ambiente' => [
+                'required', 'unique:ambientes,num_ambiente,' . request()->route('ambientes')->id
+            ],
+
         ];
     }
 }

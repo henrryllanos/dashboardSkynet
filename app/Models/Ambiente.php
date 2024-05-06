@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aula extends Model
+class Ambiente extends Model
 {
     use HasFactory;
-    protected $table = 'aulas';
-    protected $fillable = ['codigo', 'num_aula', 'capacidad', 'sector'. 'estado'];
+    protected $table = 'ambientes';
+    protected $fillable = ['codigo', 'num_ambiente', 'capacidad', 'ubicacion'. 'estado'];
 
     public function solicitudes()
     {
         return $this->hasMany(Solicitud::class);
     }
-    public function sector()
+    public function ubicacion()
     {
-        return $this->belongsTo(Sector::class);
+        return $this->belongsTo(Ubicacion::class);
     }
 }

@@ -15,7 +15,7 @@ class CreateReservasTable extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->string("aula");
+            $table->string("ambiente");
             $table->time("hora_ini");
             $table->time("hora_fin");
             $table->string("periodo")->nullable();

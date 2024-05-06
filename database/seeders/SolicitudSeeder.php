@@ -26,7 +26,7 @@ class SolicitudSeeder extends Seeder
                 'hora_fin'=> date("H:i", strtotime("10:53PM")),
                 'dia' => "2022-04-16",
                 'grupo' => rand(1,10),
-                'aula' => rand(1,10),
+                'ambiente' => rand(1,10),
                 'materia' => rand(1,10),
                 'docente'=> 2,
             ]);

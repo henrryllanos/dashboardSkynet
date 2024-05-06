@@ -26,8 +26,8 @@ class RoleHasPermissionSeeder extends Seeder
                  substr($permission->name, 0, 5) != 'role_' &&
                  substr($permission->name, 0, 11) != 'permission_' &&
                  substr($permission->name, 0, 10) != 'solicitud_' &&
-                 substr($permission->name, 0, 5) != 'aula_' &&
-                 substr($permission->name, 0, 6) != 'aulaR_' &&
+                 substr($permission->name, 0, 5) != 'ambiente_' &&
+                 substr($permission->name, 0, 6) != 'ambienteR_' &&
                  substr($permission->name, 0, 8) != 'materia_' &&
                  substr($permission->name, 0, 8) != 'asignar_';
          });

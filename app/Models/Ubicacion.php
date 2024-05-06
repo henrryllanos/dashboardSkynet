@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sector extends Model
+class Ubicacion extends Model
 {
     use HasFactory;
-    protected $table = 'sectors';
+    protected $table = 'ubicaciones';
     protected $fillable = ['nombre'];
-    public function aulas()
+    public function ambientes()
     {
-        return $this->hasMany(Aula::class);
+        return $this->hasMany(Ambiente::class);
     }
 }

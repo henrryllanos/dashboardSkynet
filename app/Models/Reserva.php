@@ -10,7 +10,7 @@ class Reserva extends Model
     use HasFactory;
     protected $table = 'reservas';
     protected $fillable = [
-        "aula",
+        "ambiente",
         "hora_ini",
         "hora_fin",
         "periodo",
