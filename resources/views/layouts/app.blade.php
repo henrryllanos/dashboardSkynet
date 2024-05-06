@@ -15,7 +15,8 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
+
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -198,10 +199,6 @@
 <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
- <!--   Core JS Files   -->
- <script src="{{ asset('js/core/jquery.min.js') }}"></script>
-<script src="{{ asset('js/core/popper.min.js') }}"></script>
-<script src="{{ asset('js/core/bootstrap-material-design.min.js') }}"></script>
 {{-- <script src="{{ asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script> --}}
 @stack('js')
 
