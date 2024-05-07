@@ -100,3 +100,29 @@ Route::get('/solicitudesR/index', [App\Http\Controllers\SolicitudController::cla
 Route::get('/solicitudesR/create', [App\Http\Controllers\SolicitudController::class, 'create'])
     ->name('admin.solicitudesR.create');
 
+
+//Materias de docentes
+Route::get('/docentesmaterias', [App\Http\Controllers\DocmateriaController::class, 'index2'])
+->name('admin.docenteM.index');
+
+Route::post('/docentesmaterias/store', [App\Http\Controllers\DocmateriaController::class, 'store'])
+->name('admin.docentesmaterias.store');
+
+Route::post('/docentesmaterias/{docmateriaId}/update', [App\Http\Controllers\DocmateriaController::class, 'update'])
+->name('admin.docentesmaterias.update');
+
+Route::delete('/docentesmaterias/{docmateriaId}/delete', [App\Http\Controllers\DocmateriaController::class, 'delete'])
+->name('admin.docentesmaterias.delete');
+
+ //Grupos
+Route::get('/grupos', [App\Http\Controllers\GrupoController::class, 'index'])
+->name('admin.grupos.index');
+
+Route::post('/grupos/store', [App\Http\Controllers\GrupoController::class, 'store'])
+->name('admin.grupos.store');
+
+Route::post('/grupos/{grupoId}/update', [App\Http\Controllers\GrupoController::class, 'update'])
+->name('admin.grupos.update');
+
+Route::delete('/grupos/{grupoId}/delete', [App\Http\Controllers\GrupoController::class, 'delete'])
+->name('admin.grupos.delete');

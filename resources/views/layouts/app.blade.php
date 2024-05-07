@@ -32,17 +32,17 @@
                     </li>
                     <!-- Notifications Dropdown Menu -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                             <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial=""></figure>
-                        </a>
+                        </a> -->
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             {{-- <div class="dropdown-divider"></div> --}}
                             <a class="dropdown-item" href="">
                                 {{ __('Cerrar sesión') }}
                             </a>
-                        </div>
+                        </div> -->
                     </li>
                 </ul>
             </nav>
@@ -50,7 +50,7 @@
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                     <!-- Brand Logo -->
-                    
+
                     <a class="brand-link">
                         <img alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
                         <span class="brand-text font-weight-light">Skynet-Umss</span>
@@ -86,7 +86,7 @@
                         </div>
                     </div><!-- /.container-fluid -->
                 </section>
-                
+
                     <!-- Main content -->
                     <section class="content">
                     <!-- Default box -->

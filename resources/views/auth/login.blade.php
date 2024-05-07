@@ -19,7 +19,7 @@ display: flex;
 justify-content: center;
 align-items: center;">
 
-            <h1>login</h1>
+            <h1>Sistema de Reserva de Ambientes</h1>
 <div style=" width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -41,7 +41,7 @@ align-items: center;">
             <input style="font-family: 'Times New Roman';" type="password" id="password" name="password" autocomplete="current-password" class="form-control" placeholder="Contraseña" required minlength="5" maxlength="15">
         </div>
         <div style="padding-top: 16%">
-            <input type="submit" value="Ingresar" class="btn btn-dark"
+            <input type="submit" value="Registrar" class="btn btn-dark"
             style="font-family: 'Times New Roman'; background-color: #1D3354; width: 100%; font-size: 20px; "/>
         </div>
 
@@ -58,12 +58,7 @@ align-items: center;">
             @enderror
             </div>
 
-
-
-
     </form>
-
-
 </div>
 
 </body>

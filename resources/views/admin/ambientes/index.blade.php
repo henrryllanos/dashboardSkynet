@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
 @section('title1')
+    <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal"
+            data-target="#modalCrear">
+        Registro de Ambiente
+    </button>
 
-    <div class="d-flex justify-content-center">
+    <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            AMBIENTES
+            Ambientes
         </h2>
     </div>
 @endsection
 @section('content')
-    <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal"
-            data-target="#modalCrear">
-        Crear ambiente
-    </button>
             <!--Tabla de AULAS-->
         <div class="form-group">
-
-            <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
+            <!-- <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
                 <img src="{{asset('images/search.svg')}}" alt="" style="border-radius: 10px; position: relative; width:100%; max-width:30px; right:8px;">
                 <input id="searchTerm" type="text" onkeyup="doSearch()" class="form-control pull-right"  placeholder="Escribe para buscar en la tabla..." />
-            </span>
+            </span> -->
         </div>
         <div style="margin-top: 1%" class="table-responsive" >
                 <table class="table" id="aulas" >
@@ -27,8 +26,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre Ambiente</th>
-                            <th scope="col">Capacidad</th>
-                            <th scope="col">Ubicacion</th>
+                            <th scope="col">Capacidad Ambiente</th>
+                            <th scope="col">Ubicacion Ambiente</th>
                             <th scope="col">Facultad</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
@@ -37,11 +36,11 @@
                     <tbody>
                         @foreach ($ambientes as $ambiente)
                             <tr scope="row">
-                                <td>{{ $loop->index + 1}}</td>
-                                <td>{{@$ambiente->num_ambiente}}</td>
-                                <td>{{@$ambiente->capacidad}}</td>
-                                <td>{{@$ambiente->nombre}}</td>
-                                <td>{{@$ambiente->facultad}}</td>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ @$ambiente->num_ambiente }}</td>
+                                <td>{{ @$ambiente->capacidad }}</td>
+                                <td>{{ @$ambiente->nombre }}</td>
+                                <td>{{ @$ambiente->facultad }}</td>
                                 <td>
                                     <!-- esto es la logica del estado de aulas que aparece en la tabla -->
                                         @if(@$ambiente->estado == 'Habilitado' )
@@ -58,12 +57,12 @@
                                     <!-- la logica de boton de editar Eliminar -->
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar-{{$ambiente->id}}">
-                                        Editar
+                                        Ver Detalles
                                     </button>
 
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar-{{$ambiente->id}}">
+                                    <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar-{{$ambiente->id}}">
                                         Eliminar
-                                    </button>
+                                    </button> -->
 
                                 </td>
                             </tr>

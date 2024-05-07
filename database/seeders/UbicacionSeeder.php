@@ -17,23 +17,18 @@ class UbicacionSeeder extends Seeder
     {
         DB::table('ubicaciones')->insert([
             'nombre' => 'Edificio nuevo',
-            'facultad' => 'Fcyt',
 
         ]);
         DB::table('ubicaciones')->insert([
             'nombre' => 'bloque antiguo',
-            'facultad' => 'Economia',
 
         ]);
         DB::table('ubicaciones')->insert([
             'nombre' => 'laboratorios',
-            'facultad' => 'Derecho',
 
         ]);
         DB::table('ubicaciones')->insert([
             'nombre' => 'edificio memi',
-            'facultad' => 'Fcyt',
-
         ]);
     }
 }

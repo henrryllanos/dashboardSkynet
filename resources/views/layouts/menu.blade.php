@@ -18,6 +18,13 @@
             </li>
 
 
+            <li class="nav-item {{ request()->is('solicitar*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('admin.docenteM.index')}}">
+                        <span>{{ __('Registrar Docente') }}</span>
+                    </a>
+            </li>
+
+
             <li class="nav-item  {{ request()->is('ambientesR') ? 'active' : '' }}" >
                 <a class="nav-link" href="{{ route('admin.ambientes.index', ['tipo'=> 'admin']) }}">
                     <span>{{ __('Ambientes Reservadas') }}</span></a>

@@ -18,6 +18,7 @@ class CreateAmbientesTable extends Migration
             $table->integer("codigo");
             $table->string("num_ambiente");
             $table->integer("capacidad");
+            $table->string('facultad');
 
             $table->string("estado");
 

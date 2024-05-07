@@ -9,7 +9,7 @@ class Ambiente extends Model
 {
     use HasFactory;
     protected $table = 'ambientes';
-    protected $fillable = ['codigo', 'num_ambiente', 'capacidad', 'ubicacion'. 'estado'];
+    protected $fillable = ['codigo', 'num_ambiente', 'capacidad', 'ubicacion', 'facultad', 'estado'];
 
     public function solicitudes()
     {

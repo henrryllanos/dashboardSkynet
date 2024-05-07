@@ -15,6 +15,7 @@ class AmbienteSeeder extends Seeder
     public function run()
     {
         $ubicaciones = ["1", "2", "3", "4"];
+        $facultades = ["Fcyt", "Derecho", "Economia", "Arquitectura" ];
         $letras = ['A','B','C','D','E','F','G', ''];
         $estado = ["Habilitado", "Deshabilitado", "Mantenimiento"];
         for ($i = 0; $i < 10; $i++) {
@@ -22,6 +23,7 @@ class AmbienteSeeder extends Seeder
                 'codigo' => rand(1,100)*1000,
                 'num_ambiente' => rand(1, 30)*10 . $letras[rand(0,7)],
                 'capacidad' => rand(10, 40)*10,
+                'facultad' => $facultades[rand(0, 3)],
                 'ubicacion' => $ubicaciones[rand(0, 3)],
                 'estado' => $estado[rand(0,2)],
             ]);
