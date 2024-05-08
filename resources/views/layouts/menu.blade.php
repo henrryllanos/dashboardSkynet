@@ -41,4 +41,9 @@
                 <a class="nav-link" href="#">
                     <span>{{ __('Materias de Docentes') }}</span></a>
             </li>
+
+            <li class="nav-item {{ request()->is('usuarios')  ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('admin.usuarios.index')}}">
+                    <span>{{ __('Registrar Usuarios') }}</span></a>
+            </li>
         </ul>

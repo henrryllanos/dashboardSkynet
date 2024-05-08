@@ -126,3 +126,22 @@ Route::post('/grupos/{grupoId}/update', [App\Http\Controllers\GrupoController::c
 
 Route::delete('/grupos/{grupoId}/delete', [App\Http\Controllers\GrupoController::class, 'delete'])
 ->name('admin.grupos.delete');
+
+//usuarios
+Route::get('/usuarios/index', [App\Http\Controllers\UsuariosController::class, 'index'])
+->name('admin.usuarios.index');
+
+Route::get('/usuarios/create', [App\Http\Controllers\UsuariosController::class, 'create'])
+->name('admin.usuarios.create');
+
+Route::post('/usuarios/store', [App\Http\Controllers\UsuariosController::class, 'store'])
+->name('admin.usuarios.store');
+
+Route::delete('/usuarios/{user}', [App\Http\Controllers\UsuariosController::class, 'destroy'])
+->name('admin.usuarios.delete');
+
+Route::get('/usuarios/{user}/edit', [App\Http\Controllers\UsuariosController::class, 'edit'])
+->name('admin.usuarios.edit');
+
+Route::put('/usuarios/{user}', [App\Http\Controllers\UsuariosController::class, 'update'])
+->name('admin.usuarios.update');
