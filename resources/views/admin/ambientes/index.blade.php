@@ -5,21 +5,25 @@
             data-target="#modalCrear">
         Registro de Ambiente
     </button>
-
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
             Ambientes
         </h2>
     </div>
 @endsection
-@section('content')
-            <!--Tabla de AULAS-->
-        <div class="form-group">
-            <!-- <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
+
+@section('title2')
+
+            <span class="input-group" style="width: 150%; margin-right:auto; margin: left auto;">
                 <img src="{{asset('images/search.svg')}}" alt="" style="border-radius: 10px; position: relative; width:100%; max-width:30px; right:8px;">
                 <input id="searchTerm" type="text" onkeyup="doSearch()" class="form-control pull-right"  placeholder="Escribe para buscar en la tabla..." />
-            </span> -->
-        </div>
+            </span>
+
+@endsection
+
+
+@section('content')
+            <!--Tabla de AULAS-->
         <div style="margin-top: 1%" class="table-responsive" >
                 <table class="table" id="aulas" >
                     <thead>
@@ -56,14 +60,16 @@
 
                                     <!-- la logica de boton de editar Eliminar -->
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar-{{$ambiente->id}}">
-                                        Ver Detalles
+                                    @can('ambiente_edit')
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit-{{$ambiente->id}}">
+                                        Editar
                                     </button>
-
-                                    <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar-{{$ambiente->id}}">
+                                    @endcan
+                                    @can('ambiente_destroy')
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar-{{$ambiente->id}}">
                                         Eliminar
-                                    </button> -->
-
+                                    </button>
+                                    @endcan
                                 </td>
                             </tr>
                             <!-- Estos son los madales que aparecen en los botones de editar eliminar de la tabla -->
@@ -133,8 +139,8 @@
                     </div>
                             <!-- son clases que acomodan los botones en el modal -->
                             <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Salir</button>
                             </div>
                 </form>
             </div>

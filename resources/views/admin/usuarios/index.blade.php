@@ -19,6 +19,7 @@
         </div>
         @endif
     </div>
+
     <div class="form-group">
         <span class="input-group" style="width:60%; margin-right:auto; margin-left:auto">
             <img src="{{asset('images/search.svg')}}" alt="" style="border-radius:10px; position:relative; width:100%; max-width:30px; right:8px;">
@@ -47,6 +48,13 @@
                     <td>{{ @$user -> ci }}</td>
                     <td>{{ @$user -> email}}</td>
                     <td>{{ @$user -> estadoCuenta}}</td>
+                    <!-- <td>
+                        @forelse ($user->roles as $role)
+                        <span class="badge badge-info">{{ $role->name }}</span>
+                        @empty
+                        <span class="badge badge-danger">No roles</span>
+                        @endforelse
+                    </td> -->
                     <td>
                         <a type="button" class="btn btn-primary" href="{{ route('admin.usuarios.edit', $user->id)}}">
                         Editar
@@ -59,23 +67,14 @@
                 @include('admin.usuarios.modalEliminar')
             @endforeach
         </tbody>
-
     </table>
 </div>
 
-
-
-
-
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function blockSpecialChar(e){
         var k;
         document.all ? k = e.keyCode : k = e.which;
-        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
         }
     function blockNoNumber(e){
         var k;
@@ -85,8 +84,8 @@
     let refresh = document.getElementById('refresh');
     refresh.addEventListener('click', _ => {
             location.reload();
-    })
-</script>
+})
+</script> -->
 
 <script language="javascript">
             function doSearch() {
@@ -110,7 +109,6 @@
             }
 </script>
 @endsection
-
 
 @section('footer')
 

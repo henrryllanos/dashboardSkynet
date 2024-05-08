@@ -36,7 +36,7 @@ class UsuariosController extends Controller
 
     public function store(UserCreateRequest $request)
     {
-        $user = User::create($request->only('name', 'ci', 'email', 'password', )
+        $user = User::create($request->only('name', 'ci', 'email', 'departamento', 'password', )
         + [
             'estadoCuente' => 'Habilitado',
         ]);
