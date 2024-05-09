@@ -89,7 +89,7 @@
                                             Departamento:</label>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                                <input name="departamento" type="text" class="form-control"  placeholder="Ingrese departamento" value="{{old('departamento')}}" autofocus minlength="7" maxlength="10"
+                                                <input name="departamento" type="text" class="form-control"  placeholder="Ingrese departamento" value="{{old('departamento')}}" autofocus minlength="7" maxlength="60"
                                                 onkeypress="return blockSpecialChar(event)">
                                                 @if($errors->has('departamento'))
                                                 <span class="error text-danger" for="input-departamento" style="font-size: 15px">{{ $errors->first('departamento') }}</span>

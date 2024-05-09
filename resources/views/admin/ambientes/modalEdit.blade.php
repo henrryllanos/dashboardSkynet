@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
     $ubicaciones = DB::table('ubicaciones')->select('nombre')->where('id','=', "{$ambiente->id}")->get();
     $ambientes = DB::table('ambientes')->select('facultad')->get();
     $ambientes = DB::table('ambientes')->select('facultad')->where('id', '=', "{$ambiente->id}")->get();
-    
+
     $estado = ["Habilitado","Deshabilitado", "Mantenimiento"];
     $estado = array_diff($estado, array("{$ambiente->estado}"));
     $estado = Arr::prepend($estado, "{$ambiente->estado}");
@@ -36,24 +36,6 @@ use Illuminate\Support\Facades\DB;
                         <label for="capacidad">Capacidad ambiente</label>
                         <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{$ambiente->capacidad}}" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
                                 onkeypress="return blockNoNumber(event)">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ubicacion">Ubicacion</label>
-                        <select name="ubicacion" id="ubicacion" class="form-control" value="{{old('ubicacion')}}"  required>
-                            <option value="">--Seleccione ubicacion--</option>
-                            @foreach ($ubicacion as $item)
-                             <option value="{{ $item->id}}" @if(old('ubicacion') == $item->id) selected @endif>{{ $item->nombre}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="facultad">Facultad</label>
-                        <select name="facultad" id="facultad" class="form-control" value="{{$ambiente->facultad}}"  required>
-                            <option value="">--Seleccione facultad--</option>
-                            
-                        </select>
                     </div>
 
                     <div class="form-group">

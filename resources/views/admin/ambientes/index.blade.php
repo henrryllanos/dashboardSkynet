@@ -32,7 +32,6 @@
                             <th scope="col">Nombre Ambiente</th>
                             <th scope="col">Capacidad Ambiente</th>
                             <th scope="col">Ubicacion Ambiente</th>
-                            <th scope="col">Facultad</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -44,7 +43,6 @@
                                 <td>{{ @$ambiente->num_ambiente }}</td>
                                 <td>{{ @$ambiente->capacidad }}</td>
                                 <td>{{ @$ambiente->nombre }}</td>
-                                <td>{{ @$ambiente->facultad }}</td>
                                 <td>
                                     <!-- esto es la logica del estado de aulas que aparece en la tabla -->
                                         @if(@$ambiente->estado == 'Habilitado' )
@@ -117,16 +115,6 @@
                                 <option value="" > </option>
 
                             </select>
-
-                            <label for="ubicaciones">Facultad</label>
-                            <select name="ubicacion" id="ubicacion" class="form-control" value="" required>
-                                <option value="">-- Selecciona la Facultad--</option>
-
-
-                                <option value="" > </option>
-
-                            </select>
-
                             <label for="estado">Estado</label>
                             <select name="estado" id="estado" class="form-control" value="" required>
                                     <option value="">-- Selecciona el estado--</option>
