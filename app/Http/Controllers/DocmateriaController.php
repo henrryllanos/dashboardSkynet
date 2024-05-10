@@ -19,8 +19,8 @@ class DocmateriaController extends Controller
     ->get();
 
     // $solicitudes = solicitud::all();
-
-        return view('admin.docenteM.index', compact('docmaterias'));
+            //supuesto error
+        return view('admin.decentem.index', compact('docmaterias'));
     }
 
     public function index2() {
@@ -42,6 +42,7 @@ class DocmateriaController extends Controller
     }
 
     public function store(Request $request) {
+
         abort_if(Gate::denies('asignar_create'), 403);
         $validador = Validator::make($request->all(), [
                 'materia' => 'required|unique:materias',

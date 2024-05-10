@@ -5,14 +5,12 @@ use Illuminate\Support\Facades\DB;
 
     $ubicaciones = DB::table('ubicaciones')->select('nombre')->get();
     $ubicaciones = DB::table('ubicaciones')->select('nombre')->where('id','=', "{$ambiente->id}")->get();
-    $ambientes = DB::table('ambientes')->select('facultad')->get();
-    $ambientes = DB::table('ambientes')->select('facultad')->where('id', '=', "{$ambiente->id}")->get();
 
     $estado = ["Habilitado","Deshabilitado", "Mantenimiento"];
     $estado = array_diff($estado, array("{$ambiente->estado}"));
     $estado = Arr::prepend($estado, "{$ambiente->estado}");
 ?>
-    <div class="modal fade" id="modalEdit-{{$ambiente->id}}">
+    <div class="modal fade" id="modalEditar-{{$ambiente->id}}">
         <div class="modal-dialog">
             <div class="modal-content bg-default">
                 <div class="modal-header">
@@ -49,7 +47,7 @@ use Illuminate\Support\Facades\DB;
                 </div>
 
                 <div class="modal-footer justify-content-between">
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
                 </div>
             </form>

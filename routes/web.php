@@ -80,7 +80,6 @@ Route::get('/ambientes/create', [App\Http\Controllers\AmbienteController::class,
 Route::delete('/ambientes/{ambienteId}/delete', [App\Http\Controllers\AmbienteController::class, 'delete'])
     ->name('admin.ambientes.delete');
 
-
 Route::post('/ambientes/{ambienteId}/update', [App\Http\Controllers\AmbienteController::class, 'update'])
     ->name('admin.ambientes.update');
 

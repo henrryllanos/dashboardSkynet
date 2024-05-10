@@ -32,6 +32,7 @@
                             <th scope="col">Nombre Ambiente</th>
                             <th scope="col">Capacidad Ambiente</th>
                             <th scope="col">Ubicacion Ambiente</th>
+                            <th scope="col">Facultad</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -43,6 +44,7 @@
                                 <td>{{ @$ambiente->num_ambiente }}</td>
                                 <td>{{ @$ambiente->capacidad }}</td>
                                 <td>{{ @$ambiente->nombre }}</td>
+                                <td>{{ @$ambiente->facultad }}</td>
                                 <td>
                                     <!-- esto es la logica del estado de aulas que aparece en la tabla -->
                                         @if(@$ambiente->estado == 'Habilitado' )
@@ -59,7 +61,7 @@
                                     <!-- la logica de boton de editar Eliminar -->
                                 <td>
                                     @can('ambiente_edit')
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit-{{$ambiente->id}}">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar-{{$ambiente->id}}">
                                         Editar
                                     </button>
                                     @endcan
@@ -71,12 +73,14 @@
                                 </td>
                             </tr>
                             <!-- Estos son los madales que aparecen en los botones de editar eliminar de la tabla -->
-                                @include('admin.ambientes.modalEdit')
+                                @include('admin.ambientes.modalEditar')
                                 @include('admin.ambientes.modalEliminar')
                         @endforeach
                     </tbody>
                 </table>
             </div>
+
+<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
     <div class="modal fade bs-example-modal-lg" id="modalCrear">
         <div class="modal-dialog">
@@ -86,51 +90,55 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
-                <form action=" " method="POST">
-                    <div class="modal-body">
-                        <div class="form-group">
+                <form action="{{route('admin.ambientes.store')}}" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
                             <label for="codigo">Codigo</label>
                             <input type="text" name="codigo" class="form-control" id="codigo" value="{{old('codigo')}}" required minlength="5" maxlength="15"
                             onkeypress="return blockNoNumber(event)">
                             @if ($errors->has('codigo'))
                             <span class="error text-danger" for="input-codigo" style="font-size: 15px">{{ $errors->first('codigo') }}</span>
                             @endif
-
-                            <label for="num_ambiente">Nombre Ambiente</label>
+                            <label for="num_ambiente">Numero ambiente</label>
                             <input type="text" name="num_ambiente" class="form-control" id="num_ambiente" value="{{old('num_ambiente')}}" required minlength="1" maxlength="6"
                             onkeypress="return blockSpecialChar(event)">
                             @if ($errors->has('num_ambiente'))
                             <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
                             @endif
-
                             <label for="capacidad">Capacidad</label>
                             <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
                                 onkeypress="return blockNoNumber(event)">
 
+                            <label for="facultad">Facultad</label>
+                            <input type="text" name="facultad" class="form-control" id="facultad" value="{{old('facultad')}}" required minlength="5" maxlength="25"
+                            onkeypress="return blockSpecialChar(event)">
+
                             <label for="ubicaciones">Ubicacion</label>
-                            <select name="ubicacion" id="ubicacion" class="form-control" value="" required>
+                            <select name="ubicacion" id="ubicacion" class="form-control" value="{{old('ubicacion')}}" required>
                                 <option value="">-- Selecciona la ubicacion--</option>
 
-
-                                <option value="" > </option>
-
+                            @foreach ($ubicacion as $item)
+                                <option value="{{ $item->id }}" @if(old('ubicacion') == $item->id) selected @endif>{{ $item->nombre}}</option>
+                            @endforeach
                             </select>
-                            <label for="estado">Estado</label>
-                            <select name="estado" id="estado" class="form-control" value="" required>
+
+                                <label for="estado">Estado</label>
+                                <select name="estado" id="estado" class="form-control" value="{{old('sector')}}" required>
                                     <option value="">-- Selecciona el estado--</option>
 
                                     <option value="Habilitado" @if(old('estado') == 'Habilitado') selected @endif>Habilitado</option>
                                     <option value="Deshabilitado" @if(old('estado') == 'Deshabilitado') selected @endif>Deshabilitado</option>
                                     <option value="Mantenimiento" @if(old('estado') == 'Mantenimiento') selected @endif>Mantenimiento</option>
-                            </select>
+                                </select>
                         </div>
-                    </div>
-                            <!-- son clases que acomodan los botones en el modal -->
-                            <div class="modal-footer justify-content-between">
-                                    <button type="submit" class="btn btn-primary">Registrar</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Salir</button>
-                            </div>
-                </form>
+                        </div>
+                                    <!-- son clases que acomodan los botones en el modal -->
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                </div>
+                    </form>
             </div>
         </div>
     </div>
@@ -157,7 +165,7 @@
 <!-- Evento para el buscador -->
 <script language="javascript">
             function doSearch() {
-                var tableReg = document.getElementById('aulas');
+                var tableReg = document.getElementById('ambientes');
                 var searchText = document.getElementById('searchTerm').value.toLowerCase();
                 for (var i = 1; i < tableReg.rows.length; i++) {
                     var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
@@ -181,7 +189,7 @@
 <!-- Este script es para el buscador de la tabla -->
 <script language="javascript">
             function doSearch2() {
-                var tableReg = document.getElementById('aulasR2');
+                var tableReg = document.getElementById('ambientesR2');
                 var searchText = document.getElementById('searchTerm').value.toLowerCase();
                 for (var i = 1; i < tableReg.rows.length; i++) {
                     var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');

@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Ambiente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AmbienteRController extends Controller
 {
     public function index()
     {
-        $ambientesR = Ambiente::all();
+        // $ambientesR = Ambiente::all();
 
-            return view('admin.ambientesR.index', compact('ambientesR'));
+        $ambiente = DB::table('solicitudes')
+        ->join('materias', 'solicitudes.materias', '=', 'materias.id')
+        ->join('ambientes', 'solicitudes.ambientes', '=', 'ambientes.id')
+        ->where('solicitudes.docente')->select('solicitudes.estado', 'ambientes.num_ambiente', 'materias.nombre',
+        'solicitudes.dia', 'solicitudes.hora_ini', 'solicitudes.hora_fin')
+        ->get();
+
+        return view('admin.ambientesR.index', compact('ambientesR'));
 
     }
 
@@ -33,6 +41,16 @@ class AmbienteRController extends Controller
      */
     public function store(Request $request)
     {
+        $newAmbiente = new Ambiente();
+        $newAmbiente -> codigo = $request -> codigo;
+        $newAmbiente -> num_ambiente = $request -> num_ambiente;
+        $newAmbiente -> capacidad = $request -> capacidad;
+        $newAmbiente -> ubicacion = $request -> ubicacion;
+        $newAmbiente -> estado = $request -> estado;
+        $newAmbiente -> save();
+
+        return redirect()->back();
+
     }
 
     public function delete(Request $request, $ambienteId)
@@ -70,7 +88,14 @@ class AmbienteRController extends Controller
      */
     public function update(Request $request, $ambienteId)
     {
+        $ambiente = Ambiente::find($ambienteId);
+        $ambiente-> num_ambierte = $request -> num_ambiente;
+        $ambiente -> capacidad = $request -> capacidad;
+        $ambiente -> estado = $request -> estado;
 
+        $ambiente->save();
+
+        return redirect()->back();
     }
 
     /**
