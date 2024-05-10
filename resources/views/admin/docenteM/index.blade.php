@@ -46,7 +46,7 @@
                                     <!-- la logica de boton de editar Eliminar -->
                                     <td>
                                         @can('asignar_edit')
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit-{{$docentesmateria->id}}">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar-{{$docentesmateria->id}}">
                                             Editar
                                         </button>
                                         @endcan
@@ -58,7 +58,7 @@
                                     </td>
                                 </tr>
                             <!-- Estos son los madales que aparecen en los botones de editar eliminar de la tabla -->
-                                @include('admin.docenteM.modalEdit')
+                                @include('admin.docenteM.modalEditar')
                                 @include('admin.docenteM.modalEliminar')
                         @endforeach
                     </tbody>
