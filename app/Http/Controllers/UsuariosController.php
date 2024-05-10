@@ -23,6 +23,7 @@ class UsuariosController extends Controller
     {
         abort_if(Gate::denies('user_create'), 403);
         $roles = Role::all()->pluck('name', 'id');
+
         return view('admin.usuarios.create', compact('roles'));
     }
 

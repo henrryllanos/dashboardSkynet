@@ -18,16 +18,6 @@
                         @csrf
                         <div class="card">
                             <div class="card-body">
-                                @if($errors-> any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach($errors-> all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-
                                 <div class="row">
                                     <label for="name" class="col-ms-2 col-form-label">
                                             Nombre:</label>
@@ -97,6 +87,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                     <div class="row">
                                             <label for="roles" class="col-sm-2 col-form-label">Roles</label>
                                                 <div class="col-sm-7">

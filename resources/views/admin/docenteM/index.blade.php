@@ -10,7 +10,16 @@
         </h2>
     </div>
 @endsection
+
 @section('content')
+
+    <div class="card-body">
+        @if(session('success'))
+        <div class="alert alert-success" role="success">
+            {{ session('success') }}
+        </div>
+        @endif
+    </div>
             <!--Tabla de docente-->
         <div class="form-group">
             <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">

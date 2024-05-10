@@ -2,6 +2,9 @@
 
 
 <?php
+
+use Illuminate\Support\Arr;
+
     $estado = ["Habilitado","Deshabilitado", "titular", "invitado"];
     $estado = array_diff($estado, array("{$user->estadoCuenta}"));
     $estado = Arr::prepend($estado, "{$user->estadoCuenta}");

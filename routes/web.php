@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
 
@@ -144,3 +145,24 @@ Route::get('/usuarios/{user}/edit', [App\Http\Controllers\UsuariosController::cl
 
 Route::put('/usuarios/{user}', [App\Http\Controllers\UsuariosController::class, 'update'])
 ->name('admin.usuarios.update');
+
+//Solicitudes
+Route::resource('solicitudes', SolicitudController::class, [
+    'names' => [
+        'index' => 'solicitudes',
+        'create' => 'solicitudes.create'
+    ]
+])->middleware('auth.user');
+
+Route::get('solicitudes', [SolicitudController::class, 'index'])
+->name('admin.solicitudes.index');
+
+Route::get('solicitudes', [SolicitudController::class, 'create'])
+->name('admin.solicitudes.create');
+
+Route::resource('notificaciones', NotificacionController::class, [
+    'names' => [
+        'index' => 'notificaciones',
+        'store' => 'notificaciones.store'
+    ]
+])->middleware('auth.user');

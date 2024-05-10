@@ -12,18 +12,25 @@
     </div>
 @endsection
 
-@section('title2')
+@section('content')
+<div class="card-body">
+        @if(session('success'))
+        <div class="alert alert-success" role="success">
+            {{ session('success') }}
+        </div>
+        @endif
+    </div>
 
-            <span class="input-group" style="width: 150%; margin-right:auto; margin: left auto;">
+    <div class="form-group" >
+        @can('ambiente_buscar')
+            <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
                 <img src="{{asset('images/search.svg')}}" alt="" style="border-radius: 10px; position: relative; width:100%; max-width:30px; right:8px;">
                 <input id="searchTerm" type="text" onkeyup="doSearch()" class="form-control pull-right"  placeholder="Escribe para buscar en la tabla..." />
             </span>
+        @endcan
+    </div>
 
-@endsection
-
-
-@section('content')
-            <!--Tabla de AULAS-->
+            <!--Tabla de AMBIENTES-->
         <div style="margin-top: 1%" class="table-responsive" >
                 <table class="table" id="aulas" >
                     <thead>
@@ -161,8 +168,6 @@
                 })
             </script>
 
-
-<!-- Evento para el buscador -->
 <script language="javascript">
             function doSearch() {
                 var tableReg = document.getElementById('ambientes');
@@ -184,30 +189,9 @@
                 }
             }
 </script>
-
+<!-- Evento para el buscador -->
 
 <!-- Este script es para el buscador de la tabla -->
-<script language="javascript">
-            function doSearch2() {
-                var tableReg = document.getElementById('ambientesR2');
-                var searchText = document.getElementById('searchTerm').value.toLowerCase();
-                for (var i = 1; i < tableReg.rows.length; i++) {
-                    var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-                    var found = false;
-                    for (var j = 0; j < cellsOfRow.length && !found; j++) {
-                        var compareWith = cellsOfRow[j].innerHTML.toLowerCase();
-                        if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
-                            found = true;
-                        }
-                    }
-                    if (found) {
-                        tableReg.rows[i].style.display = '';
-                    } else {
-                        tableReg.rows[i].style.display = 'none';
-                    }
-                }
-            }
-</script>
 
 @endsection
 

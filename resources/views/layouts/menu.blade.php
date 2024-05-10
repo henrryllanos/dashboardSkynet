@@ -20,7 +20,7 @@
 
             <li class="nav-item {{ request()->is('solicitar*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('admin.docenteM.index')}}">
-                        <span>{{ __('Registrar Docente') }}</span>
+                        <span>{{ __('Asignar Materia') }}</span>
                     </a>
             </li>
 

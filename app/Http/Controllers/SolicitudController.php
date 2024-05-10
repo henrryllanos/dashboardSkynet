@@ -29,7 +29,7 @@ class SolicitudController extends Controller
         ->join('users', 'docmaterias.docente', '=', 'users.id')
         ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
         ->where('solicitudes.estado', '=', 'pendiente')
-        ->select('name', 'num_aula','solicitudes.*')
+        ->select('name', 'num_ambiente','solicitudes.*')
         ->get();
         //  dd($solicitudes->all());
         // $solicitudes = solicitud::all();
@@ -47,7 +47,7 @@ class SolicitudController extends Controller
     {
         abort_if(Gate::denies('crear_reserva'), 403);
 
-        $aulas = DB::table('ambientes')
+        $ambientes = DB::table('ambientes')
         ->where('estado','=','Habilitado')
         ->get();
         $grupos = Grupo::all();
@@ -89,7 +89,7 @@ class SolicitudController extends Controller
 
             if(($request->cantidad)>($cantidad->capacidad)){
                 return back()->withInput($request->all())->withErrors([
-                'message' => 'La cantidad excede la capacidad del aula'
+                'message' => 'La cantidad excede la capacidad del ambiente'
             ]);
             }else{
                 if(strtotime($request->hora_ini)>=strtotime($request->hora_fin)){
@@ -99,14 +99,11 @@ class SolicitudController extends Controller
                 }else{
                 $solicitud->save();
                 }
-
-        return Redirect()->route('solicitudes.create');
             }
   //   dd($request->all());
         return Redirect()->route('solicitudes.create');
 
     }
-
 
     /**
      * Display the specified resource.
@@ -161,7 +158,7 @@ class SolicitudController extends Controller
     {
         if($request->ajax()){
             $cantidades = Docmateria::where('id', $request->docmateria_id)->first();
-             //$cantidades = '5';
+
 
             return response()->json($cantidades);
         }
