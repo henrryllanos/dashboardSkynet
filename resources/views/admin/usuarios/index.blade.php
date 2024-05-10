@@ -49,12 +49,16 @@
                         @endforelse
                     </td> -->
                     <td>
+                        @can('user_edit')
                         <a type="button" class="btn btn-primary" href="{{ route('admin.usuarios.edit', $user->id)}}">
                         Editar
                         </a>
+                        @endcan
+                        @can('user_destroy')
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar-{{$user->id}}">
                         Eliminar
                         </button>
+                        @endcan
                     </td>
                 </tr>
                 @include('admin.usuarios.modalEliminar')

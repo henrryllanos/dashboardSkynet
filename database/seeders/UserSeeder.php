@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         $user2 = User::create([
             'name' => 'Leticia Blanco',
             'email' => 'docente@doc.umss.edu',
-            'estadoCuenta' => 'Titular',
+            'estadoCuenta' => 'Deshabilitado',
             'password' => 'docente',
             'ci' => '5432101',
             'Departamento' => 'Informatica',
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $user3 = User::create([
             'name' => 'Paco Fernandez',
             'email' => 'docente2@gmail.com',
-            'estadoCuenta' => 'Invitado',
+            'estadoCuenta' => 'Habilitado',
             'password' => 'docente',
             'ci' => '4232332',
             'Departamento' => 'Sistemas',
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
         $user4 = User::create([
             'name' => 'Carmen Rosa',
             'email' => 'docente2@gdoc.umss.edu',
-            'estadoCuenta' => 'Titular',
+            'estadoCuenta' => 'Deshabilitado',
             'password' => 'docente',
             'ci' => '4236798',
             'Departamento' => 'Industrial',

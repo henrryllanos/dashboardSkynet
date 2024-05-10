@@ -128,22 +128,22 @@ Route::delete('/grupos/{grupoId}/delete', [App\Http\Controllers\GrupoController:
 ->name('admin.grupos.delete');
 
 //usuarios
-Route::get('/usuarios/index', [App\Http\Controllers\UsuariosController::class, 'index'])
+Route::get('/usuarios/index', [App\Http\Controllers\UsuariosRController::class, 'index'])
 ->name('admin.usuarios.index');
 
-Route::get('/usuarios/create', [App\Http\Controllers\UsuariosController::class, 'create'])
+Route::get('/usuarios/create', [App\Http\Controllers\UsuariosRController::class, 'create'])
 ->name('admin.usuarios.create');
 
-Route::post('/usuarios/store', [App\Http\Controllers\UsuariosController::class, 'store'])
+Route::post('/usuarios/store', [App\Http\Controllers\UsuariosRController::class, 'store'])
 ->name('admin.usuarios.store');
 
-Route::delete('/usuarios/{user}', [App\Http\Controllers\UsuariosController::class, 'destroy'])
+Route::delete('/usuarios/{user}', [App\Http\Controllers\UsuariosRController::class, 'destroy'])
 ->name('admin.usuarios.delete');
 
-Route::get('/usuarios/{user}/edit', [App\Http\Controllers\UsuariosController::class, 'edit'])
+Route::get('/usuarios/{user}/edit', [App\Http\Controllers\UsuariosRController::class, 'edit'])
 ->name('admin.usuarios.edit');
 
-Route::put('/usuarios/{user}', [App\Http\Controllers\UsuariosController::class, 'update'])
+Route::put('/usuarios/{user}', [App\Http\Controllers\UsuariosRController::class, 'update'])
 ->name('admin.usuarios.update');
 
 //Solicitudes
