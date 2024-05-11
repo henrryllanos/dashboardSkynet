@@ -1,19 +1,19 @@
 
             <li class="nav-item {{ request()->is('solicitar') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.solicitudesR.create') }}">
-                    <span>{{ __('Solicitud de Reserva') }}</span>
+                    <span>{{ __('Solicitud de reserva de ambinete') }}</span>
                 </a>
             </li>
             <li class="nav-item {{ request()->is('solicitudes') ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('admin.solicitudesR.index')}}">
-                    <span>{{ __('Lista de Solicitudes') }}</span>
+                    <span>{{ __('Lista de solicitudes de reserva') }}</span>
                 </a>
             </li>
 
 
             <li class="nav-item {{ request()->is('ambientes*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('admin.ambientes.index', ['tipo'=> 'all' ])}}">
-                        <span>{{ __('Lista de Ambiente') }}</span>
+                        <span>{{ __('Ver ambientes registrados') }}</span>
                     </a>
             </li>
 

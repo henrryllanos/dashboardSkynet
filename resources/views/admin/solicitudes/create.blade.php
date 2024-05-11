@@ -8,7 +8,7 @@
 
 @section('title2')
                 <h5>
-                    Reserva de Ambientes
+                   <center> Reserva de Ambiente</center>
                 </h5>
 @endsection
 
@@ -47,7 +47,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="name" class="form-control-label">
-                                                Horario ini:
+                                                Horario inicial:
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group">
@@ -76,7 +76,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Horario Fin:
+                                                    Horario Final:
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -106,13 +106,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="name" class="form-control-label">
-                                            Nombre Materia(*):
+                                            Nombre Materia:
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group">
                                             <button class="btn btn-secondary" type="button"></button>
                                                 <select name="docmateria_id" id="docmateria_id" class="custom-select" value="{{old('docmateria_id')}}" required>
-                                                <option value="">Seleccione Materia..</option>
+                                                <option value="">Seleccione Materia</option>
                                                 @foreach ($materiaUnidas as $item)
                                                 <option value="{{ $item->id }}" @if(old('docmateria_id') == $item->id) selected @endif>{{ $item->nombre}}--Grupo {{$item->numero}}</option>
                                                 @endforeach
@@ -147,7 +147,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Ubicacion de aula:
+                                                        Ubicacion del ambinete:
                                                 </label>
                                                     <div class="input-group">
                                                 <span class="input-group">
@@ -155,7 +155,7 @@
                                                     {{-- <input name="ambiente" type="name" class="form-control" placeholder="Ambiente"> --}}
                                                     <select name="ubicacion" id="ubicacion" class="custom-select" value="{{old('ubicacion')}}" required >
                                                     </span>
-                                                        <option value="">Seleccione ubicacion..</option>
+                                                        <option value="">Seleccione ubicacion</option>
                                                         @foreach ($ubicaciones as $item)
                                                             <option value="{{ $item->id }}" @if(old('ubicacion') == $item->id) selected @endif>{{ $item->nombre}}</option>
                                                         @endforeach
@@ -167,14 +167,14 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Numero de Ambiente:
+                                                        Nombre de Ambiente:
                                                 </label>
                                                     <div class="input-group">
                                                 <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
                                                     {{-- <input name="ambiente" type="name" class="form-control" placeholder="Ambiente"> --}}
                                                     <select name="ambiente" id="ambiente" class="custom-select" value="{{old('ambiente')}}" required >
-                                                        <option value="{{old('ambiente')}}" selected  >Seleccione N° Ambiente... {{old('ambiente')}}</option>
+                                                        <option value="{{old('ambiente')}}" selected  >Seleccione nombre de ambiente {{old('ambiente')}}</option>
                                                     {{--  @foreach ($ambientes as $item)
                                                             <option value="{{ $item->id }}">{{ $item->num_ambiente}}</option>
                                                         @endforeach--}}
@@ -187,7 +187,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Dia Reserva:
+                                                    Fecha de reserva:
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -240,7 +240,7 @@
                                         </div>
                                     </div>
                                             <div class="col-md-offset-4 col-md-10 text-center mt-3">
-                                                <button type="submit" class="btn btn-primary">enviar</button>
+                                                <button type="submit" class="btn btn-primary">Registrar</button>
                                                 <a href="{{ URL::previous() }}" class="btn btn-secondary">Cancelar</a>
                                             </div>
                             </div>
