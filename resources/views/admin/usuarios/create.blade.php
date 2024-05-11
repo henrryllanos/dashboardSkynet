@@ -21,7 +21,7 @@
                             <div class="row">
                                 <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus minlength="5" maxlength="15"
+                                    <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus minlength="3" maxlength="15"
                                     onkeypress="return blockSpecialChar(event)">
                                     @if ($errors->has('name'))
                                         <span class="error text-danger" for="input-name" style="font-size: 15px">{{ $errors->first('name') }}</span>
@@ -70,6 +70,17 @@
                                 @endif
                                 </div>
                             </div>
+
+                                    <!-- <div class="row" >
+                                        <label for="estadoDoc"  class="col-sm-2 col-form-label">Tipo Docente</label>
+                                        <div class="col-sm-7">
+                                            <select name="estadoDoc" id="estadoDoc" class="form-control"  required>
+                                                    <section>Titular</section>
+                                                    <section>Invitado</section>
+                                            </select>
+                                        </div>
+                                    </div> -->
+
                                     <div class="row">
                                             <label for="roles" class="col-sm-2 col-form-label">Roles</label>
                                                 <div class="col-sm-7">

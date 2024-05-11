@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Arr;
 
-    $estado = ["Habilitado","Deshabilitado"];
+    $estado = ["Titular","Invitado"];
     $estado = array_diff($estado, array("{$docentesmateria->estado}"));
     $estado = Arr::prepend($estado, "{$docentesmateria->estado}");
 ?>

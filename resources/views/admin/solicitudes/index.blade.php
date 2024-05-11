@@ -4,7 +4,7 @@
 
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            Listas de Solicitudes
+            Lista de Solicitudes
         </h2>
     </div>
 @endsection

@@ -11,6 +11,14 @@
 @endsection
 @section('content')
 
+    <div class="card-body">
+        @if(session('success'))
+        <div class="alert alert-success" role="success">
+            {{ session('success') }}
+        </div>
+        @endif
+    </div>
+
     <div class="form-group" >
         @can('user_buscar')
             <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
@@ -20,13 +28,14 @@
         @endcan
     </div>
 
+
     <div style="margin-top: 0%" class="table-responsive">
     <table class="table" id="usuarios">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Carnet Identidad</th>
+                <th scope="col">Codigo Sis</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Estado</th>
                 <!-- <th scope="col">Rol</th> -->
@@ -85,25 +94,25 @@
 </script> -->
 
 <script language="javascript">
-            function doSearch() {
-                var tableReg = document.getElementById('usuarios');
-                var searchText = document.getElementById('searchTerm').value.toLowerCase();
-                for (var i = 1; i < tableReg.rows.length; i++) {
-                    var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-                    var found = false;
-                    for (var j = 0; j < cellsOfRow.length && !found; j++) {
-                        var compareWith = cellsOfRow[j].innerHTML.toLowerCase();
-                        if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
-                            found = true;
-                        }
-                    }
-                    if (found) {
-                        tableReg.rows[i].style.display = '';
-                    } else {
-                        tableReg.rows[i].style.display = 'none';
-                    }
+    function doSearch() {
+        var tableReg = document.getElementById('docentematerias');
+        var searchText = document.getElementById('searchTerm').value.toLowerCase();
+        for (var i = 1; i < tableReg.rows.length; i++) {
+            var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            var found = false;
+            for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                var compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                    found = true;
                 }
             }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+    }
 </script>
 @endsection
 

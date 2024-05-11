@@ -5,7 +5,7 @@
 
 use Illuminate\Support\Arr;
 
-    $estado = ["Habilitado","Deshabilitado", "titular", "invitado"];
+    $estado = ["Habilitado","Deshabilitado"];
     $estado = array_diff($estado, array("{$user->estadoCuenta}"));
     $estado = Arr::prepend($estado, "{$user->estadoCuenta}");
 ?>
@@ -59,11 +59,11 @@ use Illuminate\Support\Arr;
                             <div class="row">
                                 <label for="departamento" class="col-sm-2 col-form-label">Departamento</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="departamento" value="{{ old('departamento', $user->Departamento) }}" autofocus minlength="4" maxlength="15"
-                                    onkeypress="return blockSpecialChar(event)">
-                                    @if ($errors->has('departamento'))
-                                        <span class="error text-danger" for="input-departamento" style="font-size: 15px">{{ $errors->first('departamento') }}</span>
-                                    @endif
+                                <input type="text" class="form-control" name="departamento" value="{{ old('departamento', $user->Departamento) }}" autofocus minlength="4" maxlength="15"
+                                onkeypress="return blockSpecialChar(event)">
+                                @if ($errors->has('departamento'))
+                                    <span class="error text-danger" for="input-departamento" style="font-size: 15px">{{ $errors->first('departamento') }}</span>
+                                @endif
                                 </div>
                             </div>
                                     <div class="row" >

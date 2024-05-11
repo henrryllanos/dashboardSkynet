@@ -3,6 +3,7 @@
 use App\Http\Controllers\AmbienteController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\SolicitudController;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -160,9 +161,18 @@ Route::get('solicitudes', [SolicitudController::class, 'index'])
 Route::get('solicitudes', [SolicitudController::class, 'create'])
 ->name('admin.solicitudes.create');
 
+
+//Notificaciones
 Route::resource('notificaciones', NotificacionController::class, [
     'names' => [
         'index' => 'notificaciones',
         'store' => 'notificaciones.store'
     ]
 ])->middleware('auth.user');
+
+
+Route::get('notificaciones', [NotificacionController::class, 'index'])
+->name('admin.notificaciones.index');
+
+Route::get('notidicaciones', [NotificacionController::class, 'store'])
+->name('admin.notificaciones.create');

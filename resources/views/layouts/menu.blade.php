@@ -20,7 +20,7 @@
 
             <li class="nav-item {{ request()->is('solicitar*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('admin.docenteM.index')}}">
-                        <span>{{ __('Asignar Materia') }}</span>
+                        <span>{{ __('Asignar Materia a Docente') }}</span>
                     </a>
             </li>
 
@@ -34,16 +34,17 @@
 
             <li class="nav-item {{ request()->is('solicitar')  ? 'active' : '' }}">
                 <a class="nav-link" href="#">
-                    <span>{{ __('Lista Materias') }}</span></a>
-            </li>
-
-            <li class="nav-item {{ request()->is('solicitar')  ? 'active' : ''}}">
-                <a class="nav-link" href="#">
-                    <span>{{ __('Materias de Docentes') }}</span></a>
+                    <span>{{ __('Lista Materias Reservadas') }}</span></a>
             </li>
 
             <li class="nav-item {{ request()->is('usuarios')  ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('admin.usuarios.index')}}">
                     <span>{{ __('Registrar Usuarios') }}</span></a>
             </li>
+
+            <li class="nav-item {{ request()->is('notificaciones')  ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('admin.notificaciones.index')}}">
+                    <span>{{ __('Notificaciones de Reserva') }}</span></a>
+            </li>
+
         </ul>
