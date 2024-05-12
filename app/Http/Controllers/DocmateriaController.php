@@ -20,7 +20,7 @@ class DocmateriaController extends Controller
 
     // $solicitudes = solicitud::all();
             //supuesto error
-        return view('admin.decentem.index', compact('docmaterias'));
+        return view('admin.docemateria.index', compact('docmaterias'));
     }
 
     public function index2() {
@@ -37,7 +37,7 @@ class DocmateriaController extends Controller
         ->join('grupos', 'docmaterias.grupo', '=', 'grupos.id')
         ->select('materias.nombre','grupos.numero','users.name', 'docmaterias.*')->get();
 
-        return view('admin.docenteM.index', ['docentesmaterias' => $docentesmaterias,
+        return view('admin.docMaterias.index', ['docentesmaterias' => $docentesmaterias,
         'materias' => $materias, 'grupos' => $grupos,'users' => $users]);
     }
 

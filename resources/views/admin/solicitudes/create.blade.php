@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <?php
-  $hora_ini   = ['1' => '6:45', '2' => '8:15'];
+    $hora_ini   = ['1' => '6:45', '2' => '8:15'];
 ?>
 @section('title1')
 
@@ -47,7 +47,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="name" class="form-control-label">
-                                                Horario ini:
+                                                Horario ini(*):
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group">
@@ -76,7 +76,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Horario Fin:
+                                                    Horario Fin(*):
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -125,7 +125,7 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="name" class="form-control-label">
-                                                Grupo:
+                                                Grupo(*):
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group">
@@ -147,7 +147,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Ubicacion de aula:
+                                                        Ubicacion de aula(*):
                                                 </label>
                                                     <div class="input-group">
                                                 <span class="input-group">
@@ -167,7 +167,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Numero de Ambiente:
+                                                        Numero de Ambiente(*):
                                                 </label>
                                                     <div class="input-group">
                                                 <span class="input-group">
@@ -187,7 +187,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Dia Reserva:
+                                                    Dia Reserva(*):
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -205,7 +205,7 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Motivo:
+                                                    Motivo(*):
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -224,7 +224,7 @@
                                         <div class="col-6">
                                         <div class="form-group">
                                             <label for="name" class="form-control-label">
-                                                Cantidad Estudiantes:
+                                                Cantidad Estudiantes(*):
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group">

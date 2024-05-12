@@ -71,8 +71,8 @@
                                     </td>
                                 </tr>
                             <!-- Estos son los madales que aparecen en los botones de editar eliminar de la tabla -->
-                                @include('admin.docenteM.modalEditar')
-                                @include('admin.docenteM.modalEliminar')
+                                @include('admin.docMaterias.modalEditar')
+                                @include('admin.docMaterias.modalEliminar')
                         @endforeach
                     </tbody>
                 </table>

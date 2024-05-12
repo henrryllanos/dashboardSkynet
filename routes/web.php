@@ -104,7 +104,7 @@ Route::get('/solicitudesR/create', [App\Http\Controllers\SolicitudController::cl
 
 //Materias de docentes
 Route::get('/docentesmaterias', [App\Http\Controllers\DocmateriaController::class, 'index2'])
-->name('admin.docenteM.index');
+->name('admin.docMaterias.index');
 
 Route::post('/docentesmaterias/store', [App\Http\Controllers\DocmateriaController::class, 'store'])
 ->name('admin.docentesmaterias.store');
