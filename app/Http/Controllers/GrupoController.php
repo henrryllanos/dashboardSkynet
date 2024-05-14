@@ -10,7 +10,12 @@ class GrupoController extends Controller
 {
     public function index()
     {
-        $grupos = DB::table('grupos')->get();
+        $grupos = DB::table('grupos')
+           //->join('users', 'docmaterias.docente', '=', 'users.id')
+            //->join('materias', 'docmaterias.materia', '=', 'materias.id')
+            //->join('grupos', 'docmaterias.grupo', '=', 'grupos.id')
+            //->select('grupos.*')
+        ->get();
 
         return view('admin.grupos.index', compact('grupos'));
     }

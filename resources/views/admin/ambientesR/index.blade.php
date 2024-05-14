@@ -20,7 +20,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Numero Aula</th>
+                    <th scope="col">Numero Ambiente</th>
                     <th scope="col">Materia</th>
                     <th scope="col">Dia de reserva</th>
                     <th scope="col">Horario de reserva</th>
@@ -40,24 +40,19 @@
                     <td>{{ @$ambiente->hora_fin }}</td>
                     <td>
                         @can('ambienteR_destroy')
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminarReservas-{{$aula->id}}">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminarR-{{$ambiente->id}}">
                             Eliminar
                         </button>
                         @endcan
                     </td>
 
                 </tr>
-                @include('admin.aulasR.modalEliminarReservas')
+                @include('admin.ambientesR.modalEliminarR')
 
                 @endforeach
             </tbody>
         </table>
 @endif
-
 @endsection
-
-
 @section('footer')
-
-
 @endsection

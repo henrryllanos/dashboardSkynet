@@ -1,16 +1,16 @@
-<div class="modal fade bs-example-modal-lg" id="modalEliminarR-{{$ambiente->id}}">
+<div class="modal fade bs-example-modal-lg" id="modalEliminar-{{$role->id}}">
     <div class="modal-dialog">
         <div class="modal-content ">
             <div class="modal-header">
-                <h4 class="modal-title w-100 text-center" >Eliminar reserva del ambiente</h4>
+                <h4 class="modal-title w-100 text-center" >Eliminar Rol</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
             </div>
-            <form action="{{route('admin.ambientesR.delete', $ambiente->id)}}" method="POST">
+            <form action="{{route('roles.destroy', $role->id)}}" method="POST">
                 {{ csrf_field() }}
                 @method('DELETE')
                 <div class="modal-body w-100 text-center">
-                    <a>¿Esta seguro que desea eliminar este ambiente que fue reservada?</a>
+                    <a>¿Esta seguro que desea eliminar este rol?</a>
                 </div>
 
                 <div class="modal-footer justify-content-between">

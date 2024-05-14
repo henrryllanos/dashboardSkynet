@@ -122,8 +122,19 @@ class AmbienteController extends Controller
         debug_to_console($ambiente);
         debug_to_console($solicitudes);
 
-        if(empty($solicitudes)){
+        /**DB::table('solicitudes')->where('aula', '!=', $aula)->delete();
+        if( $solicitudes["aula"] == $aula["id"] ){
+            return back()->withErrors([
+                'message' => 'El aula esta siendo usada en una reserva'
+                ]);
+            }else{
+                /**$aula->delete();
+                return redirect()->back();
+                debug_to_console('hola');
+                }
+                */
 
+        if(empty($solicitudes)){
             $ambiente->delete();
             return redirect()->back();
         }else{

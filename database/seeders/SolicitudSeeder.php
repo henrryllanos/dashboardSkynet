@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+
 
 class SolicitudSeeder extends Seeder
 {
@@ -24,7 +24,7 @@ class SolicitudSeeder extends Seeder
                 'estado' => $estados[rand(0,3)],
                 'hora_ini' => date("H:i", strtotime("10:52PM")),
                 'hora_fin'=> date("H:i", strtotime("10:53PM")),
-                'dia' => "2022-04-16",
+                'dia' => "2024-04-16",
                 'grupo' => rand(1,10),
                 'ambiente' => rand(1,10),
                 'materia' => rand(1,10),

@@ -25,7 +25,6 @@ class PermissionSeeder extends Seeder
             'permission_destroy',
             'permission_buscar',
 
-
             'role_index',
             'role_create',
             'role_edit',

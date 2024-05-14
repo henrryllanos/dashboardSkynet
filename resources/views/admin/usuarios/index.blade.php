@@ -37,6 +37,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Codigo Sis</th>
                 <th scope="col">Correo</th>
+                <th scope="col">Departamento</th>
                 <th scope="col">Estado</th>
                 <!-- <th scope="col">Rol</th> -->
                 <th scope="col">Acciones</th>
@@ -49,6 +50,7 @@
                     <td>{{ @$user -> name }}</td>
                     <td>{{ @$user -> ci }}</td>
                     <td>{{ @$user -> email}}</td>
+                    <td>{{ @$user -> departamento }}</td>
                     <td>{{ @$user -> estadoCuenta}}</td>
                     <!-- <td>
                         @forelse ($user->roles as $role)

@@ -19,11 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('ci')->unique();
             $table->string('email')->unique();
             $table->string('estadoCuenta')->nullable();
-            $table->string('estadoDocente')->nullable();
+            $table->string('departamento')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->string('Departamento')->nullable();
             $table->string('materias_grupos')->nullable();
 
 

@@ -14,12 +14,12 @@ class MateriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('materia_index'), 403);
         $materias = Materia::orderBy('id', 'asc')->get();
 
-        return view('admin.materia.index', compact('materias'))->with('tipo', 'all');
+        return view('admin.materias.index', compact('materias'))->with('tipo', 'all');
 
     }
 
@@ -38,9 +38,7 @@ class MateriaController extends Controller
                     }
                     return response()->json(['var'=>''.$newStatus.'']);
         }
-
         return response()->json([],401);
-
     }
 
     /**
@@ -148,7 +146,7 @@ class MateriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Materia $materia)
     {
 
     }

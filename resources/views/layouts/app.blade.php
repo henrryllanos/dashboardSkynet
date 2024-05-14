@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Skynet-App</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -27,24 +29,23 @@
             <!-- Navbar -->
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link"  href="#" role="button"><i ></i></a>
-                    </li>
-                    <!-- Notifications Dropdown Menu -->
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown no-arrow">
-                        <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                            <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial=""></figure>
-                        </a> -->
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+                        </a>
                         <!-- Dropdown - User Information -->
-                        <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
                             {{-- <div class="dropdown-divider"></div> --}}
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="{{ route('login.destroy')}}">
                                 {{ __('Cerrar sesión') }}
                             </a>
-                        </div> -->
+                        </div>
                     </li>
+                    <!-- Notifications Dropdown Menu -->
+
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -110,6 +111,11 @@
                 <!-- /.content -->
         </div>
          <!-- /.content-wrapper -->
+
+
+<nav class="navbar navbar-light d-flex justify-content-between">
+
+</nav>
 
   <footer class="main-footer">
   <div class="container my-auto">

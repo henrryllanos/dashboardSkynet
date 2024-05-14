@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Notifications\Notification;
@@ -23,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+//Rutas de Registros
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])
 ->name('register.store');
 
@@ -50,7 +51,6 @@ Route::get('/logout', [App\Http\Controllers\SessionsController::class, 'destroy'
 ->middleware('auth')
 ->name('login.destroy');
 
-
 Route::get('/auth', function () {
     return view('index');
 })->middleware('auth.user')
@@ -69,6 +69,7 @@ Route::get('/auth', function () {
 })->middleware('auth.user')
 ->name('auth.user');
 
+
 //Rutas de los ambientes
 Route::get('/ambientes/index', [App\Http\Controllers\AmbienteController::class, 'index'])
     ->name('admin.ambientes.index');
@@ -85,21 +86,24 @@ Route::delete('/ambientes/{ambienteId}/delete', [App\Http\Controllers\AmbienteCo
 Route::post('/ambientes/{ambienteId}/update', [App\Http\Controllers\AmbienteController::class, 'update'])
     ->name('admin.ambientes.update');
 
-// Route::get('/grupos', [App\Http\Controllers\SolicitudController::class, 'getGrupos']);
 
-//Delete para aulas reservadas
+//Delete para ambiente reservadas
 Route::delete('/ambientesR/{ambienteId}/deleteReservadas', [App\Http\Controllers\AmbienteController::class, 'deleteReservadas'])
-->name('admin.ambienteR.delete');
+->name('admin.ambientesR.delete');
 
-//Rutas de las ubicaciones
+Route::get('/ubicacionesambientes', [App\Http\Controllers\SolicitudController::class, 'getAmbientes']);
 
 
-//Rutas de las Solicitude de Reserva
-Route::get('/solicitudesR/index', [App\Http\Controllers\SolicitudController::class, 'index'])
-    ->name('admin.solicitudesR.index');
+//Rutas de las Solicitudes
+
+
+Route::get('/solicitudes/index', [App\Http\Controllers\SolicitudController::class, 'index'])
+    ->name('admin.solicitudes.index');
 
 Route::get('/solicitudesR/create', [App\Http\Controllers\SolicitudController::class, 'create'])
-    ->name('admin.solicitudesR.create');
+    ->name('admin.solicitudes.create');
+
+Route::get('/cantidades', [App\Http\Controllers\SolicitudController::class, 'getCantidades']);
 
 
 //Materias de docentes
@@ -170,9 +174,40 @@ Route::resource('notificaciones', NotificacionController::class, [
     ]
 ])->middleware('auth.user');
 
-
 Route::get('notificaciones', [NotificacionController::class, 'index'])
 ->name('admin.notificaciones.index');
 
 Route::get('notidicaciones', [NotificacionController::class, 'store'])
 ->name('admin.notificaciones.create');
+
+
+//Rutas de Materias
+Route::get('/materias/index', [App\Http\Controllers\MateriaController::class, 'index'])
+->name('admin.materias,index');
+
+Route::post('/materias/store', [App\Http\Controllers\MateriaController::class, 'store'])
+->name('admin.materias.store');
+
+Route::post('/materias/{materiaId}/update', [App\Http\Controllers\MateriaController::class, 'update'])
+->name('admin.materias.update');
+
+Route::get('/statusnoticia', [App\Http\Controllers\MateriaController::class, 'UpdateStatusNoti']);
+
+//roles
+Route::get('/roles/index', [App\Http\Controllers\RoleController::class, 'index'])
+->name('roles.index');
+
+Route::post('/roles/store', [App\Http\Controllers\RoleController::class, 'store'])
+->name('roles.store');
+
+Route::delete('/roles/{roleId}/delete', [App\Http\Controllers\RoleController::class, 'delete'])
+->name('roles.delete');
+
+Route::post('/roles/{roleId}/update', [App\Http\Controllers\RoleController::class, 'update'])
+->name('roles.update');
+
+//permisos
+Route::group(['middleware' => 'auth'], function() {
+Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
+});

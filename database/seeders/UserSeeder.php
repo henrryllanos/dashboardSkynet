@@ -18,9 +18,10 @@ class UserSeeder extends Seeder
             'name' => 'Administrador',
             'email' => 'admin@gmail.com',
             'estadoCuenta' => 'Habilitado',
+            'departamento' => 'Informatica',
             'password' => 'admin',
             'ci' => '1234567',
-            'Departamento' => 'Informatica',
+
         ]);
 
         $user->assignRole('Admin');
@@ -29,10 +30,9 @@ class UserSeeder extends Seeder
             'name' => 'Leticia Blanco',
             'email' => 'docente@doc.umss.edu',
             'estadoCuenta' => 'Deshabilitado',
-            'estadoDocente' => 'Invitado',
+            'departamento' => 'Informatica',
             'password' => 'docente',
             'ci' => '5432101',
-            'Departamento' => 'Informatica',
         ]);
 
         $user2->assignRole('User');
@@ -41,10 +41,9 @@ class UserSeeder extends Seeder
             'name' => 'Paco Fernandez',
             'email' => 'docente2@gmail.com',
             'estadoCuenta' => 'Habilitado',
-            'estadoDocente' => 'Titular',
+            'departamento' => 'Sistemas',
             'password' => 'docente',
             'ci' => '4232332',
-            'Departamento' => 'Sistemas',
         ]);
 
         $user3->assignRole('User');
@@ -53,10 +52,9 @@ class UserSeeder extends Seeder
             'name' => 'Carmen Rosa',
             'email' => 'docente2@gdoc.umss.edu',
             'estadoCuenta' => 'Deshabilitado',
-            'estadoDocente' => 'Titular',
+            'departamento' => 'Industrial',
             'password' => 'docente',
             'ci' => '4236798',
-            'Departamento' => 'Industrial',
         ]);
 
         $user3->assignRole('User');

@@ -31,7 +31,7 @@ class AmbienteEditRequest extends FormRequest
                 'required', 'unique:ambientes,codigo,' . request()->route('ambiente')->id
             ],
             'num_ambiente' => [
-                'required', 'unique:ambientes,num_ambiente,' . request()->route('ambientes')->id
+                'required', 'unique:ambientes,num_ambiente,' . request()->route('ambiente')->id
             ],
 
         ];

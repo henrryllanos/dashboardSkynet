@@ -1,11 +1,10 @@
 @extends('layouts.app')
-
 @section('title1')
     <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal"
             data-target="#modalCrear">
         Registro de Ambiente
     </button>
-    <div style="margin-top: 1%; display: flex; justify-content: center;">
+    <div class="d-flex justify-content-center">
         <h2>
             Ambientes
         </h2>
@@ -32,7 +31,7 @@
 
             <!--Tabla de AMBIENTES-->
         <div style="margin-top: 1%" class="table-responsive" >
-                <table class="table" id="aulas" >
+                <table class="table" id="ambientes" >
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -86,8 +85,6 @@
                     </tbody>
                 </table>
             </div>
-
-<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
     <div class="modal fade bs-example-modal-lg" id="modalCrear">
         <div class="modal-dialog">

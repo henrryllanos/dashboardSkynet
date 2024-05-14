@@ -26,19 +26,16 @@ use Illuminate\Support\Arr;
                             @endif
                         </div>
 
-                        <div class="form-group">
-                            <label for="capacidad">Capacidad</label>
-                            <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{$ambiente->capacidad}}" value="{{old('capacidad')}}" required minlength="1" maxlength="6"
-                            onkeypress="return blockSpecialChar(event)">
-                        </div>
+                        <label for="capacidad">Capacidad</label>
+                            <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{$ambiente->capacidad}}" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
+                                onkeypress="return blockNoNumber(event)">
+
 
                         <div class="form-group">
                             <label for="estado">Estado</label>
                             <select name="estado" id="estado" class="form-control" required>
-                                @foreach($estado as $es)
-
-                                <option value="{{$es}}">{{$es}}</option>
-
+                                @foreach($estado as $estatus)
+                                <option value="{{$estatus}}">{{$estatus}}</option>
                                 @endforeach
                             </select>
                     </div>

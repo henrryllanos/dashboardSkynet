@@ -28,7 +28,9 @@ class SolicitudController extends Controller
         ->join('docmaterias', 'solicitudes.docmateria_id', '=', 'docmaterias.id')
         ->join('users', 'docmaterias.docente', '=', 'users.id')
         ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
+         // ->join('materias', 'materias.id', '=', 'solicitudes.id')
         ->where('solicitudes.estado', '=', 'pendiente')
+           // ->join('grupos', 'grupos.id', '=', 'solicitudes.id')
         ->select('name', 'num_ambiente','solicitudes.*')
         ->get();
         //  dd($solicitudes->all());
@@ -71,6 +73,18 @@ class SolicitudController extends Controller
         //dd($materiaUnidas);
         return view('admin.solicitudes.create',compact('ambientes','grupos', 'materias', 'materiaUnidas', 'grupoUnidas','ubicaciones'));
     }
+
+    /**public function getGrupos(Request $request){
+            if ($request->ajax()){
+                $grupos = Grupo::where('materia_id', $request->materia_id)->get();
+                foreach ($grupos as $grupo){
+                    $gruposArray[$grupo->id] = $grupo->numero;
+
+                }
+                return response()->json($gruposArray);
+            }
+    }
+*/
     /**
      * Store a newly created resource in storage.
      *
@@ -79,6 +93,18 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
+        /* $validator = Validator::make($request->all(), [
+            'title' => [
+                'required',
+                'max:255',
+                function ($attribute, $value, $fail) {
+                    if ($value === 'foo') {
+                        $fail($attribute.' is invalid.');
+                    }
+                },
+            ],
+        ]);*/
+
         $docmaterias = Docmateria::all();
         $solicitud = new Solicitud($request->all());
         $solicitud -> estado = "pendiente";
@@ -136,6 +162,10 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
+        /*abort_if(Gate::denies('solicitud_aceptar'), 403);
+        abort_if(Gate::denies('solicitud_rechazar'), 403);
+        abort_if(Gate::denies('solicitud_sugerir'), 403);*/
+
         $solicitud->fill($request->all());
         $solicitud->save();
 
@@ -158,8 +188,6 @@ class SolicitudController extends Controller
     {
         if($request->ajax()){
             $cantidades = Docmateria::where('id', $request->docmateria_id)->first();
-
-
             return response()->json($cantidades);
         }
     }
@@ -176,7 +204,7 @@ class SolicitudController extends Controller
             ->where('ubicacion', $request->ubicacion_id)
             ->where('estado','=','Habilitado')
             ->count();
-
+      //  Ambiente::where('ubicacion', $request->ubicacion_id)->where('estado','=','Habilitado')>get();
             if($datos == 0)  {
                 $ambientesArray =  [
                 0=> "1",
@@ -190,8 +218,6 @@ class SolicitudController extends Controller
                 }
                 return response()->json($ambientesArray);
             }
-
         }
-
     }
 }

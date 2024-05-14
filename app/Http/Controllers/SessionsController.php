@@ -33,8 +33,13 @@ class SessionsController extends Controller
                 return redirect()->to('/login')->withErrors([
                     'message' => 'Cuenta deshabilitada'
                 ]);
-
             }
+
+            // if( auth()->user()->role == 'admin'){
+            //     return redirect()->route('admin.index');
+            // }else{
+            //     return redirect()->route('user.index');
+            // }
         }
     }
 

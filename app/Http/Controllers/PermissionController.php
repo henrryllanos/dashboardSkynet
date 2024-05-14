@@ -41,7 +41,7 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionCreateRequest $request)
     {
         Permission::create($request->only('name'));
 

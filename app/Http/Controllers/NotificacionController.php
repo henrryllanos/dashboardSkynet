@@ -19,7 +19,8 @@ class NotificacionController extends Controller
     public function index()
     {
         abort_if(Gate::denies('notificacion_index'), 403);
-        $notificaciones = DB:: table('solicitudes')->join('notificaciones', 'solicitudes.id', '=', 'notificaciones.solicitud')
+        $notificaciones = DB:: table('solicitudes')
+        ->join('notificaciones', 'solicitudes.id', '=', 'notificaciones.solicitud')
         ->join('docmaterias', 'solicitudes.docmateria_id', '=', 'docmaterias.id')
         ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
         ->join('materias', 'docmaterias.materia', '=', 'materias.id')

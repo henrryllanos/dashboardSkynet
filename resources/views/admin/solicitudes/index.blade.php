@@ -2,20 +2,11 @@
 
 @section('title1')
 
-    <div style="margin-top: 1%; display: flex; justify-content: center;">
-        <h2>
-            Lista de Solicitudes
-        </h2>
-    </div>
+    <h2>Solicitudes</h2>
 @endsection
+
 @section('content')
-    <div class="card-body">
-        @if(session('success'))
-        <div class="alert alert-success" role="success">
-            {{ session('success') }}
-        </div>
-        @endif
-    </div>
+        <!-- Button trigger modal -->
         <div class="form-group">
             @can('solicitud_buscar')
             <span class="input-group" style="width: 60%; margin-right:auto; margin-left:auto">
@@ -24,9 +15,9 @@
             </span>
             @endcan
         </div>
-
         <table class="table table-secondary table-striped mt-4" id="solicitudes">
             <thead>
+
                 <tr>
                     <th scope="col">Fecha</th>
                     <th scope="col">Nombre Docente</th>
@@ -34,7 +25,7 @@
                     <th scope="col">Estudiantes</th>
                     <th scope="col">Ambiente</th>
                     <th scope="col">Hora de reserva</th>
-                    <th scope="col">Hora fin de reserva</th>
+                    <th scope="col">Hora fin reserva</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -57,11 +48,6 @@
                         @can('solicitud_rechazar')
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRechazar{{$loop->index}}">
                             Rechazar
-                        </button>
-                        @endcan
-                        @can('solicitud_sugerir')
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSugerir{{$loop->index}}">
-                            Sugerir
                         </button>
                         @endcan
                     </td>
@@ -113,37 +99,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="modalSugerir{{$loop->index}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <form action="{{route('notificaciones.store')}}" method="POST">
-                                    @csrf
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Mensaje de sugerencia</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-floating">
-                                            <input type="hidden" name="tipo" value="sugerido">
-                                            <input type="hidden" name="solicitud" value="{{$solicitud->id}}">
-                                            <textarea name="mensaje" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-primary">Confirmar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
-</div>
-
 
 <script language="javascript">
             function doSearch() {
@@ -167,18 +126,7 @@
             }
 </script>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 @endsection
-
-
 @section('footer')
-
-
 
 @endsection

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ambiente;
+use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AmbienteRController extends Controller
+class AmbienteReservadasController extends Controller
 {
     public function index()
     {
@@ -15,7 +16,8 @@ class AmbienteRController extends Controller
         $ambiente = DB::table('solicitudes')
         ->join('materias', 'solicitudes.materias', '=', 'materias.id')
         ->join('ambientes', 'solicitudes.ambientes', '=', 'ambientes.id')
-        ->where('solicitudes.docente')->select('solicitudes.estado', 'ambientes.num_ambiente', 'materias.nombre',
+        ->where('solicitudes.docente')
+        ->select('solicitudes.estado', 'ambientes.num_ambiente', 'materias.nombre',
         'solicitudes.dia', 'solicitudes.hora_ini', 'solicitudes.hora_fin')
         ->get();
 
@@ -55,7 +57,40 @@ class AmbienteRController extends Controller
 
     public function delete(Request $request, $ambienteId)
     {
+        function debug_to_console($data) {
+            $output = $data;
+            if (is_array($output))
+                $output = implode(',', $output);
 
+            echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+        }
+
+        $solicitudes = Solicitud::where('ambiente', $ambienteId)->first();
+
+        $ambiente = Ambiente::find($ambienteId);
+        debug_to_console($ambiente);
+        debug_to_console($solicitudes);
+        /**DB::table('solicitudes')->where('ambiente', '!=', $ambiente)->delete();
+        if( $solicitudes["ambiente"] == $ambiente["id"] ){
+        return back()->withErrors([
+            'message' => 'El ambiente esta siendo usada en una reserva'
+            ]);
+            }else{
+            /**$ambiente->delete();
+            return redirect()->back();
+            debug_to_console('hola');
+        }
+       */
+        if(empty($solicitudes)){
+            $ambiente->delete();
+            return redirect()->back();
+        }else{
+
+            return back()->withErrors([
+                'message' => 'No se puede eliminar el ambiente '.$ambiente["num_ambiente"].' debido a que esta siendo usada en una reservacion'
+            ]);
+
+        }
     }
     /**
      * Display the specified resource.
