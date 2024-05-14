@@ -8,7 +8,7 @@
 
 @section('title2')
                 <h5>
-                    Reserva de Ambientes
+                    Reserva de Ambiente
                 </h5>
 @endsection
 
@@ -47,7 +47,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="name" class="form-control-label">
-                                                Horario ini(*):
+                                                Horario inicio(*):
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group">
@@ -76,7 +76,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Horario Fin(*):
+                                                    Horario Final(*):
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -147,7 +147,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Ubicacion de aula(*):
+                                                        Ubicacion de ambiente(*):
                                                 </label>
                                                     <div class="input-group">
                                                 <span class="input-group">
@@ -187,7 +187,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Dia Reserva(*):
+                                                    Fecha de reserva(*):
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -240,7 +240,7 @@
                                         </div>
                                     </div>
                                             <div class="col-md-offset-4 col-md-10 text-center mt-3">
-                                                <button type="submit" class="btn btn-primary">enviar</button>
+                                                <button type="submit" class="btn btn-primary">Registrar</button>
                                                 <a href="{{ URL::previous() }}" class="btn btn-secondary">Cancelar</a>
                                             </div>
                             </div>

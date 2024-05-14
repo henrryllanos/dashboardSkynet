@@ -1,7 +1,7 @@
 
             <li class="nav-item {{ request()->is('solicitar') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.solicitudesR.create') }}">
-                    <span>{{ __('Solicitud de Reserva') }}</span>
+                    <span>{{ __('Reserva de Ambiente') }}</span>
                 </a>
             </li>
             <li class="nav-item {{ request()->is('solicitudes') ? 'active' : '' }}">
@@ -39,7 +39,7 @@
 
             <li class="nav-item {{ request()->is('usuarios')  ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('admin.usuarios.index')}}">
-                    <span>{{ __('Registrar Usuarios') }}</span></a>
+                    <span>{{ __('Registrar docente ') }}</span></a>
             </li>
 
             <li class="nav-item {{ request()->is('notificaciones')  ? 'active' : ''}}">
