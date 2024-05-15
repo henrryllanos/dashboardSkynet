@@ -1,5 +1,16 @@
+@extends('layouts.app')
+<?php
+    $hora_ini   = ['1' => '6:45', '2' => '8:15'];
+?>
+@section('title1')
 
-@extends('layouts.app', ['activePage' => 'nueva solicitud', 'titlePage' => 'Nueva solicitud'])
+@endsection
+
+@section('title2')
+                <h5>
+                    Reserva de Ambientes
+                </h5>
+@endsection
 
 @section('content')
 
@@ -40,52 +51,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="name" class="form-control-label">
-                                            Nombre Materia:
+                                                Horario ini(*):
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group">
                                                 <button class="btn btn-secondary" type="button"></button>
-                                                <select name="docmateria_id" id="docmateria_id" class="custom-select" value="{{old('docmateria_id')}}" required>
-                                                <option value="">Seleccione Materia..</option>
-                                                @foreach ($materiaUnidas as $item)
-                                                <option value="{{ $item->id }}" @if(old('docmateria_id') == $item->id) selected @endif>{{ $item->nombre}}--Grupo {{$item->numero}}</option>
-                                                @endforeach
-                                                </select>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{--
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <label for="name" class="form-control-label">
-                                                Grupo:
-                                            </label>
-                                            <div class="input-group">
-                                                <span class="input-group">
-                                                    <button class="btn btn-secondary" type="button" ></button>
-                                                    {{-- <input name="grupo_id" type="name" class="form-control" placeholder="Grupo">
-                                                    <select name="grupo" id="grupo" class="custom-select" >
-                                                        <option selected>Seleccione N° grupo..</option>
-                                                        @foreach ($grupoUnidas as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->numero}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    --}}
-                                    <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="name" class="form-control-label">
-                                                    Horario ini:
-                                            </label>
-                                                <div class="input-group">
-                                                    <span class="input-group">
-                                                    <button class="btn btn-secondary" type="button"></button>
-                                                    {{-- <input type="date" id="birthday" name="hora_ini" class="form-control"> --}}
-                                                    <select name="hora_ini" id="hora_ini" class="form-control" type="date" value="{{old('hora_ini')}} " required >
+                                            {{-- <input type="date" id="birthday" name="hora_ini" class="form-control"> --}}
+                                                <select name="hora_ini" id="hora_ini" class="form-control" type="date" value="{{old('hora_ini')}} " required >
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
                                                         <option value="6:45:00" @if(old('hora_ini') == '6:45:00') selected @endif>6:45:00</option>
@@ -107,28 +79,8 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Ubicacion del ambiente:
+                                                    Horario Fin(*):
                                                 </label>
-                                                    <div class="input-group">
-                                                <span class="input-group">
-                                                    <button class="btn btn-secondary" type="button"></button>
-                                                    {{-- <input name="ambiente" type="name" class="form-control" placeholder="Ambiente"> --}}
-                                                    <select name="ubicacion" id="ubicacion" class="custom-select" value="{{old('ubicacion')}}" required >
-                                                    </span>
-                                                        <option value="">Seleccione sector..</option>
-                                                        @foreach ($ubicaciones as $item)
-                                                            <option value="{{ $item->id }}" @if(old('ubicacion') == $item->id) selected @endif>{{ $item->nombre}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="name" class="form-control-label">
-                                                    Horario Fin:
-                                            </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
@@ -154,10 +106,71 @@
                                             </div>
                                     </div>
 
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="name" class="form-control-label">
+                                            Nombre Materia(*):
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group">
+                                            <button class="btn btn-secondary" type="button"></button>
+                                                <select name="docmateria_id" id="docmateria_id" class="custom-select" value="{{old('docmateria_id')}}" required>
+                                                <option value="">Seleccione Materia..</option>
+                                                @foreach ($materiaUnidas as $item)
+                                                <option value="{{ $item->id }}" @if(old('docmateria_id') == $item->id) selected @endif>{{ $item->nombre}}--Grupo {{$item->numero}}</option>
+                                                @endforeach
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{--
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="name" class="form-control-label">
+                                                Grupo(*):
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group">
+                                                    <button class="btn btn-secondary" type="button" ></button>
+
+                                                    {{-- <input name="grupo_id" type="name" class="form-control" placeholder="Grupo">
+                                                    <select name="grupo" id="grupo" class="custom-select" >
+                                                        <option selected>Seleccione N° grupo..</option>
+                                                        @foreach ($grupoUnidas as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->numero}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    --}}
+
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                        Numero de Aula:
+                                                        Ubicacion de aula(*):
+                                                </label>
+                                                    <div class="input-group">
+                                                <span class="input-group">
+                                                    <button class="btn btn-secondary" type="button"></button>
+                                                    {{-- <input name="ambiente" type="name" class="form-control" placeholder="Ambiente"> --}}
+                                                    <select name="ubicacion" id="ubicacion" class="custom-select" value="{{old('ubicacion')}}" required >
+                                                    </span>
+                                                        <option value="">Seleccione ubicacion..</option>
+                                                        @foreach ($ubicaciones as $item)
+                                                            <option value="{{ $item->id }}" @if(old('ubicacion') == $item->id) selected @endif>{{ $item->nombre}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name" class="form-control-label">
+                                                        Numero de Ambiente(*):
                                                 </label>
                                                     <div class="input-group">
                                                 <span class="input-group">
@@ -177,7 +190,7 @@
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Dia Reserva:
+                                                    Dia Reserva(*):
                                                 </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
@@ -239,7 +252,7 @@
 
 
                                             <div class="col-md-offset-4 col-md-10 text-center mt-3">
-                                                <button type="submit" class="btn btn-primary">enviar</button>
+                                                <button type="submit" class="btn btn-primary">Registrar</button>
                                                 <a href="{{ URL::previous() }}" class="btn btn-secondary">Cancelar</a>
                                             </div>
                             </div>

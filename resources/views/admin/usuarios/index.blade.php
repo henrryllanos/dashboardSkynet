@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title1')
     <a type="button" class="btn btn-dark" style="background-color: #1D3354; padding-top: 0.8%" href="{{ route('admin.usuarios.create')}}">
-        Nuevo usuario
+        Nuevo Registro
     </a>
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            Usuarios Registrados
+            Docentes Registrados
         </h2>
     </div>
 @endsection
@@ -40,7 +40,7 @@
                 <th scope="col">Departamento</th>
                 <th scope="col">Estado</th>
                 <!-- <th scope="col">Rol</th> -->
-                <th scope="col">Acciones</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>

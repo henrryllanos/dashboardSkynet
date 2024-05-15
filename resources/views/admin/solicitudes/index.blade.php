@@ -25,8 +25,8 @@
                     <th scope="col">Estudiantes</th>
                     <th scope="col">Ambiente</th>
                     <th scope="col">Hora de reserva</th>
-                    <th scope="col">Hora fin reserva</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Hora fin de reserva</th>
+                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>

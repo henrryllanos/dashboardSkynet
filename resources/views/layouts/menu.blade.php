@@ -1,9 +1,12 @@
 
             @can('solicitud_index')
             <li class="nav-item {{ request()->is('solicitar') ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('admin.solicitudes.index')}}">
-                    {{-- <i class="fas fa-fw fa-tachometer-alt"></i> --}}
-                    {{-- <i class="bi bi-123"></i> --}}
+                <a class="nav-link" href="{{ route('admin.solicitudesR.create') }}">
+                    <span>{{ __('Reserva de Ambiente') }}</span>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('solicitudes') ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('admin.solicitudesR.index')}}">
                     <span>{{ __('Lista de Solicitudes') }}</span>
                 </a>
             </li>
@@ -47,7 +50,7 @@
             @can('user_index')
             <li class="nav-item {{ request()->is('usuarios')  ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('admin.usuarios.index')}}">
-                    <span>{{ __('Registrar Usuarios') }}</span></a>
+                    <span>{{ __('Registrar docente ') }}</span></a>
             </li>
             @endcan
 
