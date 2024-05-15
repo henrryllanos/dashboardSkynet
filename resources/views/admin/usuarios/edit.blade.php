@@ -11,7 +11,7 @@ use Illuminate\Support\Arr;
 ?>
 
 @section('title1')
-        <h4 class="card-title"> Editar Datos</h4>
+        <h4 class="card-title"> Editar </h4>
 @endsection
 
 @section('content')

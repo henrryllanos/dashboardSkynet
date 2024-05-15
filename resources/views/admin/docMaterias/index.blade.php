@@ -42,7 +42,7 @@
                             <th scope="col">Docente</th>
                             <th scope="col">Inscritos</th>
                             <th scope="col">Gestión</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>

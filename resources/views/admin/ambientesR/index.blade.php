@@ -25,7 +25,7 @@
                     <th scope="col">Dia de reserva</th>
                     <th scope="col">Horario de reserva</th>
                     <th scope="col">Horario fin reserva</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Opciones</th>
 
                 </tr>
             </thead>
