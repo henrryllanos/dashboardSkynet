@@ -5,7 +5,7 @@
 @endsection
 
 @section('title2')
-    <h4 class="card-title"> Ingresar Datos</h4>
+    <h4 class="card-title"> Todos locampos son obligatorios</h4>
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                         <div class="card">
                             <div class="card-body">
                             <div class="row">
-                                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                                <label for="name" class="col-sm-2 col-form-label">Nombre de docente</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus minlength="3" maxlength="15"
                                     onkeypress="return blockSpecialChar(event)">
@@ -118,7 +118,7 @@
                                         </div>
                                             <!-- Boton de formulario -->
                                             <div class="card-footer ml-auto mr-auto">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                <button type="submit" class="btn btn-primary">Registrar</button>
                                             </div>
                                     </div>
                                 </form>

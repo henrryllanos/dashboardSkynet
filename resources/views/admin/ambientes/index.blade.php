@@ -90,7 +90,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title w-100 text-center">Nuevo Ambiente</h4>
+                    <h4 class="modal-title w-100 text-center">Registro de Ambiente</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -98,7 +98,7 @@
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                            <label for="codigo">Codigo</label>
+                            <label for="codigo">Codigo de ambiente</label>
                             <input type="text" name="codigo" class="form-control" id="codigo" value="{{old('codigo')}}" required minlength="5" maxlength="15"
                             onkeypress="return blockNoNumber(event)">
                             @if ($errors->has('codigo'))
@@ -110,7 +110,7 @@
                             @if ($errors->has('num_ambiente'))
                             <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
                             @endif
-                            <label for="capacidad">Capacidad</label>
+                            <label for="capacidad">Capacidad de ambiente</label>
                             <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
                                 onkeypress="return blockNoNumber(event)">
 
@@ -118,7 +118,7 @@
                             <input type="text" name="facultad" class="form-control" id="facultad" value="{{old('facultad')}}" required minlength="5" maxlength="25"
                             onkeypress="return blockSpecialChar(event)">
 
-                            <label for="ubicaciones">Ubicacion</label>
+                            <label for="ubicaciones">Ubicacion de ambiente</label>
                             <select name="ubicacion" id="ubicacion" class="form-control" value="{{old('ubicacion')}}" required>
                                 <option value="">-- Selecciona la ubicacion--</option>
 
@@ -127,7 +127,7 @@
                             @endforeach
                             </select>
 
-                                <label for="estado">Estado</label>
+                                <label for="estado">Estado de ambiente</label>
                                 <select name="estado" id="estado" class="form-control" value="{{old('sector')}}" required>
                                     <option value="">-- Selecciona el estado--</option>
 
@@ -140,7 +140,7 @@
                                     <!-- son clases que acomodan los botones en el modal -->
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
                                 </div>
                     </form>
             </div>
