@@ -1,0 +1,140 @@
+[33mcommit a51ed95b81b398a0ce2ce2239f051f1e8461cb3a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 57adf0a e37bdae
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Wed May 15 00:09:12 2024 -0400
+
+    solucion conflicto
+
+[33mcommit 57adf0a58b731865487e6580fc0de4020892ca2d[m
+Merge: 19e6a80 6e96157
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Tue May 14 23:47:23 2024 -0400
+
+    se agrego todos los cambios a al master
+
+[33mcommit e37bdae88af089d437093264155ca6fb7ef950cc[m
+Merge: 19e6a80 6e96157
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Tue May 14 23:47:23 2024 -0400
+
+    se agrego todos los cambios a al master
+
+[33mcommit 6e961570d41ed8bf18bcf47ff440a96fada2cabc[m[33m ([m[1;31morigin/software[m[33m, [m[1;32msoftware[m[33m)[m
+Author: henrryllanos <113366048+henrryllanos@users.noreply.github.com>
+Date:   Wed May 15 04:48:58 2024 +0200
+
+    actuales interfaces
+
+[33mcommit 19e6a80f4134423a382f62dbb9d5f45c8e2128bc[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Tue May 14 13:15:19 2024 -0400
+
+    crud de roles y falta el formulario de reserva ambientes
+
+[33mcommit e6d0b1e9f74fefff664f26be522b9a9049936e16[m
+Author: henrryllanos <113366048+henrryllanos@users.noreply.github.com>
+Date:   Tue May 14 17:11:54 2024 +0200
+
+    interfaces cambiados
+
+[33mcommit 46f51715dceda30564422098bb483c3dfdffe2bd[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Sun May 12 00:09:16 2024 -0400
+
+    solucionando bugs de los crud
+
+[33mcommit 1035138cf6091d84129bfa59dd36fbc9f443a1b7[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Fri May 10 23:26:08 2024 -0400
+
+    todos los crud terminados
+
+[33mcommit c0e2244afcd76daba34c6783de296b41c0c9ce85[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Fri May 10 19:31:10 2024 -0400
+
+    crud de registrar usuarios y docente
+
+[33mcommit 3f25225f732cd911cd4a72ead74d78664de3257c[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Fri May 10 15:15:24 2024 -0400
+
+    crud de registrar usuarios con laravel
+
+[33mcommit 75983fffd9bbf096b49d0ed38cc005d8751ad228[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Thu May 9 21:33:49 2024 -0400
+
+    realizacion del crud de asignacion de docente y materia
+
+[33mcommit 02955c4baf6f202b577d1ab486f9be8c1c303397[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Thu May 9 20:39:44 2024 -0400
+
+    el crud de ambientes esta completo delete, update, create, edit
+
+[33mcommit 5586df7318e96e16bd5578bfe71b08b3968de253[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Thu May 9 16:19:00 2024 -0400
+
+    modificacion de edit de la tabla reservar ambiene
+
+[33mcommit e86e0436444e4627f1f5d358190f912900c9a7ef[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Wed May 8 12:10:30 2024 -0400
+
+    crud de registrar usuarios
+
+[33mcommit 7c0098d78bc0f09cb1ab5c6b820fd837a4bab393[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Wed May 8 02:54:38 2024 -0400
+
+    tabla de registrar usuarios
+
+[33mcommit 8df4c74d03848c555330841b5183aae27c2ce332[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Tue May 7 14:41:37 2024 -0400
+
+    el registro con docente materia tiene funcionalidad
+
+[33mcommit 18d1381837cefa44f2d12fe607a6714c978ad746[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Mon May 6 18:20:20 2024 -0400
+
+    front end de la tabla ambiente con laravel 8
+
+[33mcommit 4193e3c9141eba9e1c9fe90db32ddc283a27c6b2[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Mon May 6 12:41:40 2024 -0400
+
+    login para el administrador
+
+[33mcommit 783d665681a50ce3a2fdf5bb8d067c64634ed56f[m[33m ([m[1;31mupstream/develop[m[33m)[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Sun May 5 22:08:38 2024 -0400
+
+    modificando la base de datos de dos tablas
+
+[33mcommit 6aa96ce7763ef4d1bd64516fc196bc5981bae59c[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Sun May 5 20:41:56 2024 -0400
+
+    tarea de login realisado con laravel 8
+
+[33mcommit b6719eb0a72cd4f166345dd99986420070afef90[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Sun May 5 17:07:35 2024 -0400
+
+    relaciones de la base de datos
+
+[33mcommit d635642055c0d97202c0805999da7907d92eb5e6[m[33m ([m[1;31mupstream/master[m[33m)[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Sun May 5 15:25:28 2024 -0400
+
+    dasboard en laravel
+
+[33mcommit 66ce73bb01540f9c26b60619761b26e8da12d057[m
+Author: Paisa2 <villca.fuentes23@gmail.com.com>
+Date:   Sun May 5 15:17:10 2024 -0400
+
+    first commit
