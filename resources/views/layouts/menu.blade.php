@@ -16,11 +16,13 @@
             </li>
             @endcan
 
+            @can('ambiente_index')
             <li class="nav-item {{ request()->is('ambientes*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('admin.ambientes.index', ['tipo'=> 'all' ])}}">
                         <span>{{ __('Lista de Ambiente') }}</span>
                     </a>
             </li>
+            @endcan
 
             @can('ambienteR_index')
             <li class="nav-item  {{ request()->is('ambientesR') ? 'active' : '' }}" >

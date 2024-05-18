@@ -19,7 +19,7 @@ class DocmateriaController extends Controller
     ->join('materias', 'docmaterias.materia', '=', 'materias.id')
     ->join('grupos', 'docmaterias.grupo', '=', 'grupos.id')
     // ->join('grupos', 'grupos.id', '=', 'solicitudes.id')
-   // ->select('docmaterias.name', 'docmaterias.num_aula','solicitudes.*')
+   // ->select('docmaterias.name', 'docmaterias.num_ambiente','solicitudes.*')
     ->get();
 
     // $solicitudes = solicitud::all();

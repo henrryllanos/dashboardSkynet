@@ -304,7 +304,7 @@
                 $.get('/ubicacionesambientes', {ubicacion_id: ubicacion_id}, function(ambientes){
                     if( ambientes.length == 1){
                         $('#ambiente').empty();
-                            $('#ambiente').append("<option value='' disabled >No hay aulas disponibles</option>");
+                            $('#ambiente').append("<option value='' disabled >No hay ambientes disponibles</option>");
                             console.log('hola2');
                             console.log(ambientes);
 

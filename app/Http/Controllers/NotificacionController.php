@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Notificacion;
 use App\Models\Solicitud;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+
 
 class NotificacionController extends Controller
 {
@@ -19,14 +22,14 @@ class NotificacionController extends Controller
     public function index()
     {
         abort_if(Gate::denies('notificacion_index'), 403);
-        $notificaciones = DB:: table('solicitudes')
-        ->join('notificaciones', 'solicitudes.id', '=', 'notificaciones.solicitud')
-        ->join('docmaterias', 'solicitudes.docmateria_id', '=', 'docmaterias.id')
-        ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
-        ->join('materias', 'docmaterias.materia', '=', 'materias.id')
-        ->where('docmaterias.docente', Auth::id())
-        ->get();
-
+        $notificaciones = DB::table('solicitudes')
+            ->join('notificaciones', 'solicitudes.id', '=', 'notificaciones.solicitud')
+            ->join('docmaterias', 'solicitudes.docmateria_id', '=', 'docmaterias.id')
+            ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
+            ->join('materias', 'docmaterias.materia', '=', 'materias.id')
+            ->where('docmaterias.docente', Auth::id())
+            ->get();
+      // dd($notificaciones);
         return view('admin.notificaciones.index', compact('notificaciones'));
     }
 
@@ -48,6 +51,8 @@ class NotificacionController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $notificacion = new Notificacion();
         $notificacion->mensaje = $request->mensaje;
 
@@ -64,10 +69,10 @@ class NotificacionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Notificacion  $notificacion
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Notificacion $notificacion)
     {
         //
     }
@@ -75,10 +80,10 @@ class NotificacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Notificacion  $notificacion
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Notificacion $notificacion)
     {
         //
     }
@@ -87,13 +92,16 @@ class NotificacionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Notificacion  $notificacion
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Notificacion $notificacion)
     {
+        //
         $notificacion->fill($request->all());
         $notificacion->save();
+
+        // alert()->success('Producto actualizado correctamente');
 
         return redirect()->route('admin.notificaciones.index');
     }
@@ -101,10 +109,10 @@ class NotificacionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Notificacion  $notificacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Notificacion $notificacion)
     {
         //
     }

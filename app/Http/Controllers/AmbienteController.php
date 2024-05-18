@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Ambiente;
 use App\Models\Solicitud;
-use App\Models\Ubicacion;
+use App\Models\Sector;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use SebastianBergmann\Environment\Console;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\AmbienteCreateRequest;
+use App\Http\Requests\AmbienteEditRequest;
+use Alert;
 
 class AmbienteController extends Controller
 {
@@ -18,7 +24,6 @@ class AmbienteController extends Controller
      */
     public function index(Request $request)
     {
-        // $ambientes = Ambiente:: all();
 
         if ($request->tipo === "reservadas") {
             $ambientes = DB::table('solicitudes')
@@ -31,6 +36,7 @@ class AmbienteController extends Controller
             ->where('solicitudes.estado','=','aceptado')
             ->select('solicitudes.estado','solicitudes.hora_fin','ambientes.num_ambiente','materias.nombre','solicitudes.dia',
             'solicitudes.hora_ini')
+
             ->get();
             return view('admin.ambientes.index', compact('ambientes'))->with('tipo', "reservadas");
 
@@ -47,27 +53,27 @@ class AmbienteController extends Controller
             return view('admin.ambientesR.index', compact('ambientes'))->with('tipo', "admin");
 
         }
-        //esta es la consulta de la tabla ubicaciones con ambientes
+        //esta es la consulta de la tabla sectores con ambientes
         abort_if(Gate::denies('ambiente_index'), 403);
         $ambientes =  DB::table('ambientes')
-        ->join('ubicaciones', 'ambientes.ubicacion', '=', 'ubicaciones.id')
-        ->select('ambientes.*','ubicaciones.nombre')
+        ->join('sectors', 'ambientes.sector', '=', 'sectors.id')
+        ->select('ambientes.*','sectors.nombre')
         ->orderBy('id','asc')
         ->get();
-       // dd($ambientes);
-        $ubicacion = DB::table('ubicaciones')->get();
-        return view('admin.ambientes.index', compact('ambientes', 'ubicacion'))->with('tipo', "all");
+       // dd(ambiente);
+        $sector = DB::table('sectors')->get();
+        return view('admin.ambientes.index', compact('ambientes', 'sector'))->with('tipo', "all");
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        abort_if(Gate::denies('ambiente_create'), 403);
-        $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
+         abort_if(Gate::denies('ambiente_create'), 403);
+         $sectors = Sector::all()->pluck('nombre', 'id');
         return view('admin.ambientes.create');
     }
 
@@ -81,13 +87,12 @@ class AmbienteController extends Controller
     public function store(Request $request)
     {
         abort_if(Gate::denies('ambiente_create'), 403);
-
             $newAmbiente= new Ambiente();
+
             $newAmbiente->codigo = $request->codigo;
             $newAmbiente->num_ambiente = $request->num_ambiente;
             $newAmbiente->capacidad = $request->capacidad;
-            $newAmbiente->facultad = $request->facultad;
-            $newAmbiente->ubicacion = $request->ubicacion;
+            $newAmbiente->sector = $request->sector;
             $newAmbiente->estado = $request->estado;
 
             $ambiente = Ambiente::where('codigo', $request->codigo)->first();
@@ -102,7 +107,7 @@ class AmbienteController extends Controller
                 ]);
             }
 
-            return redirect()->back();
+           return redirect()->back();
     }
 
     public function delete(Request $request, $ambienteId)
@@ -121,30 +126,32 @@ class AmbienteController extends Controller
         $ambiente = Ambiente::find($ambienteId);
         debug_to_console($ambiente);
         debug_to_console($solicitudes);
-
-        /**DB::table('solicitudes')->where('aula', '!=', $aula)->delete();
-        if( $solicitudes["aula"] == $aula["id"] ){
-            return back()->withErrors([
-                'message' => 'El aula esta siendo usada en una reserva'
-                ]);
+        /**DB::table('solicitudes')->where('ambiente', '!=', $ambiente)->delete();
+        if( $solicitudes["ambiente"] == $ambiente["id"] ){
+        return back()->withErrors([
+            'message' => 'El ambiente esta siendo usada en una reserva'
+            ]);
             }else{
-                /**$aula->delete();
-                return redirect()->back();
-                debug_to_console('hola');
-                }
-                */
+            /**$ambiente->delete();
+            return redirect()->back();
+            debug_to_console('hola');
+         }
+       */
 
-        if(empty($solicitudes)){
+       if(empty($solicitudes)){
+
             $ambiente->delete();
             return redirect()->back();
         }else{
 
             return back()->withErrors([
-                'message' => 'No se puede eliminar el ambiente '.$ambiente["num_ambiente"].' debido a que esta siendo usada en una solicitud de reserva'
+                'message' => 'No se puede eliminar el ambiente '.$ambiente["num_ambiente"].' debido a que esta siendo usada en una solicitud'
             ]);
-        }
-    }
 
+        }
+
+
+    }
     public function deleteReservadas(Request $request, $reservaId)
     {
         abort_if(Gate::denies('ambiente_destroy'), 403);
@@ -156,7 +163,7 @@ class AmbienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ambiente  $mbiente
+     * @param  \App\Models\Ambiente $ambiente
      * @return \Illuminate\Http\Response
      */
     public function show(Ambiente $ambiente)
@@ -188,13 +195,14 @@ class AmbienteController extends Controller
         $ambiente = Ambiente::find($ambienteId);
         $ambiente->num_ambiente = $request->num_ambiente;
         $ambiente->capacidad = $request->capacidad;
+        $ambiente->sector = $request->sector;
         $ambiente->estado = $request->estado;
 
 
         //esto sirve para que no se repitan los datos
         $ambiente2 = Ambiente::where('num_ambiente', $request->num_ambiente)->first();
             if(empty($ambiente2)){
-                $ambiente->save();
+                 $ambiente->save();
                 return redirect()->back();
             }else{
 
@@ -202,7 +210,9 @@ class AmbienteController extends Controller
                     'message' => 'Error, El numero de ambiente ingresado ya existe'
                 ]);
             }
-        return redirect()->back();
+
+
+       return redirect()->back();
     }
 
     /**
@@ -213,7 +223,6 @@ class AmbienteController extends Controller
      */
     public function destroy(Ambiente $ambiente)
     {
-
+        //
     }
-
 }

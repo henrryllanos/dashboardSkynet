@@ -5,23 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Ambiente;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use SebastianBergmann\Environment\Console;
+use Alert;
 
-class AmbienteReservadasController extends Controller
+class AmbientesReservadasController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        // $ambientesR = Ambiente::all();
 
-        $ambiente = DB::table('solicitudes')
-        ->join('materias', 'solicitudes.materias', '=', 'materias.id')
-        ->join('ambientes', 'solicitudes.ambientes', '=', 'ambientes.id')
-        ->where('solicitudes.docente')
-        ->select('solicitudes.estado', 'ambientes.num_ambiente', 'materias.nombre',
-        'solicitudes.dia', 'solicitudes.hora_ini', 'solicitudes.hora_fin')
-        ->get();
+            $ambientes = DB::table('solicitudes')
+            ->join('materias', 'solicitudes.materia', '=', 'materias.id')
+            ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
+            ->where('solicitudes.docente')
+            ->select('solicitudes.estado','ambientes.num_ambiente','materias.nombre','solicitudes.dia',
+            'solicitudes.hora_ini','solicitudes.hora_fin')
+            ->get();
 
-        return view('admin.ambientesR.index', compact('ambientesR'));
+            return view('admin.ambientesR.index', compact('ambientesR'));
 
     }
 
@@ -43,16 +51,17 @@ class AmbienteReservadasController extends Controller
      */
     public function store(Request $request)
     {
-        $newAmbiente = new Ambiente();
-        $newAmbiente -> codigo = $request -> codigo;
-        $newAmbiente -> num_ambiente = $request -> num_ambiente;
-        $newAmbiente -> capacidad = $request -> capacidad;
-        $newAmbiente -> ubicacion = $request -> ubicacion;
-        $newAmbiente -> estado = $request -> estado;
-        $newAmbiente -> save();
+            $newAmbiente= new Ambiente();
 
-        return redirect()->back();
+            $newAmbiente->codigo = $request->codigo;
+            $newAmbiente->num_ambiente = $request->num_ambiente;
+            $newAmbiente->capacidad = $request->capacidad;
+            $newAmbiente->sector = $request->sector;
+            $newAmbiente->estado = $request->estado;
+            $newAmbiente->save();
 
+
+           return redirect()->back();
     }
 
     public function delete(Request $request, $ambienteId)
@@ -79,9 +88,10 @@ class AmbienteReservadasController extends Controller
             /**$ambiente->delete();
             return redirect()->back();
             debug_to_console('hola');
-        }
+         }
        */
-        if(empty($solicitudes)){
+       if(empty($solicitudes)){
+
             $ambiente->delete();
             return redirect()->back();
         }else{
@@ -91,6 +101,8 @@ class AmbienteReservadasController extends Controller
             ]);
 
         }
+
+
     }
     /**
      * Display the specified resource.
@@ -118,19 +130,19 @@ class AmbienteReservadasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ambiente  $ambiente
+     * @param  \App\Models\Ambiente $ambiente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $ambienteId)
     {
         $ambiente = Ambiente::find($ambienteId);
-        $ambiente-> num_ambierte = $request -> num_ambiente;
-        $ambiente -> capacidad = $request -> capacidad;
-        $ambiente -> estado = $request -> estado;
-
+        $ambiente->num_ambiente = $request->num_ambiente;
+        $ambiente->capacidad = $request->capacidad;
+        $ambiente->sector = $request->sector;
+        $ambiente->estado = $request->estado;
         $ambiente->save();
 
-        return redirect()->back();
+       return redirect()->back();
     }
 
     /**
