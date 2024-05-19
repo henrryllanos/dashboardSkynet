@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class SessionsController extends Controller
 {
@@ -29,10 +28,11 @@ class SessionsController extends Controller
 
             }else{
               //  dd('hola');
-                auth()->logout();
-                return redirect()->to('/login')->withErrors([
+              auth()->logout();
+              return redirect()->to('/login')->withErrors([
                     'message' => 'Cuenta deshabilitada'
                 ]);
+
             }
 
             // if( auth()->user()->role == 'admin'){

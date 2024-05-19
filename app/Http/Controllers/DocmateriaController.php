@@ -10,79 +10,86 @@ use Illuminate\Support\Facades\Validator;
 
 class DocmateriaController extends Controller
 {
-    public function index() {
-
+     //
+    public function index()
+    {
     $docmaterias = DB::table('docmaterias')
     ->join('users', 'docmaterias.docente', '=', 'users.id')
-     //->join('users', 'docmaterias.docente', '=', 'users.id')
-    //->join('materias', 'materias.id', '=', 'solicitudes.id')
+   //  ->join('users', 'docmaterias.docente', '=', 'users.id')
+     // ->join('materias', 'materias.id', '=', 'solicitudes.id')
     ->join('materias', 'docmaterias.materia', '=', 'materias.id')
     ->join('grupos', 'docmaterias.grupo', '=', 'grupos.id')
-    // ->join('grupos', 'grupos.id', '=', 'solicitudes.id')
-   // ->select('docmaterias.name', 'docmaterias.num_ambiente','solicitudes.*')
-    ->get();
 
-    // $solicitudes = solicitud::all();
-            //supuesto error
-        return view('admin.docemateria.index', compact('docmaterias'));
-    }
+     // ->join('grupos', 'grupos.id', '=', 'solicitudes.id')
+    // ->select('docmaterias.name', 'docmaterias.num_ambiente','solicitudes.*')
+     ->get();
 
-    public function index2() {
+ // $solicitudes = solicitud::all();
 
-        abort_if(Gate::denies('asignar_index'), 403);
-        $materias = DB:: table('materias')-> where('estado', '=','Habilitado')->get();
-        $grupos = DB:: table('grupos')->get();
-        $users = DB:: table('users')->where('name', '!=', 'Administrador')
-        ->where('name', '!=', 'Admin')->where('name', '!=', 'SuperAdministrador')
-        ->where('name', '!=', 'SuperAdmin')->get();
+         return view('admin.docmateria.index', compact('docmaterias'));
+     }
+
+     public function index2()
+     {
+     abort_if(Gate::denies('asignar_index'), 403);
+        $materias = DB::table('materias')->where('estado', '=', 'Habilitado')->get();
+        $grupos = DB::table('grupos')->get();
+        $users = DB::table('users')
+        ->where('name', '!=', 'Administrador')
+        ->where('name', '!=', 'Admin')
+        ->where('name', '!=', 'SuperAdministrador')
+        ->where('name', '!=', 'SuperAdmin')
+        ->get();
         $docentesmaterias = DB::table('docmaterias')
         ->join('users', 'docmaterias.docente', '=', 'users.id')
         ->join('materias', 'docmaterias.materia', '=', 'materias.id')
         ->join('grupos', 'docmaterias.grupo', '=', 'grupos.id')
-        ->select('materias.nombre','grupos.numero','users.name', 'docmaterias.*')->get();
+
+        ->select('materias.nombre','grupos.numero','users.name', 'docmaterias.*')
+        ->get();
 
         return view('admin.docMaterias.index', ['docentesmaterias' => $docentesmaterias,
-        'materias' => $materias, 'grupos' => $grupos,'users' => $users]);
+            'materias' => $materias, 'grupos' => $grupos,'users' => $users]);
     }
 
-    public function store(Request $request) {
-
+    public function store(Request $request)
+    {
         abort_if(Gate::denies('asignar_create'), 403);
-        $validador = Validator::make($request->all(), [
-                'materia' => 'required|unique:materias',
-                'grupo' => 'required|unique:grupos',
-                'estado' => 'required',
-                'docente' => 'required',
-                'inscritos' => 'required',
-                'gestion' => 'required'
+        $validator = Validator::make($request->all(), [
+            'materia' => 'required|unique:materias',
+            'grupo' => 'required|unique:grupos',
+            'estado' => 'required',
+            'docente' => 'required',
+            'inscritos' => 'required',
+            'gestion' => 'required'
         ]);
 
-        $newAsignacion= new Docmateria();
+            $newAsignacion= new Docmateria();
 
-        $newAsignacion->inscritos = $request->inscritos;
-        $newAsignacion->gestion = $request->gestion;
-        $newAsignacion->estado = $request->estado;
-        $newAsignacion->grupo = $request->grupo;
-        $newAsignacion->materia = $request->materia;
-        $newAsignacion->docente = $request->docente;
+            $newAsignacion->inscritos = $request->inscritos;
+            $newAsignacion->gestion = $request->gestion;
+            $newAsignacion->estado = $request->estado;
+            $newAsignacion->grupo = $request->grupo;
+            $newAsignacion->materia = $request->materia;
+            $newAsignacion->docente = $request->docente;
 
-        $materia = Docmateria::where('materia',$request->materia)->where('grupo',$request->grupo)->first();
+            $materia = Docmateria::where('materia',$request->materia)->where('grupo',$request->grupo)->first();
+            // $grupo = Docmateria::where('grupo',$request->grupo)->first();
 
+            if(empty($materia)){
+                $newAsignacion->save();
+                return redirect()->back()->with('success','¡Exitoso!');
+            }else{
 
-        if(empty($materia)){
-            $newAsignacion->save();
-            return redirect()->back()->with('success','¡Exitoso!');
-        }else{
-
-            return back()->withInput()->withErrors([
-                'No se pudo completar la asignación, materia y grupo'
-            ]);
-        }
-        return redirect()->back();
+                return back()->withInput()->withErrors([
+                    'No se pudo completar la asignación, materia y grupo ya propuestos'
+                ]);
+            }
+            return redirect()->back();
     }
 
-    public function update(Request $request, $docmateriaId) {
-
+    public function update(Request $request, $docmateriaId)
+    {
         abort_if(Gate::denies('asignar_edit'), 403);
         $validator = Validator::make($request->all(), [
             'materia' => 'required|unique:materias',
@@ -100,10 +107,11 @@ class DocmateriaController extends Controller
         $asignacion->estado = $request->estado;
         $asignacion->grupo = $request->grupo;
         $asignacion->materia = $request->materia;
+         //$asignacion->docente = $request->docente;
 
-        $materia = Docmateria::where('materia',$request->materia)
-                            ->where('grupo',$request->grupo)->first();
-        //dd($materia);
+        $materia = Docmateria::where('materia',$request->materia)->where('grupo',$request->grupo)->first();
+         //$grupo = Docmateria::where('grupo',$request->grupo)->first();
+ //dd($materia);
         if($docmateriaId == $asignacion->id){
             $asignacion->save();
             return redirect()->back();
@@ -114,7 +122,7 @@ class DocmateriaController extends Controller
             }else{
 
                 return back()->withErrors([
-                    'message' => 'No se pudo completar la asignación, materia y grupo.'
+                    'message' => 'No se pudo completar la asignación, materia y grupo ya propuestos.'
                 ]);
             }
         }
@@ -129,4 +137,3 @@ class DocmateriaController extends Controller
         return redirect()->back();
     }
 }
-

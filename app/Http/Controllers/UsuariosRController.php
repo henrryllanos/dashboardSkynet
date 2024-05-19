@@ -16,6 +16,7 @@ use Spatie\Permission\Models\Role;
 class UsuariosRController extends Controller
 {
     //
+    //
     public function index()
     {
         abort_if(Gate::denies('user_index'), 403);
@@ -47,7 +48,7 @@ class UsuariosRController extends Controller
         //     'email' => 'required|email|unique:users',
         //     'password' => 'required'
         // ]);
-        $user = User::create($request->only('name', 'ci', 'email','departamento', 'password', 'estadoDocente')
+        $user = User::create($request->only('name', 'ci', 'email','departamento', 'password')
             + [
                 'estadoCuenta' => "Habilitado",
             ]);
@@ -68,7 +69,7 @@ class UsuariosRController extends Controller
     public function update(UserEditRequest $request, User $user)
     {
         // $user=User::findOrFail($id);
-        $data = $request->only('name', 'email', 'departamento', 'estadoCuenta', 'estadoDocente');
+        $data = $request->only('name', 'email', 'departamento', 'estadoCuenta');
         $password=$request->input('password');
         if($password)
             $data['password'] = $password;

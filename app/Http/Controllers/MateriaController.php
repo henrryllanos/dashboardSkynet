@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Http\Request;
 
 class MateriaController extends Controller
 {
@@ -18,14 +19,12 @@ class MateriaController extends Controller
     {
         abort_if(Gate::denies('materia_index'), 403);
         $materias = Materia::orderBy('id', 'asc')->get();
-
-        return view('admin.materias.index', compact('materias'))->with('tipo', 'all');
-
+        return view('admin.materias.index', compact('materias'))->with('tipo', "all");
     }
 
     public function UpdateStatusNoti(Request $request){
         abort_if(Gate::denies('materia_estado'), 403);
-        $NotiUpdate = Materia::find($request->id);
+        $NotiUpdate = Materia::find($request->id);/* ->update(['estatus' => $request->estatus]) */
         $NotiUpdate ->estado=$request->estatus;
 
         $NotiUpdate->save();
@@ -38,7 +37,9 @@ class MateriaController extends Controller
                     }
                     return response()->json(['var'=>''.$newStatus.'']);
         }
+
         return response()->json([],401);
+
     }
 
     /**
@@ -98,10 +99,10 @@ class MateriaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Materia $materia)
     {
         //
     }
@@ -109,10 +110,10 @@ class MateriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Materia $materia)
     {
         //
     }
@@ -121,33 +122,32 @@ class MateriaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $materiaId)
     {
         abort_if(Gate::denies('materia_edit'), 403);
-
         $materia = Materia::find($materiaId);
 
         $materia->nombre = $request->nombre;
         $materia->carrera = $request->carrera;
         $materia->tipo = $request->tipo;
         $materia->nivel = $request->nivel;
+        //$materia->estado = $request->estado;
         $materia->save();
 
         return redirect()->back();
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
     public function destroy(Materia $materia)
     {
-
+        //
     }
 }

@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
-
 class PermissionSeeder extends Seeder
 {
     /**
@@ -15,7 +14,6 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        //
         app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
 
         $permissions = [
@@ -24,6 +22,7 @@ class PermissionSeeder extends Seeder
             'permission_edit',
             'permission_destroy',
             'permission_buscar',
+
 
             'role_index',
             'role_create',
@@ -79,5 +78,4 @@ class PermissionSeeder extends Seeder
             ]);
         }
     }
-
 }

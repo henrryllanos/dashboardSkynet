@@ -20,7 +20,7 @@ class NotificacionSeeder extends Seeder
             DB::table('notificaciones')->insert([
                 'email' => $emails[rand(0, 3)],
                 'mensaje' => Str::random(30),
-                'dia' => "2024-05-16",
+                'dia' => "2022-04-16",
                 'solicitud' => rand(1, 10),
             ]);
         }

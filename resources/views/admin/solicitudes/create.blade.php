@@ -1,8 +1,9 @@
 
-@extends('layouts.app', ['activePage' => 'nueva solicitud', 'titlePage' => 'Nueva solicitud'])
-
+@extends('layouts.app')
 @section('content')
-
+<?php
+    $hora_ini   = ['1' => '6:45', '2' => '8:15'];
+?>
 <div class="container">
         <div class="my-6">
             <div class="card">
@@ -44,7 +45,7 @@
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group">
-                                                <button class="btn btn-secondary" type="button"></button>
+                                            <button class="btn btn-secondary" type="button"></button>
                                                 <select name="docmateria_id" id="docmateria_id" class="custom-select" value="{{old('docmateria_id')}}" required>
                                                 <option value="">Seleccione Materia..</option>
                                                 @foreach ($materiaUnidas as $item)
@@ -55,6 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 {{--
                                     <div class="col-4">
                                         <div class="form-group">
@@ -76,6 +78,7 @@
                                         </div>
                                     </div>
                                     --}}
+
                                     <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
@@ -192,11 +195,6 @@
                                             </div>
                                     </div>
 
-
-
-
-
-
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
@@ -212,29 +210,28 @@
                                                     @if ($errors->has('motivo'))
                                                         <span class="error text-danger" for="input-motivo" style="font-size: 15px">{{ $errors->first('motivo') }}</span>
                                                     @endif
-
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="name" class="form-control-label">
-                                                Cantidad Estudiantes:
-                                            </label>
-                                            <div class="input-group">
-                                                <span class="input-group">
-                                                    <button class="btn btn-secondary" type="button"></button>
-                                                    <input name="cantidad" id="cantidad" type="name" class="form-control" placeholder="Cantidad-Estudiantes" value="{{old('cantidad')}}" required minlength="1" maxlength="3"
-                                                    onkeypress="return blockNoNumber(event)">
-                                                </span>
-                                                <br>
-                                                    @if($errors -> has('cantidad'))
-                                                        <span class="error-danger" for="input-name">{{$errors->first('cantidad')}}</span>
-                                                    @endif
+                                            <div class="form-group">
+                                                <label for="name" class="form-control-label">
+                                                    Cantidad Estudiantes:
+                                                </label>
+                                                <div class="input-group">
+                                                    <span class="input-group">
+                                                        <button class="btn btn-secondary" type="button"></button>
+                                                        <input name="cantidad" id="cantidad" type="name" class="form-control" placeholder="Cantidad-Estudiantes" value="{{old('cantidad')}}" required minlength="1" maxlength="3"
+                                                        onkeypress="return blockNoNumber(event)">
+                                                    </span>
+                                                    <br>
+                                                        @if($errors -> has('cantidad'))
+                                                            <span class="error-danger" for="input-name">{{$errors->first('cantidad')}}</span>
+                                                        @endif
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
 
 
@@ -249,34 +246,7 @@
             </div>
         </div>
     </div>
-<script>
-            var fecha = new Date();
-        var anio = fecha.getFullYear();
-        var dia = fecha.getDate();
-        var _mes = fecha.getMonth(); //viene con valores de 0 al 11
-        _mes = _mes + 1; //ahora lo tienes de 1 al 12
-        if (_mes < 10) //ahora le agregas un 0 para el formato date
-        {
-        var mes = "0" + _mes;
-        } else {
-        var mes = _mes.toString;
-        }
 
-        let fecha_minimo = anio + '-' + mes + '-' + dia; // Nueva variable
-
-        document.getElementById("fechaReserva").setAttribute('min',fecha_minimo);
-</script>
-<script type="text/javascript">
-
-    function blockNoNumber(e){
-        var k;
-        document.all ? k = e.keyCode : k = e.which;
-        return ( (k >= 48 && k <= 57));
-        }
-
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @endsection
 
@@ -290,7 +260,6 @@
                     $('#cantidad').empty();
                         $('#cantidad').attr("value", cantidades.inscritos);
                         $('#cantidad').empty();
-
                 });
             }
         })
@@ -302,18 +271,22 @@
             if($.trim(ubicacion_id) != ''){
 
                 $.get('/ubicacionesambientes', {ubicacion_id: ubicacion_id}, function(ambientes){
-                    if( ambientes.length == 1){
-                        $('#ambiente').empty();
-                            $('#ambiente').append("<option value='' disabled >No hay ambientes disponibles</option>");
-                            console.log('hola2');
-                            console.log(ambientes);
+
+
+                  //  alert(ambientes);
+                  if( ambientes.length == 1){
+                    $('#ambiente').empty();
+                        $('#ambiente').append("<option value='' disabled >No hay ambientes disponibles</option>");
+                        console.log('hola2');
+                        console.log(ambientes);
 
                     }else{
-                            $('#ambiente').empty();
-                            $('#ambiente').append("<option value='{{old('ambiente')}}' >Selecciona un ambiente</option>");
-                            $.each(ambientes, function(index, value){
-                            $('#ambiente').append("<option value='"+ index +"' >"+ value + "</option>")
-                        })
+                        $('#ambiente').empty();
+                        $('#ambiente').append("<option value='{{old('ambiente')}}' >Selecciona un ambiente</option>");
+                         $.each(ambientes, function(index, value){
+                        $('#ambiente').append("<option value='"+ index +"' >"+ value + "</option>")
+
+                         })
                         console.log('hola1');
                     }
                 });
@@ -321,9 +294,4 @@
         })
     })
 </script>
-
 @endsection
-@section('footer')
-
-@endsection
-

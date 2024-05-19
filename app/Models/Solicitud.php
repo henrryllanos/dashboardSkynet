@@ -19,6 +19,7 @@ class Solicitud extends Model
                             'ambiente',
                             'docmateria_id',
 
+
     ];
 
     public function notificaciones()

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class UbicacionSeeder extends Seeder
 {
@@ -15,6 +14,8 @@ class UbicacionSeeder extends Seeder
      */
     public function run()
     {
+        //
+        //
         DB::table('ubicaciones')->insert([
             'nombre' => 'Edificio nuevo',
 
@@ -29,6 +30,7 @@ class UbicacionSeeder extends Seeder
         ]);
         DB::table('ubicaciones')->insert([
             'nombre' => 'edificio memi',
+
         ]);
     }
 }

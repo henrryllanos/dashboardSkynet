@@ -23,6 +23,11 @@ class DatabaseSeeder extends Seeder
             RoleHasPermissionSeeder::class,
             UserSeeder::class,
             DocmateriaSeeder::class,
+
+            //SolicitudSeeder::class,
+            //NotificacionSeeder::class,
+            //ReservaSeeder::class,
         ]);
+        // \App\Models\User::factory(10)->create();
     }
 }

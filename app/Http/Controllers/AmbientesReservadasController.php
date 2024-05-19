@@ -61,7 +61,7 @@ class AmbientesReservadasController extends Controller
             $newAmbiente->save();
 
 
-           return redirect()->back();
+            return redirect()->back();
     }
 
     public function delete(Request $request, $ambienteId)
@@ -88,9 +88,9 @@ class AmbientesReservadasController extends Controller
             /**$ambiente->delete();
             return redirect()->back();
             debug_to_console('hola');
-         }
+        }
        */
-       if(empty($solicitudes)){
+        if(empty($solicitudes)){
 
             $ambiente->delete();
             return redirect()->back();
@@ -99,7 +99,6 @@ class AmbientesReservadasController extends Controller
             return back()->withErrors([
                 'message' => 'No se puede eliminar el ambiente '.$ambiente["num_ambiente"].' debido a que esta siendo usada en una reservacion'
             ]);
-
         }
 
 
@@ -130,19 +129,19 @@ class AmbientesReservadasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ambiente $ambiente
+     * @param  \App\Models\Ambiente  $ambiente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $ambienteId)
     {
         $ambiente = Ambiente::find($ambienteId);
         $ambiente->num_ambiente = $request->num_ambiente;
-        $ambiente->capacidad = $request->capacidad;
         $ambiente->ubicacion = $request->ubicacion;
+        $ambiente->capacidad = $request->capacidad;
         $ambiente->estado = $request->estado;
         $ambiente->save();
 
-       return redirect()->back();
+        return redirect()->back();
     }
 
     /**

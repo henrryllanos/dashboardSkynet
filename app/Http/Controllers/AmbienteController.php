@@ -8,12 +8,9 @@ use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use SebastianBergmann\Environment\Console;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Requests\AmbienteCreateRequest;
-use App\Http\Requests\AmbienteEditRequest;
-use Alert;
+
 
 class AmbienteController extends Controller
 {
@@ -60,7 +57,7 @@ class AmbienteController extends Controller
         ->select('ambientes.*','ubicaciones.nombre')
         ->orderBy('id','asc')
         ->get();
-       // dd(ambiente);
+       // dd($ambientes);
         $ubicacion = DB::table('ubicaciones')->get();
         return view('admin.ambientes.index', compact('ambientes', 'ubicacion'))->with('tipo', "all");
     }
@@ -72,8 +69,8 @@ class AmbienteController extends Controller
      */
     public function create()
     {
-         abort_if(Gate::denies('ambiente_create'), 403);
-         $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
+        abort_if(Gate::denies('ambiente_create'), 403);
+        $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
         return view('admin.ambientes.create');
     }
 
@@ -107,7 +104,7 @@ class AmbienteController extends Controller
                 ]);
             }
 
-           return redirect()->back();
+            return redirect()->back();
     }
 
     public function delete(Request $request, $ambienteId)
@@ -149,8 +146,6 @@ class AmbienteController extends Controller
             ]);
 
         }
-
-
     }
     public function deleteReservadas(Request $request, $reservaId)
     {
@@ -163,7 +158,7 @@ class AmbienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ambiente $ambiente
+     * @param  \App\Models\Ambiente  $ambiente
      * @return \Illuminate\Http\Response
      */
     public function show(Ambiente $ambiente)
@@ -186,7 +181,7 @@ class AmbienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ambiente  $ambiente
+     * @param  \App\ModelAmbiente  $ambiente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $ambienteId)

@@ -20,6 +20,7 @@ class CreateDocmateriasTable extends Migration
             $table->string("estado");
 
 
+
             $table->unsignedBigInteger('grupo');
             $table->unsignedBigInteger('materia');
             $table->unsignedBigInteger('docente');

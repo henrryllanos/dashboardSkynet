@@ -14,26 +14,27 @@ class DocmateriaSeeder extends Seeder
      */
     public function run()
     {
+        //
         DB::table('docmaterias')->insert([
             'inscritos' => '10',
-            'gestion' => 'I-2024',
-            'estado' => 'Titular',
+            'gestion' => 'I-2022',
+            'estado' => 'Habilitado',
             'grupo' => '1',
             'materia' => '5',
             'docente' => "2"
         ]);
         DB::table('docmaterias')->insert([
             'inscritos' => '20',
-            'gestion' => 'II-2024',
-            'estado' => 'Titular',
+            'gestion' => 'I-2022',
+            'estado' => 'Habilitado',
             'grupo' => '2',
             'materia' => '1',
             'docente' => "2"
         ]);
         DB::table('docmaterias')->insert([
             'inscritos' => '30',
-            'gestion' => 'I-2024',
-            'estado' => 'Invitado',
+            'gestion' => 'I-2022',
+            'estado' => 'Habilitado',
             'grupo' => '1',
             'materia' => '2',
             'docente' => "2"
@@ -41,8 +42,8 @@ class DocmateriaSeeder extends Seeder
 
         DB::table('docmaterias')->insert([
             'inscritos' => '40',
-            'gestion' => 'II-2024',
-            'estado' => 'Invitado',
+            'gestion' => 'I-2022',
+            'estado' => 'Habilitado',
             'grupo' => '1',
             'materia' => '3',
             'docente' => "3"
@@ -50,8 +51,8 @@ class DocmateriaSeeder extends Seeder
 
         DB::table('docmaterias')->insert([
             'inscritos' => '50',
-            'gestion' => 'I-2024',
-            'estado' => 'Titular',
+            'gestion' => 'I-2022',
+            'estado' => 'Habilitado',
             'grupo' => '2',
             'materia' => '4',
             'docente' => "3"

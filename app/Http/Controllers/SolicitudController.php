@@ -1,16 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Log;
+use App\Models\Ambiente;
+use App\Models\Ubicacion;
 use App\Models\Docmateria;
 use App\Models\Grupo;
 use App\Models\Materia;
-use Illuminate\Http\Request;
 use App\Models\Solicitud;
-use App\Models\Ubicacion;
+use App\Models\User;
+use Illuminate\Http\Client\ResponseSequence;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Validator;
+use App\Http\Requests\SolicitudCreateRequest;
 
 class SolicitudController extends Controller
 {
@@ -21,23 +29,26 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        // $solicitudes = Solicitud:: all();
-
+        // $solicitudes = Solicitud::all();
+        // return view('admin.reservas.index', compact('solicitudes'));
         abort_if(Gate::denies('solicitud_index'), 403);
         $solicitudes = DB::table('solicitudes')
-        ->join('docmaterias', 'solicitudes.docmateria_id', '=', 'docmaterias.id')
-        ->join('users', 'docmaterias.docente', '=', 'users.id')
-        ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
-         // ->join('materias', 'materias.id', '=', 'solicitudes.id')
-        ->where('solicitudes.estado', '=', 'pendiente')
-           // ->join('grupos', 'grupos.id', '=', 'solicitudes.id')
-        ->select('name', 'num_ambiente','solicitudes.*')
-        ->get();
-        //  dd($solicitudes->all());
+
+            ->join('docmaterias', 'solicitudes.docmateria_id', '=', 'docmaterias.id')
+            ->join('users', 'docmaterias.docente', '=', 'users.id')
+
+            ->join('ambientes', 'solicitudes.ambiente', '=', 'ambientes.id')
+            // ->join('materias', 'materias.id', '=', 'solicitudes.id')
+
+            ->where('solicitudes.estado', '=', 'pendiente')
+
+            // ->join('grupos', 'grupos.id', '=', 'solicitudes.id')
+            ->select('name', 'num_ambiente','solicitudes.*')
+            ->get();
+          //  dd($solicitudes->all());
         // $solicitudes = solicitud::all();
 
         return view('admin.solicitudes.index', compact('solicitudes'));
-
     }
 
     /**
@@ -72,6 +83,7 @@ class SolicitudController extends Controller
         ->get();
         //dd($materiaUnidas);
         return view('admin.solicitudes.create',compact('ambientes','grupos', 'materias', 'materiaUnidas', 'grupoUnidas','ubicaciones'));
+
     }
 
     /**public function getGrupos(Request $request){
@@ -93,7 +105,8 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        /* $validator = Validator::make($request->all(), [
+        //
+       /* $validator = Validator::make($request->all(), [
             'title' => [
                 'required',
                 'max:255',
@@ -104,32 +117,49 @@ class SolicitudController extends Controller
                 },
             ],
         ]);*/
-
         $docmaterias = Docmateria::all();
+
+
         $solicitud = new Solicitud($request->all());
+
+
         $solicitud -> estado = "pendiente";
         $id = $request->ambiente;
-        $cantidad = DB::table('ambientes')
-        ->where('id', $id)
-        ->first();
 
-            if(($request->cantidad)>($cantidad->capacidad)){
-                return back()->withInput($request->all())->withErrors([
+        $cantidad = DB::table('ambientes')
+            ->where('id', $id)
+            ->first();
+
+        if(($request->cantidad)>($cantidad->capacidad)){
+            return back()->withInput($request->all())->withErrors([
                 'message' => 'La cantidad excede la capacidad del ambiente'
             ]);
-            }else{
-                if(strtotime($request->hora_ini)>=strtotime($request->hora_fin)){
-                    return back()->withInput()->withErrors([
-                    'message' => 'La hora final es igual o mayor al horario de inicio'
-                ]);
-                }else{
-                $solicitud->save();
-                }
-            }
-  //   dd($request->all());
+
+        }else{
+           if(strtotime($request->hora_ini)>=strtotime($request->hora_fin)){
+            return back()->withInput()->withErrors([
+                'message' => 'La hora final es igual o mayor al horario de inicio'
+            ]);
+           }else{
+
+             $solicitud->save();
+            //return redirect()->back();
+           }
+        }
+
+
+
+
+     //   dd($request->all());
+
+
+
+
+
         return Redirect()->route('solicitudes.create');
 
     }
+
 
     /**
      * Display the specified resource.
@@ -162,10 +192,10 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
+        //
         /*abort_if(Gate::denies('solicitud_aceptar'), 403);
         abort_if(Gate::denies('solicitud_rechazar'), 403);
         abort_if(Gate::denies('solicitud_sugerir'), 403);*/
-
         $solicitud->fill($request->all());
         $solicitud->save();
 
@@ -182,36 +212,40 @@ class SolicitudController extends Controller
      */
     public function destroy(Solicitud $solicitud)
     {
-
+        //
     }
-    public function getCantidades(Request $request)
-    {
+    public function getCantidades(Request $request){
+
+      //  $solicitudes = Solicitud::where('ambiente', $ambienteId)->first();
         if($request->ajax()){
-            $cantidades = Docmateria::where('id', $request->docmateria_id)->first();
+           $cantidades = Docmateria::where('id', $request->docmateria_id)->first();
+            //$cantidades = '5';
+
             return response()->json($cantidades);
         }
+
     }
 
     public function getAmbientes (Request $request){
 
-        if($request->ajax()){
 
-            $ambientes = DB::table('ambientes')
-            ->where('ubicacion', $request->ubicacion_id)
-            ->where('estado','=','Habilitado')
-            ->get();
-            $datos = DB::table('ambientes')
-            ->where('ubicacion', $request->ubicacion_id)
-            ->where('estado','=','Habilitado')
-            ->count();
-      //  Ambiente::where('ubicacion', $request->ubicacion_id)->where('estado','=','Habilitado')>get();
+
+            if($request->ajax()){
+
+                $ambientes = DB::table('ambientes')
+                ->where('ubicacion', $request->ubicacion_id)
+                ->where('estado','=','Habilitado')
+                ->get();
+                $datos = DB::table('ambientes')
+                ->where('ubicacion', $request->ubicacion_id)
+                ->where('estado','=','Habilitado')
+                ->count();
+            //  Ambiente::where('ubicacion', $request->ubicacion_id)->where('estado','=','Habilitado')>get();
             if($datos == 0)  {
-                $ambientesArray =  [
+                    $ambientesArray =  [
                 0=> "1",
-
-            ];
+                ];
             return response()->json($ambientesArray);
-
             }else{
                 foreach($ambientes as $ambiente){
                     $ambientesArray[$ambiente->id] = $ambiente->num_ambiente;
