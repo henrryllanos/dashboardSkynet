@@ -56,7 +56,7 @@ class AmbientesReservadasController extends Controller
             $newAmbiente->codigo = $request->codigo;
             $newAmbiente->num_ambiente = $request->num_ambiente;
             $newAmbiente->capacidad = $request->capacidad;
-            $newAmbiente->sector = $request->sector;
+            $newAmbiente->ubicacion = $request->ubicacion;
             $newAmbiente->estado = $request->estado;
             $newAmbiente->save();
 
@@ -138,7 +138,7 @@ class AmbientesReservadasController extends Controller
         $ambiente = Ambiente::find($ambienteId);
         $ambiente->num_ambiente = $request->num_ambiente;
         $ambiente->capacidad = $request->capacidad;
-        $ambiente->sector = $request->sector;
+        $ambiente->ubicacion = $request->ubicacion;
         $ambiente->estado = $request->estado;
         $ambiente->save();
 

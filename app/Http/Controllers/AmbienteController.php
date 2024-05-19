@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ambiente;
 use App\Models\Solicitud;
-use App\Models\Sector;
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,27 +53,27 @@ class AmbienteController extends Controller
             return view('admin.ambientesR.index', compact('ambientes'))->with('tipo', "admin");
 
         }
-        //esta es la consulta de la tabla sectores con ambientes
+        //esta es la consulta de la tabla ubicaciones con ambientes
         abort_if(Gate::denies('ambiente_index'), 403);
         $ambientes =  DB::table('ambientes')
-        ->join('sectors', 'ambientes.sector', '=', 'sectors.id')
-        ->select('ambientes.*','sectors.nombre')
+        ->join('ubicaciones', 'ambientes.ubicacion', '=', 'ubicaciones.id')
+        ->select('ambientes.*','ubicaciones.nombre')
         ->orderBy('id','asc')
         ->get();
        // dd(ambiente);
-        $sector = DB::table('sectors')->get();
-        return view('admin.ambientes.index', compact('ambientes', 'sector'))->with('tipo', "all");
+        $ubicacion = DB::table('ubicaciones')->get();
+        return view('admin.ambientes.index', compact('ambientes', 'ubicacion'))->with('tipo', "all");
     }
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
          abort_if(Gate::denies('ambiente_create'), 403);
-         $sectors = Sector::all()->pluck('nombre', 'id');
+         $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
         return view('admin.ambientes.create');
     }
 
@@ -92,7 +92,7 @@ class AmbienteController extends Controller
             $newAmbiente->codigo = $request->codigo;
             $newAmbiente->num_ambiente = $request->num_ambiente;
             $newAmbiente->capacidad = $request->capacidad;
-            $newAmbiente->sector = $request->sector;
+            $newAmbiente->ubicacion = $request->ubicacion;
             $newAmbiente->estado = $request->estado;
 
             $ambiente = Ambiente::where('codigo', $request->codigo)->first();
@@ -195,7 +195,7 @@ class AmbienteController extends Controller
         $ambiente = Ambiente::find($ambienteId);
         $ambiente->num_ambiente = $request->num_ambiente;
         $ambiente->capacidad = $request->capacidad;
-        $ambiente->sector = $request->sector;
+        $ambiente->ubicacion = $request->ubicacion;
         $ambiente->estado = $request->estado;
 
 
