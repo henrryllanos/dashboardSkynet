@@ -93,16 +93,6 @@ Route::delete('/ambientesR/{ambienteId}/deleteReservadas', [App\Http\Controllers
 
 Route::get('/ubicacionesambientes', [App\Http\Controllers\SolicitudController::class, 'getAmbientes']);
 
-
-//Rutas de las Solicitudes
-
-
-Route::get('/solicitudes/index', [App\Http\Controllers\SolicitudController::class, 'index'])
-    ->name('admin.solicitudes.index');
-
-Route::get('/solicitudesR/create', [App\Http\Controllers\SolicitudController::class, 'create'])
-    ->name('admin.solicitudes.create');
-
 Route::get('/cantidades', [App\Http\Controllers\SolicitudController::class, 'getCantidades']);
 
 
@@ -158,12 +148,6 @@ Route::resource('solicitudes', SolicitudController::class, [
         'create' => 'solicitudes.create'
     ]
 ])->middleware('auth.user');
-
-Route::get('solicitudes', [SolicitudController::class, 'index'])
-->name('admin.solicitudes.index');
-
-Route::get('solicitudes', [SolicitudController::class, 'create'])
-->name('admin.solicitudes.create');
 
 
 //Notificaciones

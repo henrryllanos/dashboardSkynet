@@ -1,7 +1,7 @@
 
             @can('solicitud_index')
-            <li class="nav-item {{ request()->is('solicitar') ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('admin.solicitudes.index')}}">
+            <li class="nav-item {{ request()->is('solicitudes') ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('solicitudes')}}">
                     {{-- <i class="fas fa-fw fa-tachometer-alt"></i> --}}
                     {{-- <i class="bi bi-123"></i> --}}
                     <span>{{ __('Lista de Solicitudes') }}</span>

@@ -37,9 +37,8 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Codigo Sis</th>
                 <th scope="col">Correo</th>
-                <th scope="col">Departamento</th>
                 <th scope="col">Estado</th>
-                <!-- <th scope="col">Rol</th> -->
+                <th scope="col">Rol</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -50,15 +49,14 @@
                     <td>{{ @$user -> name }}</td>
                     <td>{{ @$user -> ci }}</td>
                     <td>{{ @$user -> email}}</td>
-                    <td>{{ @$user -> departamento }}</td>
                     <td>{{ @$user -> estadoCuenta}}</td>
-                    <!-- <td>
+                    <td>
                         @forelse ($user->roles as $role)
                         <span class="badge badge-info">{{ $role->name }}</span>
                         @empty
                         <span class="badge badge-danger">No roles</span>
                         @endforelse
-                    </td> -->
+                    </td>
                     <td>
                         @can('user_edit')
                         <a type="button" class="btn btn-primary" href="{{ route('admin.usuarios.edit', $user->id)}}">
