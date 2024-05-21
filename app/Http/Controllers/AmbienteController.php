@@ -69,9 +69,12 @@ class AmbienteController extends Controller
      */
     public function create()
     {
-        abort_if(Gate::denies('ambiente_create'), 403);
-        $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
-        return view('admin.ambientes.create');
+        // abort_if(Gate::denies('ambiente_create'), 403);
+        // $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
+
+        $ubicaciones = Ubicacion::all();
+
+        return view('admin.ambientes.create', compact('ubicaciones'));
     }
 
     /**

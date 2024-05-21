@@ -167,7 +167,10 @@ Route::get('notidicaciones', [NotificacionController::class, 'store'])
 
 //Rutas de Materias
 Route::get('/materias/index', [App\Http\Controllers\MateriaController::class, 'index'])
-->name('admin.materias,index');
+->name('admin.materias.index');
+
+Route::get('/materias/create', [App\Http\Controllers\MateriaController::class, 'create'])
+->name('admin.materias.create');
 
 Route::post('/materias/store', [App\Http\Controllers\MateriaController::class, 'store'])
 ->name('admin.materias.store');

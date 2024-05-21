@@ -2,9 +2,9 @@
 
 
 @section('title1')
-    <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal" data-target="#modalCrear">
+    <!-- <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal" data-target="#modalCrear">
         Crear materia
-    </button>
+    </button> -->
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
             Lista de Materias Creadas

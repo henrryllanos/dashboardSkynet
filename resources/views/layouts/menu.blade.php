@@ -24,6 +24,14 @@
             </li>
             @endcan
 
+            @can('ambiente_create')
+            <li class="nav-item {{ request()->is('ambientes*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('admin.ambientes.create')}}">
+                        <span>{{ __('Crear Ambientes') }}</span>
+                    </a>
+            </li>
+            @endcan
+
             @can('ambienteR_index')
             <li class="nav-item  {{ request()->is('ambientesR') ? 'active' : '' }}" >
                 <a class="nav-link" href="{{ route('admin.ambientes.index', ['tipo'=> 'admin']) }}">
@@ -33,8 +41,15 @@
 
             @can('materia_index')
             <li class="nav-item {{ request()->is('solicitar*')  ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.materias,index', ['tipo' => 'admin']) }}">
+                <a class="nav-link" href="{{ route('admin.materias.index', ['tipo' => 'admin']) }}">
                     <span>{{ __('Listas Materias') }}</span></a>
+            </li>
+            @endcan
+
+            @can('materia_create')
+            <li class="nav-item {{ request()->is('solicitar*')  ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.materias.create') }}">
+                    <span>{{ __('Crear Materias') }}</span></a>
             </li>
             @endcan
 

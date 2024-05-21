@@ -49,7 +49,10 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('materia_create'), 403);
+        $materias = Materia::all()->pluck('nombre', 'id');
+
+        return view('admin.materias.create', compact('materias'));
     }
 
     /**

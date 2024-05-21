@@ -1,12 +1,13 @@
 @extends('layouts.app')
+
 @section('title1')
-    <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal"
+    <!-- <button type="button" class="btn btn-dark" style="background-color: #1D3354" data-toggle="modal"
             data-target="#modalCrear">
         Registro de Ambiente
-    </button>
-    <div class="d-flex justify-content-center">
+    </button> -->
+    <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            Ambientes
+            Lista de Ambientes Creadas
         </h2>
     </div>
 @endsection
