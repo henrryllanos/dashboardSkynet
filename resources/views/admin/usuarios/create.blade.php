@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('title1')
-
+    <div class="d-flex justify-content-center">
+        <h2>
+            Crear Usuarios
+        </h2>
+    </div>
 @endsection
 
 @section('title2')
-    <h4 class="card-title"> Ingresar Datos</h4>
+    <h4 class="card-title"> Ingresar Datos de Usuarios</h4>
 @endsection
 
 @section('content')

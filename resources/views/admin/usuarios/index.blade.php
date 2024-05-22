@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('title1')
-    <a type="button" class="btn btn-dark" style="background-color: #1D3354; padding-top: 0.8%" href="{{ route('admin.usuarios.create')}}">
+    <!-- <a type="button" class="btn btn-dark" style="background-color: #1D3354; padding-top: 0.8%" href="{{ route('admin.usuarios.create')}}">
         Nuevo usuario
-    </a>
+    </a> -->
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
             Usuarios Registrados

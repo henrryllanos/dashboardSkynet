@@ -92,6 +92,7 @@ class AmbienteController extends Controller
             $newAmbiente->codigo = $request->codigo;
             $newAmbiente->num_ambiente = $request->num_ambiente;
             $newAmbiente->capacidad = $request->capacidad;
+            $newAmbiente->facultad = $request->facultad;
             $newAmbiente->ubicacion = $request->ubicacion;
             $newAmbiente->estado = $request->estado;
 
@@ -193,6 +194,7 @@ class AmbienteController extends Controller
         $ambiente = Ambiente::find($ambienteId);
         $ambiente->num_ambiente = $request->num_ambiente;
         $ambiente->capacidad = $request->capacidad;
+        $ambiente->facultad = $request->facultad;
         $ambiente->ubicacion = $request->ubicacion;
         $ambiente->estado = $request->estado;
 
@@ -200,7 +202,7 @@ class AmbienteController extends Controller
         //esto sirve para que no se repitan los datos
         $ambiente2 = Ambiente::where('num_ambiente', $request->num_ambiente)->first();
             if(empty($ambiente2)){
-                 $ambiente->save();
+                $ambiente->save();
                 return redirect()->back();
             }else{
 

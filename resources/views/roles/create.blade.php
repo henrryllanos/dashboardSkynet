@@ -2,7 +2,15 @@
 @extends('layouts.app')
 
 @section('title1')
+    <div class="d-flex justify-content-center">
+        <h2>
+            Crear Roles
+        </h2>
+    </div>
+@endsection
 
+@section('title2')
+    <h4 class="card-title"> Ingresar Datos de Rol</h4>
 @endsection
 
 @section('content')
@@ -14,11 +22,7 @@
                     <form method="POST" action="{{ route('roles.store') }}" class="form-horizontal">
                         @csrf
                         <div class="card ">
-                            <!--Header-->
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">Crear Rol</h4>
-                                <p class="card-category">Ingresar datos del rol</p>
-                            </div>
+
                             <!--End header-->
                             <!--Body-->
                             <div class="card-body">

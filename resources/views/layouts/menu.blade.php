@@ -64,7 +64,14 @@
             @can('user_index')
             <li class="nav-item {{ request()->is('usuarios')  ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('admin.usuarios.index')}}">
-                    <span>{{ __('Registrar Usuarios') }}</span></a>
+                    <span>{{ __('Lista de Usuarios') }}</span></a>
+            </li>
+            @endcan
+
+            @can('user_create')
+            <li class="nav-item {{ request()->is('usuarios')  ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('admin.usuarios.create')}}">
+                    <span>{{ __('Crear Usuarios') }}</span></a>
             </li>
             @endcan
 
@@ -80,6 +87,13 @@
             <li class="nav-item {{ request()->is('roles') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('roles.index') }}" >
                     <span>{{ __('Roles') }}</span></a>
+            </li>
+            @endcan
+
+            @can('role_create')
+            <li class="nav-item {{ request()->is('roles') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('roles.create') }}" >
+                    <span>{{ __('Create Roles') }}</span></a>
             </li>
             @endcan
         </ul>

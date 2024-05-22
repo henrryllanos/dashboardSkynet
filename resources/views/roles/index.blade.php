@@ -3,9 +3,9 @@
 
 @section('title1')
 
-    @can('role_create')
+    <!-- @can('role_create')
     <a href="{{ route('roles.create') }}" type="button" class="btn btn-dark" style="background-color: #1D3354; padding-top: 0.8%">Crear Rol</a>
-    @endcan
+    @endcan -->
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
             Tabla de Roles
