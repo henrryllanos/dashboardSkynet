@@ -20,7 +20,6 @@ class AmbienteSeeder extends Seeder
         $estado = ["Habilitado", "Deshabilitado", "Mantenimiento"];
         for ($i = 0; $i < 10; $i++) {
             DB::table('ambientes')->insert([
-                'codigo' => rand(1,100)*1000,
                 'num_ambiente' => rand(1, 30)*10 . $letras[rand(0,7)],
                 'capacidad' => rand(10, 40)*10,
                 'ubicacion' => $ubicaciones[rand(0, 3)],

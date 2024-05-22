@@ -23,17 +23,6 @@
                         <div class="card">
                             <div class="card-body">
                             <div class="row">
-                                <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Ingrese nombre de ambiente" value="{{old('codigo')}}" autofocus minlength="5" maxlength="15"
-                                    onkeypress="return blockSpecialChar(event)">
-                                    @if ($errors->has('codigo'))
-                                        <span class="error text-danger" for="input-codigo" style="font-size: 15px">{{ $errors->first('codigo') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="row">
                                 <label for="num_ambiente" class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" name="num_ambiente" id="num_ambiente" placeholder="Ingrese nombre de ambiente" value="{{old('num_ambiente')}}" autofocus minlength="1" maxlength="15"

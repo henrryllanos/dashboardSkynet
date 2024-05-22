@@ -6,11 +6,9 @@ use App\Models\Ambiente;
 use App\Models\Solicitud;
 use App\Models\Ubicacion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use SebastianBergmann\Environment\Console;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Validation\Rule;
 
 class AmbienteController extends Controller
 {
@@ -86,17 +84,21 @@ class AmbienteController extends Controller
 
     public function store(Request $request)
     {
+        // Eliminar espacios en blanco antes de la validación
+        $num_nombre = trim($request->input('num_nombre'));
+
+
+
         abort_if(Gate::denies('ambiente_create'), 403);
             $newAmbiente= new Ambiente();
 
-            $newAmbiente->codigo = $request->codigo;
             $newAmbiente->num_ambiente = $request->num_ambiente;
             $newAmbiente->capacidad = $request->capacidad;
             $newAmbiente->facultad = $request->facultad;
             $newAmbiente->ubicacion = $request->ubicacion;
             $newAmbiente->estado = $request->estado;
 
-            $ambiente = Ambiente::where('codigo', $request->codigo)->first();
+
             $ambiente2 = Ambiente::where('num_ambiente', $request->num_ambiente)->first();
             if(empty($ambiente) && empty($ambiente2)){
                 $newAmbiente->save();
@@ -104,7 +106,7 @@ class AmbienteController extends Controller
             }else{
 
                 return back()->withInput()->withErrors([
-                    'message' => 'Error, el codigo o numero de ambiente ingresado ya existe'
+                    'message' => 'Error, el  numero de ambiente ingresado ya existe'
                 ]);
             }
 
@@ -212,7 +214,7 @@ class AmbienteController extends Controller
             }
 
 
-       return redirect()->back();
+        return redirect()->back();
     }
 
     /**
