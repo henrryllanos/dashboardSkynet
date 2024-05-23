@@ -1,24 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use Log;
-use App\Models\Ambiente;
+
+
 use App\Models\Ubicacion;
 use App\Models\Docmateria;
 use App\Models\Grupo;
 use App\Models\Materia;
 use App\Models\Solicitud;
-use App\Models\User;
-use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Validator;
-use App\Http\Requests\SolicitudCreateRequest;
 
 class SolicitudController extends Controller
 {
@@ -106,7 +99,7 @@ class SolicitudController extends Controller
     public function store(Request $request)
     {
         //
-       /* $validator = Validator::make($request->all(), [
+        /* $validator = Validator::make($request->all(), [
             'title' => [
                 'required',
                 'max:255',
@@ -136,25 +129,18 @@ class SolicitudController extends Controller
             ]);
 
         }else{
-           if(strtotime($request->hora_ini)>=strtotime($request->hora_fin)){
-            return back()->withInput()->withErrors([
+            if(strtotime($request->hora_ini)>=strtotime($request->hora_fin)){
+                return back()->withInput()->withErrors([
                 'message' => 'La hora final es igual o mayor al horario de inicio'
             ]);
-           }else{
+            }else{
 
-             $solicitud->save();
+            $solicitud->save();
             //return redirect()->back();
-           }
+            }
         }
 
-
-
-
      //   dd($request->all());
-
-
-
-
 
         return Redirect()->route('solicitudes.create');
 

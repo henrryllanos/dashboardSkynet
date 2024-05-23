@@ -63,14 +63,16 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
-        abort_if(Gate::denies('materia_create'), 403);
-        $validator = Validator::make($request->all(),[
-            'codigo' => 'required|unique:materias,codigo',
+          // Validar la entrada
+          abort_if(Gate::denies('materia_create'), 403);
+          $request->validate([
+            'codigo' => 'required|integer|max:9999|unique:materias,codigo',
             'nombre' => 'required|string|max:255|unique:materias,nombre',
             'carrera' => 'required|string|min:1|max:255',
             'tipo' => 'required',
             'nivel' => 'required'
         ]);
+
 
         $newMateria = new Materia();
 

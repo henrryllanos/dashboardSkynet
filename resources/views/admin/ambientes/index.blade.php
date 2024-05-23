@@ -13,9 +13,10 @@
 @endsection
 
 @section('content')
-<div class="card-body">
+
+    <div class="card-body">
         @if(session('success'))
-        <div class="alert alert-success" role="success">
+        <div class="alert alert-success" ambiente2="success">
             {{ session('success') }}
         </div>
         @endif

@@ -79,11 +79,11 @@
                                     </div>
                                     --}}
 
-                                    <div class="col-6">
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
                                                     Horario ini:
-                                            </label>
+                                                </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
@@ -105,9 +105,9 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                    </div>
+                                        </div>
 
-                                    <div class="col-6">
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
                                                         Ubicacion del ambiente:

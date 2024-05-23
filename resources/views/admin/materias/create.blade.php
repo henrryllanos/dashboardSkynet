@@ -24,43 +24,44 @@
                             <div class="row">
                                 <label for="codigo" class="col-sm-2 col-form-label">Codigo Materia</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Ingrese codigo de Materia" value="{{old('codigo')}}" autofocus minlength="1" maxlength="5"
-                                    onkeypress="return blockSpecialChar(event)">
-                                    @if ($errors->has('codigo'))
-                                        <span class="error text-danger" for="input-codigo" style="font-size: 15px">{{ $errors->first('codigo') }}</span>
-                                    @endif
+                                    <input type="text" class="form-control @error('codigo') is-invalid @enderror" id="codigo" name="codigo" value="{{ old('codigo') }}" placeholder="Ingrese codigo de Materia"
+                                    autofocus minlength="1" maxlength="5" onkeypress="return blockSpecialChar(event)">
+                                    @error('codigo')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label for="nombre" class="col-sm-2 col-form-label">Nombre Materia</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese nombre de Materia" value="{{old('nombre')}}" autofocus minlength="1" maxlength="15"
-                                    onkeypress="return blockSpecialChar(event)">
-                                    @if ($errors->has('nombre'))
-                                        <span class="error text-danger" for="input-nombre" style="font-size: 15px">{{ $errors->first('nombre') }}</span>
-                                    @endif
+                                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Ingrese nombre de Materia"
+                                    autofocus minlength="1" maxlength="15" onkeypress="return blockSpecialChar(event)">
+                                    @error('nombre')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label for="carrera" class="col-sm-2 col-form-label">Carrera</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="carrera" placeholder="Ingrese la carrera" value="{{ old('carrera') }}" required minlength="1" maxlength="35"
-                                    onkeypress="return blockNoNumber(event)">
-                                    @if ($errors->has('carrera'))
-                                        <span class="error text-danger" for="input-ci" style="font-size: 15px">{{ $errors->first('carrera') }}</span>
-                                    @endif
+                                    <input type="text" class="form-control @error('carrera') is-invalid @enderror" id="carrera" name="carrera" value="{{ old('carrera') }}" placeholder="Ingrese nombre de Carrera"
+                                    autofocus minlength="1" maxlength="35" onkeypress="return blockSpecialChar(event)">
+                                    @error('carrera')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label for="nivel" class="col-sm-2 col-form-label">Nivel</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="nivel" placeholder="Ingrese el nivel" value="{{ old('nivel') }}" required minlength="1" maxlength="1"  >
-                                    @if ($errors->has('nivel'))
-                                        <span class="error text-danger" for="input-nivel" style="font-size: 15px">{{ $errors->first('nivel') }}</span>
-                                    @endif
+                                    <input type="text" class="form-control @error('nivel') is-invalid @enderror" id="nivel" name="nivel" value="{{ old('nivel') }}" placeholder="Ingrese el nivel"
+                                    autofocus minlength="1" maxlength="1" onkeypress="return blockSpecialChar(event)">
+                                    @error('nivel')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 

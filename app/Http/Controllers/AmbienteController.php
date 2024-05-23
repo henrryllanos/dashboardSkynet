@@ -71,8 +71,9 @@ class AmbienteController extends Controller
         // $ubicaciones = Ubicacion::all()->pluck('nombre', 'id');
 
         $ubicaciones = Ubicacion::all();
+        $facultades = Ambiente::all();
 
-        return view('admin.ambientes.create', compact('ubicaciones'));
+        return view('admin.ambientes.create', compact('ubicaciones', 'facultades'));
     }
 
     /**
@@ -87,7 +88,11 @@ class AmbienteController extends Controller
         // Eliminar espacios en blanco antes de la validación
         $num_nombre = trim($request->input('num_nombre'));
 
-
+        // Validar la entrada
+        $request->validate([
+            'num_ambiente' => 'required|string|max:255',
+            'capacidad' => 'required|integer|max:999',
+        ]);
 
         abort_if(Gate::denies('ambiente_create'), 403);
             $newAmbiente= new Ambiente();
@@ -110,7 +115,9 @@ class AmbienteController extends Controller
                 ]);
             }
 
-            return redirect()->back();
+            // return redirect()->back();
+             // Redirigir con un mensaje de éxito
+        return redirect()->route('admin.ambientes.index', $ambiente2->id)->with('success', 'Ambiente creado exitosamente.');
     }
 
     public function delete(Request $request, $ambienteId)

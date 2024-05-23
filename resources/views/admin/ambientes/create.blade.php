@@ -14,6 +14,12 @@
 
 @section('content')
 
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+@endif
+
 <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -25,32 +31,35 @@
                             <div class="row">
                                 <label for="num_ambiente" class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="num_ambiente" id="num_ambiente" placeholder="Ingrese nombre de ambiente" value="{{old('num_ambiente')}}" autofocus minlength="1" maxlength="15"
-                                    onkeypress="return blockSpecialChar(event)">
-                                    @if ($errors->has('num_ambiente'))
-                                        <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
-                                    @endif
+                                    <input type="text" class="form-control @error('num_ambiente') is-invalid @enderror" id="num_ambiente" name="num_ambiente" value="{{ old('num_ambiente') }}" placeholder="Ingrese nombre de ambiente"
+                                    autofocus minlength="1" maxlength="15" onkeypress="return blockSpecialChar(event)">
+                                    @error('num_ambiente')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label for="capacidad" class="col-sm-2 col-form-label">Capacidad</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="capacidad" placeholder="Ingrese la Capacidad" value="{{ old('capacidad') }}" required minlength="1" maxlength="3"
-                                    onkeypress="return blockNoNumber(event)">
-                                    @if ($errors->has('capacidad'))
-                                        <span class="error text-danger" for="input-ci" style="font-size: 15px">{{ $errors->first('ci') }}</span>
-                                    @endif
+                                <input type="text" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad" value="{{ old('capacidad') }}" placeholder="Ingrese la capacidad"
+                                    autofocus minlength="1" maxlength="3" onkeypress="return blockSpecialChar(event)">
+                                    @error('capacidad')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label for="facultad" class="col-sm-2 col-form-label">Facultad</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="facultad" placeholder="Ingrese la facultad" value="{{ old('facultad') }}" required minlength="5" maxlength="35"  >
-                                    @if ($errors->has('facultad'))
-                                        <span class="error text-danger" for="input-facultad" style="font-size: 15px">{{ $errors->first('facultad') }}</span>
-                                    @endif
+                                    <select name="facultad" id="facultad" class="form-control" value="{{old('facultad')}}">
+                                    <option value="">-- Selecciona la facultad</option>
+                                    @foreach($facultades as $item)
+                                        <option value="{{$item->facultad}}">{{ $item->facultad}}</option>
+                                    @endforeach
+                                    </select>
+
                                 </div>
                             </div>
 
@@ -79,9 +88,13 @@
                                 </div>
                             </div>
                                             <!-- Boton de formulario -->
-                                        <div class="modal-footer justify-content-between">
+                                        <!-- <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
                                             <button type="submit" class="btn btn-primary">Aceptar</button>
+                                        </div> -->
+                                        <!-- Boton de formulario -->
+                                        <div class="card-footer ml-auto mr-auto">
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
                                         </div>
                                     </div>
                                 </form>
