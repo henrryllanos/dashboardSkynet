@@ -272,9 +272,8 @@
 
                 $.get('/ubicacionesambientes', {ubicacion_id: ubicacion_id}, function(ambientes){
 
-
                   //  alert(ambientes);
-                  if( ambientes.length == 1){
+                    if( ambientes.length == 1){
                     $('#ambiente').empty();
                         $('#ambiente').append("<option value='' disabled >No hay ambientes disponibles</option>");
                         console.log('hola2');
@@ -283,10 +282,9 @@
                     }else{
                         $('#ambiente').empty();
                         $('#ambiente').append("<option value='{{old('ambiente')}}' >Selecciona un ambiente</option>");
-                         $.each(ambientes, function(index, value){
+                        $.each(ambientes, function(index, value){
                         $('#ambiente').append("<option value='"+ index +"' >"+ value + "</option>")
-
-                         })
+                        })
                         console.log('hola1');
                     }
                 });

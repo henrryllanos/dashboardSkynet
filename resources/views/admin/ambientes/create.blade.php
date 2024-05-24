@@ -25,43 +25,43 @@
             <div class="row">
                 <div class="col-md-10" style="width: 12%;">
                     <form action="{{ route('admin.ambientes.store')}}" method="post" class="form-horizontal">
-                    {{ csrf_field() }}
+                        @csrf
                         <div class="card">
                             <div class="card-body">
-                            <div class="row">
-                                <label for="num_ambiente" class="col-sm-2 col-form-label">Nombre</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control @error('num_ambiente') is-invalid @enderror" id="num_ambiente" name="num_ambiente" value="{{ old('num_ambiente') }}" placeholder="Ingrese nombre de ambiente"
-                                    autofocus minlength="1" maxlength="15" onkeypress="return blockSpecialChar(event)">
-                                    @error('num_ambiente')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                <div class="row">
+                                    <label for="num_ambiente" class="col-sm-2 col-form-label">Nombre</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="num_ambiente" placeholder="Ingrese nombre de ambiente" value="{{ old('num_ambiente') }}"
+                                            autofocus minlength="1" maxlength="15" onkeypress="return blockSpecialChar(event)">
+                                            @if ($errors->has('num_ambiente'))
+                                                <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
+                                            @endif
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <label for="capacidad" class="col-sm-2 col-form-label">Capacidad</label>
-                                <div class="col-sm-7">
-                                <input type="text" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad" value="{{ old('capacidad') }}" placeholder="Ingrese la capacidad"
-                                    autofocus minlength="1" maxlength="3" onkeypress="return blockSpecialChar(event)">
-                                    @error('capacidad')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                <div class="row">
+                                    <label for="capacidad" class="col-sm-2 col-form-label">Capacidad</label>
+                                    <div class="col-sm-7">
+                                    <input type="text" class="form-control" name="capacidad" placeholder="Ingrese la capacidad" value="{{ old('capacidad') }}"
+                                        autofocus minlength="1" maxlength="3" onkeypress="return blockSpecialChar(event)">
+                                        @if ($errors->has('capacidad'))
+                                            <span class="error text-danger" for="input-capacidad" style="font-size: 15px">{{ $errors->first('capacidad') }}</span>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <label for="facultad" class="col-sm-2 col-form-label">Facultad</label>
-                                <div class="col-sm-7">
-                                    <select name="facultad" id="facultad" class="form-control" value="{{old('facultad')}}">
-                                    <option value="">-- Selecciona la facultad</option>
-                                    @foreach($facultades as $item)
-                                        <option value="{{$item->facultad}}">{{ $item->facultad}}</option>
-                                    @endforeach
-                                    </select>
-
+                                <div class="row">
+                                    <label for="facultad" class="col-sm-2 col-form-label">Facultad</label>
+                                    <div class="col-sm-7">
+                                        <select name="facultad" id="facultad" class="form-control" value="{{old('facultad')}}" required>
+                                        <option value="">-- Selecciona la facultad --</option>
+                                        <option value="Derecho" @if(old('facultad') == 'Derecho') selected @endif>Derecho</option>
+                                        <option value="Economia" @if(old('facultad') == 'Economia') selected @endif>Economia</option>
+                                        <option value="Fcyt" @if(old('facultad') == 'Fcyt') selected @endif>Fcyt</option>
+                                        <option value="Arquitectura" @if(old('arquitectura') == 'Arquitectura') selected @endif>Arquitectura</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
                             <div class="row">
                                 <label for="ubicaciones" class="col-sm-2 col-form-label">Ubicacion</label>
@@ -78,30 +78,25 @@
                             <div class="row">
                                 <label for="estado" class="col-sm-2 col-form-label">Estado</label>
                                 <div class="col-sm-7">
-                                <select name="estado" id="estado" class="form-control" value="{{old('sector')}}" required>
-                                    <option value="">-- Selecciona el estado--</option>
-
-                                    <option value="Habilitado" @if(old('estado') == 'Habilitado') selected @endif>Habilitado</option>
-                                    <option value="Deshabilitado" @if(old('estado') == 'Deshabilitado') selected @endif>Deshabilitado</option>
-                                    <option value="Mantenimiento" @if(old('estado') == 'Mantenimiento') selected @endif>Mantenimiento</option>
-                                </select>
+                                    <select name="estado" id="estado" class="form-control" value="{{old('sector')}}" required>
+                                        <option value="">-- Selecciona el estado--</option>
+                                        <option value="Habilitado" @if(old('estado') == 'Habilitado') selected @endif>Habilitado</option>
+                                        <option value="Deshabilitado" @if(old('estado') == 'Deshabilitado') selected @endif>Deshabilitado</option>
+                                        <option value="Mantenimiento" @if(old('estado') == 'Mantenimiento') selected @endif>Mantenimiento</option>
+                                    </select>
                                 </div>
                             </div>
-                                            <!-- Boton de formulario -->
-                                        <!-- <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Aceptar</button>
-                                        </div> -->
-                                        <!-- Boton de formulario -->
-                                        <div class="card-footer ml-auto mr-auto">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
-                    </div>
+                                <!-- Boton de formulario -->
+                                <div class="card-footer ml-auto mr-auto">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
+        </div>
+    </div>
 
 <script language="javascript">
     function doSearch() {
