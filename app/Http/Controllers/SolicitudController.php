@@ -110,12 +110,10 @@ class SolicitudController extends Controller
                 },
             ],
         ]);*/
+
+
         $docmaterias = Docmateria::all();
-
-
         $solicitud = new Solicitud($request->all());
-
-
         $solicitud -> estado = "pendiente";
         $id = $request->ambiente;
 
@@ -134,16 +132,12 @@ class SolicitudController extends Controller
                 'message' => 'La hora final es igual o mayor al horario de inicio'
             ]);
             }else{
-
             $solicitud->save();
             //return redirect()->back();
             }
         }
-
      //   dd($request->all());
-
         return Redirect()->route('solicitudes.create');
-
     }
 
 

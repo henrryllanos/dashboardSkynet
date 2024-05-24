@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('title1')
+    sistema de reserva
+@endsection
+
+@section('title2')
+
+@endsection
 
 @section('content')
 
@@ -19,14 +26,5 @@
 
 @section('footer')
 
-
-
 @endsection
 
-@section('title1')
-    sistema de reserva
-@endsection
-
-@section('title2')
-    asas
-@endsection

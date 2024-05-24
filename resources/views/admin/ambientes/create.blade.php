@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                            <div class="row">
                                     <label for="facultad" class="col-sm-2 col-form-label">Facultad</label>
                                     <div class="col-sm-7">
                                         <select name="facultad" id="facultad" class="form-control" value="{{old('facultad')}}" required>
@@ -58,7 +58,7 @@
                                         <option value="Derecho" @if(old('facultad') == 'Derecho') selected @endif>Derecho</option>
                                         <option value="Economia" @if(old('facultad') == 'Economia') selected @endif>Economia</option>
                                         <option value="Fcyt" @if(old('facultad') == 'Fcyt') selected @endif>Fcyt</option>
-                                        <option value="Arquitectura" @if(old('arquitectura') == 'Arquitectura') selected @endif>Arquitectura</option>
+                                        <option value="Arquitectura" @if(old('Arquitectura') == 'Arquitectura') selected @endif>Arquitectura</option>
                                         </select>
                                     </div>
                                 </div>

@@ -142,6 +142,13 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Añadir estos enlaces en el <head> de tu layout principal -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- Añadir estos enlaces antes del cierre de la etiqueta </body> de tu layout principal -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
 {{-- <script src="{{ asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script> --}}
@@ -150,7 +157,6 @@
 <!-- Scripts -->
 @yield('script')
 
-<script src="{{ asset('js/app.js') }}"></script>
 
 
 </body>

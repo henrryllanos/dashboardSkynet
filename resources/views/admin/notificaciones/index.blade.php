@@ -5,7 +5,7 @@
 @section('content')
 
 <h2>
-   LISTA DE NOTIFICACIONES
+    LISTA DE NOTIFICACIONES
 </h2>
 <div class="card-body">
     <div class="table-responsive">
