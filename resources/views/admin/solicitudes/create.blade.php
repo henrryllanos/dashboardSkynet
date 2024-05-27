@@ -99,7 +99,7 @@
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
                                                             @foreach(range(06, 23) as $hora)
-                                                                <option value="{{ $hora }}:45">{{ $hora }}:45</option>
+                                                                <option value="{{ $hora }}:45">{{ $hora }}:00</option>
                                                             @endforeach
                                                     </select>
                                                     @error('hora_ini')
@@ -137,12 +137,12 @@
                                                 <div class="input-group">
                                                     <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
-                                                    {{-- <input type="date" id="birthday" name="hora_ini" type="date" class="form-control"> --}}
+                                                    {{-- <input type="date" id="birthday" name="hora_fin" type="date" class="form-control"> --}}
                                                     <select class="form-select @error('hora_fin') is-invalid @enderror" id="hora_fin" name="hora_fin">
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
                                                                 @foreach(range(06, 23) as $hora)
-                                                                    <option value="{{ $hora }}:15">{{ $hora }}:15</option>
+                                                                    <option value="{{ $hora }}:00">{{ $hora }}:00</option>
                                                                 @endforeach
                                                             </select>
                                                             @error('hora_fin')
