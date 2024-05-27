@@ -16,7 +16,6 @@ use Spatie\Permission\Models\Role;
 class UsuariosRController extends Controller
 {
     //
-    //
     public function index()
     {
         abort_if(Gate::denies('user_index'), 403);

@@ -3,7 +3,7 @@
 @section('title1')
     <div class="d-flex justify-content-center">
         <h2>
-            Crear Ambientes
+            Registrar Ambientes
         </h2>
     </div>
 @endsection

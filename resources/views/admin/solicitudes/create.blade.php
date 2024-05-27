@@ -1,5 +1,12 @@
 
 @extends('layouts.app')
+@section('title1')
+    <div class="d-flex justify-content-center">
+        <h2>
+            Reserva de Ambiente
+        </h2>
+    </div>
+@endsection
 @section('content')
 <?php
     $hora_ini   = ['1' => '6:45', '2' => '8:15'];
@@ -88,7 +95,7 @@
                                                     <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
                                                     {{-- <input type="date" id="birthday" name="hora_ini" class="form-control"> --}}
-                                                    <select class="form-select @error('hora_ini') is-invalid @enderror" type="date" id="hora_ini" name="hora_ini" multiple value="{{old('hora_ini')}} " required>
+                                                    <select class="form-select" type="date" id="hora_ini" name="hora_ini" multiple value="{{old('hora_ini')}} " required>
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
                                                             @foreach(range(06, 23) as $hora)
@@ -233,7 +240,33 @@
             </div>
         </div>
     </div>
+    <script>
+            var fecha = new Date();
+        var anio = fecha.getFullYear();
+        var dia = fecha.getDate();
+        var _mes = fecha.getMonth(); //viene con valores de 0 al 11
+        _mes = _mes + 1; //ahora lo tienes de 1 al 12
+        if (_mes < 10) //ahora le agregas un 0 para el formato date
+        {
+        var mes = "0" + _mes;
+        } else {
+        var mes = _mes.toString;
+        }
 
+        let fecha_minimo = anio + '-' + mes + '-' + dia; // Nueva variable
+
+        document.getElementById("fechaReserva").setAttribute('min',fecha_minimo);
+</script>
+<script type="text/javascript">
+
+    function blockNoNumber(e){
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ( (k >= 48 && k <= 57));
+        }
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @endsection
 
@@ -251,7 +284,6 @@
             }
         })
     })
-
     $(document).ready(function(){
         $('#ubicacion').on('change', function(){
             var ubicacion_id = $(this).val();
@@ -285,7 +317,7 @@
         $('#hora_ini').select2({
             placeholder: 'Selecciona hasta 4 horas de inicio',
             allowClear: true,
-            maximumSelectionLength: 4
+            maximumSelectionLength: 3
         });
 
         $('#hora_fin').select2({
@@ -294,4 +326,5 @@
         });
     });
 </script>
+
 @endsection

@@ -32,7 +32,8 @@ class AmbienteCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'codigo.required' => 'El codigo es requerido '
+            'codigo.required' => 'El codigo es requerido ',
+            'num_ambiente' => 'El numero o nombre de ambiente es requerido',
         ];
     }
 }

@@ -7,11 +7,10 @@
     </button> -->
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            Lista de Ambientes Creadas
+            Lista de Ambientes Registradas
         </h2>
     </div>
 @endsection
-
 @section('content')
 
     <div class="card-body">

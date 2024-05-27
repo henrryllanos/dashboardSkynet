@@ -30,6 +30,7 @@ class SolicitudCreateRequest extends FormRequest
             // Logic for findOrFail
             // 'username' => 'unique:users,username,'.$this->user.'|required',
             'ambiente' => 'required',
+            'message' => 'Tu solo puedes seleccionar 4 periodos'
 
             //'email' => Rule::unique('users')->where(function ($query) {
               //      return $query->where('account_id', 1);

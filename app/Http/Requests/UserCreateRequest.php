@@ -35,7 +35,9 @@ class UserCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre es requerido '
+            'name.required' => 'El campo nombre es obligatorio ',
+            'email.required' => 'El campo correo es obligatorio',
+            'password.required' => 'El campo contraña es obligatorio',
         ];
     }
 }

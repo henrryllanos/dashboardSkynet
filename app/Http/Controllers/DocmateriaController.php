@@ -78,14 +78,13 @@ class DocmateriaController extends Controller
 
             if(empty($materia)){
                 $newAsignacion->save();
-                return redirect()->back()->with('success','¡Exitoso!');
+                return redirect()->back()->with('success','!Materia y Docente asignado Exitosamente!');
             }else{
 
-                return back()->withInput()->withErrors([
-                    'No se pudo completar la asignación, materia y grupo ya propuestos'
-                ]);
+                return redirect()->back()->with('success','!Ya existe la asignación, materia y grupo!');
+
             }
-            return redirect()->back();
+            return redirect()->back()->with('success','!Ya existe la asignación, materia y grupo!');
     }
 
     public function update(Request $request, $docmateriaId)

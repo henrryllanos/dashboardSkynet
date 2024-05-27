@@ -146,6 +146,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'num_ambiente' => 'nombre de ambiente',
+        'ci' => 'codigo sis',
+        'name' => 'nombre',
+        'message' => 'Tu solo puedes seleccionar 4 periodos',
+    ],
 
 ];
