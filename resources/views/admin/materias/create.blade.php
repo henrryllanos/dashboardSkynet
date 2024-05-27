@@ -13,6 +13,11 @@
 
 @section('content')
 
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+@endif
 
     <div class="content">
         <div class="container-fluid">
@@ -36,8 +41,8 @@
                                 <div class="row">
                                     <label for="nombre" class="col-sm-2 col-form-label">Nombre Materia</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Ingrese nombre de Materia"
-                                        autofocus minlength="1" maxlength="15" onkeypress="return blockSpecialChar(event)">
+                                        <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" id="nombre" value="{{old('nombre')}}" placeholder="Ingrese nombre de Materia"
+                                        autofocus minlength="5" maxlength="35" onkeypress="return blockSpecialChar(event)">
                                         @error('nombre')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

@@ -64,8 +64,8 @@ class MateriaController extends Controller
     public function store(Request $request)
     {
           // Validar la entrada
-          abort_if(Gate::denies('materia_create'), 403);
-          $request->validate([
+        abort_if(Gate::denies('materia_create'), 403);
+        $request->validate([
             'codigo' => 'required|integer|max:9999|unique:materias,codigo',
             'nombre' => 'required|string|max:255|unique:materias,nombre',
             'carrera' => 'required|string|min:1|max:255',
@@ -90,15 +90,13 @@ class MateriaController extends Controller
         //    dd($materias2);
         if(empty($materias) && empty($materias2) ){
             $newMateria->save();
-            return redirect()->back();
+            return redirect()->back()->with('success','!Materia registrado Exitosamente!');
         }else{
 
-            return back()->withInput()->withErrors([
-                'message' => 'Error, El codigo o nombre de la materia ya esta registrado en la lista'
-            ]);
+            return redirect()->back()->with('success','!Ya existe el ambiente registrado!');
         }
 
-        return redirect()->back();
+            return redirect()->route('admin.materias.index', $materias2->id)->with('success', 'Materia creado exitosamente.');
     }
 
     /**

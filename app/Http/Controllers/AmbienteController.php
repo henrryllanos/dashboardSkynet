@@ -107,12 +107,14 @@ class AmbienteController extends Controller
             $ambiente2 = Ambiente::where('num_ambiente', $request->num_ambiente)->first();
             if(empty($ambiente) && empty($ambiente2)){
                 $newAmbiente->save();
-                return redirect()->back();
+                return redirect()->back()->with('success','!Ambiente registrado Exitosamente!');
             }else{
 
-                return back()->withInput()->withErrors([
-                    'message' => 'Error, el  numero de ambiente ingresado ya existe'
-                ]);
+                return redirect()->back()->with('success','!Ya existe el ambiente registrado!');
+
+                // return redirect()->back()->withErrors([
+                //     'message' => 'Error, el  numero de ambiente ingresado ya existe'
+                // ]);
             }
 
             // return redirect()->back();

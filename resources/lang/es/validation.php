@@ -151,6 +151,7 @@ return [
         'ci' => 'codigo sis',
         'name' => 'nombre',
         'message' => 'Tu solo puedes seleccionar 4 periodos',
+        // 'codigo' => 'El codigo de materia debe ser menor a 5 digitos'
     ],
 
 ];
