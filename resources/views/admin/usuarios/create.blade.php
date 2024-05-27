@@ -122,7 +122,7 @@
                                         </div>
                                             <!-- Boton de formulario -->
                                             <div class="card-footer ml-auto mr-auto">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                <button type="submit" class="btn btn-primary">Registrar</button>
                                             </div>
                                     </div>
                                 </form>
