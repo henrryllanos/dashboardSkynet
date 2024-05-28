@@ -132,12 +132,13 @@ class SolicitudController extends Controller
                 'message' => 'La hora final es igual o mayor al horario de inicio'
             ]);
             }else{
-            $solicitud->save();
+                $solicitud->save();
+                return redirect()->back()->with('success','!Se envio la Solicitud de Ambiente!');
             //return redirect()->back();
             }
         }
      //   dd($request->all());
-        return Redirect()->route('solicitudes.create');
+        return Redirect()->route('solicitudes.create', $solicitud->id)->with('success', 'Materia creado exitosamente.');
     }
 
 

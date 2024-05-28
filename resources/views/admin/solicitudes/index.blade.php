@@ -1,11 +1,21 @@
 @extends('layouts.app')
 
 @section('title1')
-
-    <h2>Solicitudes</h2>
+<div style="margin-top: 1%; display: flex; justify-content: center;">
+        <h2>
+            Lista de Solicitudes
+        </h2>
 @endsection
 
 @section('content')
+<div class="card-body">
+        @if(session('success'))
+        <div class="alert alert-success" solicitud="success">
+            {{ session('success') }}
+        </div>
+        @endif
+    </div>
+
         <!-- Button trigger modal -->
         <div class="form-group">
             @can('solicitud_buscar')
@@ -24,7 +34,7 @@
                     <th scope="col">Motivos</th>
                     <th scope="col">Estudiantes</th>
                     <th scope="col">Ambiente</th>
-                    <th scope="col">Hora de reserva</th>
+                    <th scope="col">Hora inicio reserva</th>
                     <th scope="col">Hora fin reserva</th>
                     <th scope="col">Acciones</th>
                 </tr>

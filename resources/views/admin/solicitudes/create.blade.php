@@ -11,24 +11,18 @@
 <?php
     $hora_ini   = ['1' => '6:45', '2' => '8:15'];
 ?>
+
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+@endif
+
 <div class="container">
         <div class="my-6">
             <div class="card">
                     <div class="card-header">
                     Nueva Solicitud
-                    </div>
-                    <div style="margin-top: 1%; display: flex; justify-content: center;">
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Por favor corrige los siguentes errores:</strong>
-                            <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                            </ul>
-                        </div>
-                        @endif
                     </div>
 
             <div class="card-body">
