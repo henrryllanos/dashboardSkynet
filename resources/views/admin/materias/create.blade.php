@@ -52,22 +52,13 @@
                                 <div class="row">
                                     <label for="carrera" class="col-sm-2 col-form-label">Carrera</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control @error('carrera') is-invalid @enderror" id="carrera" name="carrera" value="{{ old('carrera') }}" placeholder="Ingrese nombre de Carrera"
-                                        autofocus minlength="1" maxlength="35" onkeypress="return blockSpecialChar(event)">
-                                        @error('carrera')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <label for="nivel" class="col-sm-2 col-form-label">Nivel</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control @error('nivel') is-invalid @enderror" id="nivel" name="nivel" value="{{ old('nivel') }}" placeholder="Ingrese el nivel"
-                                        autofocus minlength="1" maxlength="1" onkeypress="return blockSpecialChar(event)">
-                                        @error('nivel')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                        <select name="carrera" id="carrera" class="form-control" value="{{old('carrera')}}" required>
+                                        <option value="">-- Selecciona el carrera--</option>
+                                        <option value="Sistemas" @if(old('carrera') == 'Sistemas') selected @endif>Ing. Sistemas</option>
+                                        <option value="Informatica" @if(old('carrera') == 'Informatica') selected @endif>Ing. Informatica</option>
+                                        <option value="Electromecanica" @if(old('carrera') == 'Electromecanica') selected @endif>Electromecanica</option>
+                                        <option value="Ing Civil" @if(old('carrera') == 'IngCivil') selected @endif>Ing Civil</option>
+                                        </select>
                                     </div>
                                 </div>
 

@@ -17,15 +17,6 @@ use Illuminate\Support\Arr;
                 <form action="{{ route('admin.ambientes.update', $ambiente->id) }}" method="POST">
                     {{ csrf_field() }}
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="num_ambiente">Numero ambiente</label>
-                            <input type="text" name="num_ambiente" class="form-control" id="num_ambiente" value="{{$ambiente->num_ambiente}}" value="{{old('num_ambiente')}}" required minlength="1" maxlength="6"
-                            onkeypress="return blockSpecialChar(event)">
-                            @if ($errors->has('num_ambiente'))
-                        <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
-                            @endif
-                        </div>
-
                         <label for="capacidad">Capacidad</label>
                             <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{$ambiente->capacidad}}" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
                                 onkeypress="return blockNoNumber(event)">

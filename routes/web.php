@@ -80,6 +80,9 @@ Route::post('/ambientes/store', [App\Http\Controllers\AmbienteController::class,
 Route::get('/ambientes/create', [App\Http\Controllers\AmbienteController::class, 'create'])
     ->name('admin.ambientes.create');
 
+Route::get('/ambientes/editar', [App\Http\Controllers\AmbienteController::class, 'editar'])
+    ->name('admin.ambientes.editar');
+
 Route::delete('/ambientes/{ambienteId}/delete', [App\Http\Controllers\AmbienteController::class, 'delete'])
     ->name('admin.ambientes.delete');
 
@@ -171,6 +174,10 @@ Route::get('/materias/index', [App\Http\Controllers\MateriaController::class, 'i
 
 Route::get('/materias/create', [App\Http\Controllers\MateriaController::class, 'create'])
 ->name('admin.materias.create');
+
+Route::get('/materias/editar', [App\Http\Controllers\MateriaController::class, 'editar'])
+->name('admin.materias.editar');
+
 
 Route::post('/materias/store', [App\Http\Controllers\MateriaController::class, 'store'])
 ->name('admin.materias.store');

@@ -187,9 +187,24 @@ class AmbienteController extends Controller
      * @param  \App\Models\Ambiente  $ambiente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ambiente $ambiente)
+    public function editar(Ambiente $ambiente)
     {
-        //
+
+        //esta es la consulta de la tabla ubicaciones con ambientes
+            abort_if(Gate::denies('ambiente_edit'), 403);
+            $ambientes =  DB::table('ambientes')
+            ->join('ubicaciones', 'ambientes.ubicacion', '=', 'ubicaciones.id')
+            ->select('ambientes.*','ubicaciones.nombre')
+            ->orderBy('id','asc')
+            ->get();
+               // dd($ambientes);
+                $ubicacion = DB::table('ubicaciones')->get();
+                return view('admin.ambientes.editar', compact('ambientes', 'ubicacion'))->with('tipo', "all");
+
+        $ubicaciones = Ubicacion::all();
+        $facultades = Ambiente::all();
+
+        return view('admin.ambientes.edit', compact('ambientes'));
     }
 
     /**
@@ -203,10 +218,7 @@ class AmbienteController extends Controller
     {
         abort_if(Gate::denies('ambiente_edit'), 403);
         $ambiente = Ambiente::find($ambienteId);
-        $ambiente->num_ambiente = $request->num_ambiente;
         $ambiente->capacidad = $request->capacidad;
-        $ambiente->facultad = $request->facultad;
-        $ambiente->ubicacion = $request->ubicacion;
         $ambiente->estado = $request->estado;
 
 

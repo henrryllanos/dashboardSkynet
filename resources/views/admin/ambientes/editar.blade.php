@@ -7,7 +7,7 @@
     </button> -->
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            Lista de Ambientes Registradas
+            Editar Ambientes Registradas
         </h2>
     </div>
 @endsection
@@ -41,7 +41,7 @@
                             <th scope="col">Ubicacion Ambiente</th>
                             <th scope="col">Facultad</th>
                             <th scope="col">Estado</th>
-                            <!-- <th scope="col">Acciones</th> -->
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,7 +66,7 @@
                                 </td>
 
                                     <!-- la logica de boton de editar Eliminar -->
-                                <!-- <td>
+                                <td>
                                     @can('ambiente_edit')
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar-{{$ambiente->id}}">
                                         Editar
@@ -77,7 +77,7 @@
                                         Eliminar
                                     </button>
                                     @endcan
-                                </td> -->
+                                </td>
                             </tr>
                             <!-- Estos son los madales que aparecen en los botones de editar eliminar de la tabla -->
                                 @include('admin.ambientes.modalEditar')
@@ -86,67 +86,6 @@
                     </tbody>
                 </table>
             </div>
-
-    <div class="modal fade bs-example-modal-lg" id="modalCrear">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title w-100 text-center">Nuevo Ambiente</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                </div>
-                <form action="{{route('admin.ambientes.store')}}" method="POST">
-                {{ csrf_field() }}
-                <div class="modal-body">
-                    <div class="form-group">
-                            <label for="codigo">Codigo</label>
-                            <input type="text" name="codigo" class="form-control" id="codigo" value="{{old('codigo')}}" required minlength="5" maxlength="15"
-                            onkeypress="return blockNoNumber(event)">
-                            @if ($errors->has('codigo'))
-                            <span class="error text-danger" for="input-codigo" style="font-size: 15px">{{ $errors->first('codigo') }}</span>
-                            @endif
-                            <label for="num_ambiente">Numero ambiente</label>
-                            <input type="text" name="num_ambiente" class="form-control" id="num_ambiente" value="{{old('num_ambiente')}}" required minlength="1" maxlength="6"
-                            onkeypress="return blockSpecialChar(event)">
-                            @if ($errors->has('num_ambiente'))
-                            <span class="error text-danger" for="input-num_ambiente" style="font-size: 15px">{{ $errors->first('num_ambiente') }}</span>
-                            @endif
-                            <label for="capacidad">Capacidad</label>
-                            <input type="text" name="capacidad" class="form-control" id="capacidad" value="{{old('capacidad')}}" required minlength="1" maxlength="3"
-                                onkeypress="return blockNoNumber(event)">
-
-                            <label for="facultad">Facultad</label>
-                            <input type="text" name="facultad" class="form-control" id="facultad" value="{{old('facultad')}}" required minlength="5" maxlength="25"
-                            onkeypress="return blockSpecialChar(event)">
-
-                            <label for="ubicaciones">Ubicacion</label>
-                            <select name="ubicacion" id="ubicacion" class="form-control" value="{{old('ubicacion')}}" required>
-                                <option value="">-- Selecciona la ubicacion--</option>
-
-                            @foreach ($ubicacion as $item)
-                                <option value="{{ $item->id }}" @if(old('ubicacion') == $item->id) selected @endif>{{ $item->nombre}}</option>
-                            @endforeach
-                            </select>
-
-                                <label for="estado">Estado</label>
-                                <select name="estado" id="estado" class="form-control" value="{{old('sector')}}" required>
-                                    <option value="">-- Selecciona el estado--</option>
-
-                                    <option value="Habilitado" @if(old('estado') == 'Habilitado') selected @endif>Habilitado</option>
-                                    <option value="Deshabilitado" @if(old('estado') == 'Deshabilitado') selected @endif>Deshabilitado</option>
-                                    <option value="Mantenimiento" @if(old('estado') == 'Mantenimiento') selected @endif>Mantenimiento</option>
-                                </select>
-                        </div>
-                        </div>
-                                    <!-- son clases que acomodan los botones en el modal -->
-                                <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="refresh">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Aceptar</button>
-                                </div>
-                    </form>
-            </div>
-        </div>
-    </div>
 
     <!-- Evento del modal para registrar -->
             <script type="text/javascript">

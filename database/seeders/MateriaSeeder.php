@@ -29,7 +29,6 @@ class MateriaSeeder extends Seeder
             "Algebra Lineal",
         ];
         $estado = ["Habilitado", "Deshabilitado"];
-        $niveles = ['A','B','C','D','E','F','G', 'H', 'I', 'J', ''];
         $tipos = ["Regular", "Electiva"];
 
         for ($i = 0; $i < 10; $i++) {
@@ -38,7 +37,6 @@ class MateriaSeeder extends Seeder
                 'nombre' => $materias[$i],
                 'carrera' => $carreras[rand(0, 5)],
                 'estado' => $estado[rand(0,1)],
-                'nivel' => $niveles[rand(0, 10)],
                 'tipo' => $tipos[rand(0, 1)]
             ]);
         }

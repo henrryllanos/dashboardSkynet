@@ -26,14 +26,13 @@ use Illuminate\Support\Arr;
 
                     <div class="form-group">
                         <label for="carrera">Carrera</label>
-                        <input type="text" name="carrera" class="form-control" id="carrera" value="{{$materia->carrera}}" required minlength="5" maxlength="50"
-                        onkeypress="return blockSpecialChar(event)">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Nivel</label>
-                            <input type="text" name="nivel" class="form-control" id="nivel" value="{{$materia->nivel}}" required minlength="1" maxlength="1"
-                            onkeypress="return blockSpecialChar(event)">
+                        <select name="carrera" id="carrera" class="form-control">
+                            <option value="">-- Selecciona el carrera--</option>
+                            <option value="Sistemas" @if(old('carrera') == 'Sistemas') selected @endif>Ing. Sistemas</option>
+                            <option value="Informatica" @if(old('carrera') == 'Informatica') selected @endif>Ing. Informatica</option>
+                            <option value="Electromecanica" @if(old('carrera') == 'Electromecanica') selected @endif>Electromecanica</option>
+                            <option value="Ing Civil" @if(old('carrera') == 'IngCivil') selected @endif>Ing Civil</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -41,9 +40,7 @@ use Illuminate\Support\Arr;
                         <select name="tipo" id="tipo" class="form-control" required>
 
                             @foreach($tipo as $t)
-
-                             <option value="{{$t}}">{{$t}}</option>
-
+                            <option value="{{$t}}">{{$t}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -53,7 +50,7 @@ use Illuminate\Support\Arr;
                         <select name="estado" id="estado" class="form-control" required>
                             @foreach($estado as $es)
 
-                             <option value="{{$es}}">{{$es}}</option>
+                            <option value="{{$es}}">{{$es}}</option>
 
                             @endforeach
                         </select>
