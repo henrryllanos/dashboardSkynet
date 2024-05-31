@@ -25,7 +25,7 @@
                             <div class="row">
                                 <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus minlength="3" maxlength="15"
+                                    <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus minlength="3" maxlength="55"
                                     onkeypress="return blockSpecialChar(event)">
                                     @if ($errors->has('name'))
                                         <span class="error text-danger" for="input-name" style="font-size: 15px">{{ $errors->first('name') }}</span>
@@ -65,15 +65,16 @@
                             </div>
 
                             <div class="row">
-                                <label for="departamento" class="col-sm-2 col-form-label">Departamento</label>
-                                <div class="col-sm-7">
-                                <input type="text" class="form-control" name="departamento" placeholder="Ingrese el departamento al que pertenece" value="{{ old('departamento') }}" autofocus minlength="5" maxlength="15"
-                                onkeypress="return blockSpecialChar(event)">
-                                @if ($errors->has('departamento'))
-                                    <span class="error text-danger" for="input-departamento" style="font-size: 15px">{{ $errors->first('departamento') }}</span>
-                                @endif
+                                    <label for="departamento" class="col-sm-2 col-form-label">Departamento</label>
+                                    <div class="col-sm-7">
+                                        <select name="departamento" id="departamento" class="form-control" value="{{old('departamento')}}" required>
+                                        <option value="">-- Selecciona el departamento--</option>
+                                        <option value="Sistemas" @if(old('carrera') == 'Sistemas') selected @endif>Dep. Sistemas</option>
+                                        <option value="Informatica" @if(old('carrera') == 'Informatica') selected @endif>Dep. Informatica</option>
+                                        <option value="Electromecanica" @if(old('carrera') == 'Electromecanica') selected @endif>Dep. Electromecanica</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
                                     <!-- <div class="row" >
                                         <label for="estadoDoc"  class="col-sm-2 col-form-label">Tipo Docente</label>

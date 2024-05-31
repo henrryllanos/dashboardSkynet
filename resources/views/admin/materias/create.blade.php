@@ -31,7 +31,7 @@
                                     <label for="codigo" class="col-sm-2 col-form-label">Codigo Materia</label>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control @error('codigo') is-invalid @enderror" id="codigo" name="codigo" value="{{ old('codigo') }}" placeholder="Ingrese codigo de Materia"
-                                        autofocus minlength="1" maxlength="5" onkeypress="return blockSpecialChar(event)">
+                                        autofocus minlength="1" maxlength="7" onkeypress="return blockSpecialChar(event)">
                                         @error('codigo')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

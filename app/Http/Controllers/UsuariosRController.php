@@ -23,11 +23,11 @@ class UsuariosRController extends Controller
         return view('admin.usuarios.index', compact('users'));
     }
 
-
     public function create()
     {
         abort_if(Gate::denies('user_create'), 403);
         $roles = Role::all()->pluck('name', 'id');
+        $departamentos = User::all();
         return view('admin.usuarios.create', compact('roles'));
     }
 

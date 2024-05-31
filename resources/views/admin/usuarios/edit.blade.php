@@ -57,15 +57,17 @@ use Illuminate\Support\Arr;
                             </div>
 
                             <div class="row">
-                                <label for="departamento" class="col-sm-2 col-form-label">Departamento</label>
-                                <div class="col-sm-7">
-                                <input type="text" class="form-control" name="departamento" value="{{ old('departamento', $user->Departamento) }}" autofocus minlength="4" maxlength="15"
-                                onkeypress="return blockSpecialChar(event)">
-                                @if ($errors->has('departamento'))
-                                    <span class="error text-danger" for="input-departamento" style="font-size: 15px">{{ $errors->first('departamento') }}</span>
-                                @endif
+                                    <label for="departamento" class="col-sm-2 col-form-label">Departamento</label>
+                                    <div class="col-sm-7">
+                                        <select name="departamento" id="departamento" class="form-control" value="{{old('departamento')}}" required>
+                                        <option value="">-- Selecciona el departamento--</option>
+                                        <option value="Sistemas" @if(old('carrera') == 'Sistemas') selected @endif>Dep. Sistemas</option>
+                                        <option value="Informatica" @if(old('carrera') == 'Informatica') selected @endif>Dep. Informatica</option>
+                                        <option value="Electromecanica" @if(old('carrera') == 'Electromecanica') selected @endif>Dep. Electromecanica</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+
                                     <div class="row" >
                                         <label for="estadoCuenta"  class="col-sm-2 col-form-label">Estado de cuenta</label>
                                         <div class="col-sm-7">

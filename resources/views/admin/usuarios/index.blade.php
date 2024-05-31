@@ -5,7 +5,7 @@
     </a> -->
     <div style="margin-top: 1%; display: flex; justify-content: center;">
         <h2>
-            Usuarios Registrados
+            Lista de Usuarios Registrados
         </h2>
     </div>
 @endsection

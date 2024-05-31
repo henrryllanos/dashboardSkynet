@@ -67,7 +67,7 @@ class MateriaController extends Controller
           // Validar la entrada
         abort_if(Gate::denies('materia_create'), 403);
         $request->validate([
-            'codigo' => 'required|integer|max:9999',
+            'codigo' => 'required|integer|max:9999999',
             'nombre' => 'required|string|max:255|unique:materias,nombre',
             'carrera' => 'required',
             'tipo' => 'required',

@@ -93,7 +93,17 @@
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
                                                             @foreach(range(06, 23) as $hora)
-                                                                <option value="{{ $hora }}:45">{{ $hora }}:00</option>
+                                                            <option value="6:45:00" @if(old('hora_ini') == '6:45:00') selected @endif>6:45:00</option>
+                                                            <option value="8:15:00" @if(old('hora_ini') == '8:15:00') selected @endif>8:15:00</option>
+                                                            <option value="9:45:00" @if(old('hora_ini') == '9:45:00') selected @endif>9:45:00</option>
+                                                            <option value="11:15:00" @if(old('hora_ini') == '11:15:00') selected @endif>11:15:00</option>
+                                                            <option value="12:45:00" @if(old('hora_ini') == '12:45:00') selected @endif>12:45:00</option>
+                                                            <option value="14:15:00" @if(old('hora_ini') == '14:15:00') selected @endif>14:15:00</option>
+                                                            <option value="15:45:00" @if(old('hora_ini') == '15:45:00') selected @endif>15:45:00</option>
+                                                            <option value="17:15:00" @if(old('hora_ini') == '17:15:00') selected @endif>17:15:00</option>
+                                                            <option value="18:45:00" @if(old('hora_ini') == '18:45:00') selected @endif>18:45:00</option>
+                                                            <option value="20:15:00" @if(old('hora_ini') == '20:15:00') selected @endif>20:15:00</option>
+                                                            <option value="21:45:00" @if(old('hora_ini') == '21:45:00') selected @endif>21:45:00</option>
                                                             @endforeach
                                                     </select>
                                                     @error('hora_ini')
@@ -136,7 +146,17 @@
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
                                                                 @foreach(range(06, 23) as $hora)
-                                                                    <option value="{{ $hora }}:00">{{ $hora }}:00</option>
+                                                                <option value="6:45:00" @if(old('hora_fin') == '6:45:00') selected @endif>6:45:00</option>
+                                                                <option value="8:15:00" @if(old('hora_fin') == '8:15:00') selected @endif>8:15:00</option>
+                                                                <option value="9:45:00" @if(old('hora_fin') == '9:45:00') selected @endif>9:45:00</option>
+                                                                <option value="11:15:00" @if(old('hora_fin') == '11:15:00') selected @endif>11:15:00</option>
+                                                                <option value="12:45:00" @if(old('hora_fin') == '12:45:00') selected @endif>12:45:00</option>
+                                                                <option value="14:15:00" @if(old('hora_fin') == '14:15:00') selected @endif>14:15:00</option>
+                                                                <option value="15:45:00" @if(old('hora_fin') == '15:45:00') selected @endif>15:45:00</option>
+                                                                <option value="17:15:00" @if(old('hora_fin') == '17:15:00') selected @endif>17:15:00</option>
+                                                                <option value="18:45:00" @if(old('hora_fin') == '18:45:00') selected @endif>18:45:00</option>
+                                                                <option value="20:15:00" @if(old('hora_fin') == '20:15:00') selected @endif>20:15:00</option>
+                                                                <option value="21:45:00" @if(old('hora_fin') == '21:45:00') selected @endif>21:45:00</option>
                                                                 @endforeach
                                                             </select>
                                                             @error('hora_fin')
