@@ -80,35 +80,38 @@
                                     </div>
                                     --}}
 
-                                        <div class="col-6">
+
+
+                                    <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
-                                                    Horario ini:
-                                                </label>
+                                                    Horario Ini:
+                                            </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
-                                                    {{-- <input type="date" id="birthday" name="hora_ini" class="form-control"> --}}
-                                                    <select class="form-select" type="date" id="hora_ini" name="hora_ini" multiple value="{{old('hora_ini')}} " required>
+                                                    {{-- <input type="date" id="birthday" name="hora_ini" type="date" class="form-control"> --}}
+                                                    <select class="form-select @error('hora_ini') is-invalid @enderror" id="hora_ini" name="hora_ini">
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
-                                                            @foreach(range(06, 23) as $hora)
-                                                            <option value="6:45:00" @if(old('hora_ini') == '6:45:00') selected @endif>6:45:00</option>
-                                                            <option value="8:15:00" @if(old('hora_ini') == '8:15:00') selected @endif>8:15:00</option>
-                                                            <option value="9:45:00" @if(old('hora_ini') == '9:45:00') selected @endif>9:45:00</option>
-                                                            <option value="11:15:00" @if(old('hora_ini') == '11:15:00') selected @endif>11:15:00</option>
-                                                            <option value="12:45:00" @if(old('hora_ini') == '12:45:00') selected @endif>12:45:00</option>
-                                                            <option value="14:15:00" @if(old('hora_ini') == '14:15:00') selected @endif>14:15:00</option>
-                                                            <option value="15:45:00" @if(old('hora_ini') == '15:45:00') selected @endif>15:45:00</option>
-                                                            <option value="17:15:00" @if(old('hora_ini') == '17:15:00') selected @endif>17:15:00</option>
-                                                            <option value="18:45:00" @if(old('hora_ini') == '18:45:00') selected @endif>18:45:00</option>
-                                                            <option value="20:15:00" @if(old('hora_ini') == '20:15:00') selected @endif>20:15:00</option>
-                                                            <option value="21:45:00" @if(old('hora_ini') == '21:45:00') selected @endif>21:45:00</option>
-                                                            @endforeach
-                                                    </select>
-                                                    @error('hora_ini')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
+                                                                @foreach(range(06, 23) as $hora)
+                                                                <option value="6:45:00" @if(old('hora_fin') == '6:45:00') selected @endif>6:45:00</option>
+                                                                <option value="8:15:00" @if(old('hora_fin') == '8:15:00') selected @endif>8:15:00</option>
+                                                                <option value="9:45:00" @if(old('hora_fin') == '9:45:00') selected @endif>9:45:00</option>
+                                                                <option value="11:15:00" @if(old('hora_fin') == '11:15:00') selected @endif>11:15:00</option>
+                                                                <option value="12:45:00" @if(old('hora_fin') == '12:45:00') selected @endif>12:45:00</option>
+                                                                <option value="14:15:00" @if(old('hora_fin') == '14:15:00') selected @endif>14:15:00</option>
+                                                                <option value="15:45:00" @if(old('hora_fin') == '15:45:00') selected @endif>15:45:00</option>
+                                                                <option value="17:15:00" @if(old('hora_fin') == '17:15:00') selected @endif>17:15:00</option>
+                                                                <option value="18:45:00" @if(old('hora_fin') == '18:45:00') selected @endif>18:45:00</option>
+                                                                <option value="20:15:00" @if(old('hora_fin') == '20:15:00') selected @endif>20:15:00</option>
+                                                                <option value="21:45:00" @if(old('hora_fin') == '21:45:00') selected @endif>21:45:00</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('hora_fin')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+                                                        </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,39 +136,38 @@
                                             </div>
                                         </div>
 
-                                    <div class="col-6">
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-control-label">
                                                     Horario Fin:
-                                            </label>
+                                                </label>
                                                 <div class="input-group">
                                                     <span class="input-group">
                                                     <button class="btn btn-secondary" type="button"></button>
-                                                    {{-- <input type="date" id="birthday" name="hora_fin" type="date" class="form-control"> --}}
-                                                    <select class="form-select @error('hora_fin') is-invalid @enderror" id="hora_fin" name="hora_fin">
+                                                    {{-- <input type="date" id="birthday" name="hora_fin" class="form-control"> --}}
+                                                    <select class="form-select" type="date" id="hora_fin" name="hora_fin" multiple value="{{old('hora_fin')}} " required>
                                                     </span>
                                                         <option value="" >-- Selecciona la hora para la solicitud--</option>
-                                                                @foreach(range(06, 23) as $hora)
-                                                                <option value="6:45:00" @if(old('hora_fin') == '6:45:00') selected @endif>6:45:00</option>
-                                                                <option value="8:15:00" @if(old('hora_fin') == '8:15:00') selected @endif>8:15:00</option>
-                                                                <option value="9:45:00" @if(old('hora_fin') == '9:45:00') selected @endif>9:45:00</option>
-                                                                <option value="11:15:00" @if(old('hora_fin') == '11:15:00') selected @endif>11:15:00</option>
-                                                                <option value="12:45:00" @if(old('hora_fin') == '12:45:00') selected @endif>12:45:00</option>
-                                                                <option value="14:15:00" @if(old('hora_fin') == '14:15:00') selected @endif>14:15:00</option>
-                                                                <option value="15:45:00" @if(old('hora_fin') == '15:45:00') selected @endif>15:45:00</option>
-                                                                <option value="17:15:00" @if(old('hora_fin') == '17:15:00') selected @endif>17:15:00</option>
-                                                                <option value="18:45:00" @if(old('hora_fin') == '18:45:00') selected @endif>18:45:00</option>
-                                                                <option value="20:15:00" @if(old('hora_fin') == '20:15:00') selected @endif>20:15:00</option>
-                                                                <option value="21:45:00" @if(old('hora_fin') == '21:45:00') selected @endif>21:45:00</option>
-                                                                @endforeach
-                                                            </select>
-                                                            @error('hora_fin')
-                                                                <div class="invalid-feedback">{{ $message }}</div>
-                                                            @enderror
-                                                        </select>
+                                                            @foreach(range(06, 23) as $hora)
+                                                            <option value="6:45:00" @if(old('hora_ini') == '6:45:00') selected @endif>6:45:00</option>
+                                                            <option value="8:15:00" @if(old('hora_ini') == '8:15:00') selected @endif>8:15:00</option>
+                                                            <option value="9:45:00" @if(old('hora_ini') == '9:45:00') selected @endif>9:45:00</option>
+                                                            <option value="11:15:00" @if(old('hora_ini') == '11:15:00') selected @endif>11:15:00</option>
+                                                            <option value="12:45:00" @if(old('hora_ini') == '12:45:00') selected @endif>12:45:00</option>
+                                                            <option value="14:15:00" @if(old('hora_ini') == '14:15:00') selected @endif>14:15:00</option>
+                                                            <option value="15:45:00" @if(old('hora_ini') == '15:45:00') selected @endif>15:45:00</option>
+                                                            <option value="17:15:00" @if(old('hora_ini') == '17:15:00') selected @endif>17:15:00</option>
+                                                            <option value="18:45:00" @if(old('hora_ini') == '18:45:00') selected @endif>18:45:00</option>
+                                                            <option value="20:15:00" @if(old('hora_ini') == '20:15:00') selected @endif>20:15:00</option>
+                                                            <option value="21:45:00" @if(old('hora_ini') == '21:45:00') selected @endif>21:45:00</option>
+                                                            @endforeach
+                                                    </select>
+                                                    @error('hora_ini')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                    </div>
+                                        </div>
 
                                     <div class="col-6">
                                             <div class="form-group">
