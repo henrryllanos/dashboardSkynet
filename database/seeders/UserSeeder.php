@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'Departamento' => 'Informatica',
         ]);
 
-        $user2->assignRole('User');
+        $user2->assignRole('Docente');
 
         $user3 = User::create([
             'name' => 'Paco Fernandez',
@@ -45,6 +45,6 @@ class UserSeeder extends Seeder
             'Departamento' => 'Sistemas',
         ]);
 
-        $user3->assignRole('User');
+        $user3->assignRole('Docente');
     }
 }

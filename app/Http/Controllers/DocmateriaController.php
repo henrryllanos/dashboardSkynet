@@ -59,6 +59,7 @@ class DocmateriaController extends Controller
             'materia' => 'required|unique:materias',
             'grupo' => 'required|unique:grupos',
             'estado' => 'required',
+            'asignarDocente' => 'required',
             'docente' => 'required',
             'inscritos' => 'required',
             'gestion' => 'required'
@@ -69,6 +70,7 @@ class DocmateriaController extends Controller
             $newAsignacion->inscritos = $request->inscritos;
             $newAsignacion->gestion = $request->gestion;
             $newAsignacion->estado = $request->estado;
+            $newAsignacion->asignarDocente = $request->asignarDocente;
             $newAsignacion->grupo = $request->grupo;
             $newAsignacion->materia = $request->materia;
             $newAsignacion->docente = $request->docente;
@@ -94,6 +96,7 @@ class DocmateriaController extends Controller
             'materia' => 'required|unique:materias',
             'grupo' => 'required|unique:grupos',
             'estado' => 'required',
+            'asignarDocente' => 'required',
             'docente' => 'required',
             'inscritos' => 'required',
             'gestion' => 'required'
@@ -104,7 +107,7 @@ class DocmateriaController extends Controller
         $asignacion->inscritos = $request->inscritos;
         $asignacion->gestion = $request->gestion;
         $asignacion->estado = $request->estado;
-        $asignacion->grupo = $request->grupo;
+        $asignacion->asignarDocente = $request->asignarDocente;
         $asignacion->materia = $request->materia;
          //$asignacion->docente = $request->docente;
 

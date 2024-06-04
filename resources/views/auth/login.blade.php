@@ -9,7 +9,7 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 </head>
 
-<body class="text-center" style="background-image: url();
+<body class="text-center" style="background-image: url(http://identidadgeek.com/wp-content/uploads/2008/08/87818-1.png);
 
 background-size:cover;
 background-position: center center;

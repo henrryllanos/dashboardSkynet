@@ -38,10 +38,11 @@
                             <th scope="col">#</th>
                             <th scope="col">Materia</th>
                             <th scope="col">Grupo</th>
-                            <th scope="col">Tipo</th>
                             <th scope="col">Docente</th>
                             <th scope="col">Inscritos</th>
+                            <th scope="col">Tipo</th>
                             <th scope="col">Gestión</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -51,10 +52,11 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ @$docentesmateria->nombre }}</td>
                                     <td>{{ @$docentesmateria->numero }}</td>
-                                    <td>{{ @$docentesmateria->estado }}</td>
                                     <td>{{ @$docentesmateria->name }}</td>
                                     <td>{{ @$docentesmateria->inscritos}}</td>
+                                    <td>{{ @$docentesmateria->asignarDocente }}</td>
                                     <td>{{ @$docentesmateria->gestion}}</td>
+                                    <td>{{ @$docentesmateria->estado }}</td>
 
                                     <!-- la logica de boton de editar Eliminar -->
                                     <td>
@@ -115,11 +117,11 @@
                             @endforeach
                         </select>
 
-                        <label for="estado">Tipo</label>
+                        <label for="estado">Estado</label>
                         <select name="estado" id="estado" class="form-control" required>
-                            <option value="">-- Selecciona el Tipo--</option>
-                            <option value="Titular" @if(old('estado') == 'Titular') selected @endif>Titular</option>
-                            <option value="Invitado" @if(old('estado') == 'Invitado') selected @endif>Invitado</option>
+                            <option value="">-- Selecciona el Estado--</option>
+                            <option value="Habilitado" @if(old('estado') == 'Habilitado') selected @endif>Habilitado</option>
+                            <option value="Deshabilitado" @if(old('estado') == 'Deshabilitado') selected @endif>Deshabilitado</option>
                         </select>
 
                         <label for="name">Docente</label>
@@ -129,6 +131,13 @@
                                 <option value="{{ $docente->id }}" @if(old('docente') == $docente->id) selected @endif>{{ $docente->name }}
                                 </option>
                             @endforeach
+                        </select>
+
+                        <label for="asignarDocente">Tipo</label>
+                        <select name="asignarDocente" id="asignarDocente" class="form-control" required>
+                            <option value="">-- Selecciona el TipoDocente--</option>
+                            <option value="Titular" @if(old('asignarDocente') == 'Titular') selected @endif>Titular</option>
+                            <option value="Invitado" @if(old('asignarDocente') == 'Invitado') selected @endif>Invitado</option>
                         </select>
 
                             <label for="name">Inscritos</label>

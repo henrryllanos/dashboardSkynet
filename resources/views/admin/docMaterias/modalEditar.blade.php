@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Arr;
 
-    $estado = ["Titular","Invitado"];
+    $estado = ["Habilitado","Deshabilitado"];
     $estado = array_diff($estado, array("{$docentesmateria->estado}"));
     $estado = Arr::prepend($estado, "{$docentesmateria->estado}");
 ?>
@@ -54,6 +54,12 @@ use Illuminate\Support\Arr;
                                 <input type="text" name="inscritos" class="form-control" id="inscritos" value="{{$docentesmateria->inscritos}}" required minlength="2" maxlength="3"
                                 onkeypress="return blockNoNumber(event)">
                             </div>
+                            <label for="asignarDocente">Tipo</label>
+                            <select name="asignarDocente" id="asignarDocente" class="form-control" required>
+                                <option value="">-- Selecciona el TipoDocente--</option>
+                                <option value="Titular" @if(old('asignarDocente') == 'Titular') selected @endif>Titular</option>
+                                <option value="Invitado" @if(old('asignarDocente') == 'Invitado') selected @endif>Invitado</option>
+                            </select>
                             <div class="form-group">
                                 <label for="name">Gestión</label>
                                 <input type="text" name="gestion" class="form-control" id="gestion" value="{{$docentesmateria->gestion}}" required minlength="5" maxlength="15"
